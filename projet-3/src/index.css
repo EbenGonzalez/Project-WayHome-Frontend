@@ -1,3 +1,25 @@
-body {
-  background-color: grey;
+a {
+  font-weight: 500;
+  color: #000000;
+  text-decoration: inherit;
 }
+a:hover {
+  color: #2c2c31;
+}
+
+body {
+  margin:0;
+  background-color: #cbcbcb;
+}
+
+h1 {
+  font-size: 6.2em;
+  line-height: 1.1;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+

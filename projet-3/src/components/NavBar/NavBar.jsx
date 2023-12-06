@@ -61,7 +61,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -114,8 +114,9 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <Link key={page.name} to={page.path}>
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem  onClick={handleCloseNavMenu} >
                   <Typography textAlign="center">{pages.name}</Typography>
+                  
                 </MenuItem>
               </Link>
               ))}
