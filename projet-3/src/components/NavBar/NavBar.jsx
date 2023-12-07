@@ -1,49 +1,52 @@
-import * as React from 'react';
+import './NavBar.css'
+import { useState } from 'react';
+import { Link } from 'react-router-dom'
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
-import { Link } from 'react-router-dom'
+import MenuIcon from '@mui/icons-material/Menu';
 
 const pages = [
-    {
-        name: 'Voluntarios',
-        path: '/voluntarios'
-      },
-      {
-        name: 'Adopcion',
-        path: '/adopcion'
-      },
-      {
-        name: 'Acogida',
-        path: '/acogida'
-      }
-      
-];
-const settings = [
-    {
-        name: 'Perfil',
-        path: '/perfil'
-    },
-    {
-        name: 'Logout',
-        path: '/logout'
-    }
+  {
+    name: "Acogida",
+    path: "/acogida"
+  },
+  {
+    name: "Adopción",
+    path: "/adopcion"
+  },
+  {
+    name: "Voluntarios",
+    path: "/voluntarios"
+  }
 ];
 
+const settings = [
+  {
+    name: "Perfil",
+    path: "/perfil"
+  },
+  {
+    name: "Login",
+    path: "/login"
+  },
+];
+
+const ariaLabel = { 'aria-label': 'description' };
+
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -61,14 +64,13 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component="span"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
@@ -82,7 +84,6 @@ function ResponsiveAppBar() {
           >
             WAY-HOME
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -114,18 +115,17 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <Link key={page.name} to={page.path}>
-                <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{pages.name}</Typography>
-                </MenuItem>
-              </Link>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
-            component="a"
+            component="span"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
@@ -142,21 +142,22 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link key={page.name} to={page.path}>
+              <Link to={page.path} key={page.name}>
                 <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'black', display: 'block' }}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                    {page.name}
+                  {page.name}
                 </Button>
-                </Link>
+              </Link>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
+          </Box>
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Way Home" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -176,10 +177,10 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link key={setting.name} to={setting.path}>
-                    <MenuItem onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting.name}</Typography>
-                    </MenuItem>
+                <Link to={setting.path} key={setting.name}>
+                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting.name}</Typography>
+                </MenuItem>
                 </Link>
               ))}
             </Menu>

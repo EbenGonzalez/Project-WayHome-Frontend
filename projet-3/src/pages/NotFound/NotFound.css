@@ -1,0 +1,16 @@
+.page404 {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-size:146px;
+    margin: 100px;
+}
+
+.home {
+    font-size: 36px;
+    margin-top: 40px;
+}
+
+.home:hover {
+    color: #535bf2;
+}
