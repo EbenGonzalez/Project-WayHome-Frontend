@@ -54,18 +54,18 @@ const updateUser = async (id,body) => {
   }
 }
 
-const deleteOwnUser = async (body) => {
+const deleteOwnUser = async () => {
   try {
-    const { data } = await api.delete(`/users/me`,body)
+    const { data } = await api.delete(`/users/me`)
     return data
   } catch (error) {
     console.log(error)
   }
 }
 
-const deleteUser = async (id,body) => {
+const deleteUser = async (id) => {
   try {
-    const { data } = await api.delete(`/users/${id}`,body)
+    const { data } = await api.delete(`/users/${id}`)
     return data
   } catch (error) {
     console.log(error)
