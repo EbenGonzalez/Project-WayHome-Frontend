@@ -4,6 +4,7 @@ import Root from '../layout'
 import PageAdoption from '../pages/PageAdoption/PageAdoption'
 import PageAcogida from '../pages/PageAcogida/PageAcogida'
 import NotFound from '../pages/NotFound/NotFound'
+import PageVoluntarios from '../pages/PageVoluntarios/PageVoluntarios'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: '/acogida',
         element: <PageAcogida/>
       },
+      {
+        path: 'voluntarios',
+        element: <PageVoluntarios />
+      }
 
     ]
   }
