@@ -5,6 +5,8 @@ import PageAdoption from '../pages/PageAdoption/PageAdoption'
 import PageAcogida from '../pages/PageAcogida/PageAcogida'
 import NotFound from '../pages/NotFound/NotFound'
 import PageVoluntarios from '../pages/PageVoluntarios/PageVoluntarios'
+import SignInSide from '../pages/Login/Login'
+import SignUp from '../pages/SignUp/SignUp'
 
 const router = createBrowserRouter([
   {
@@ -25,9 +27,17 @@ const router = createBrowserRouter([
         element: <PageAcogida/>
       },
       {
-        path: 'voluntarios',
+        path: '/voluntarios',
         element: <PageVoluntarios />
-      }
+      },
+      {
+        path: '/login',
+        element: <SignInSide/>
+      },
+      {
+        path: '/signup',
+        element: <SignUp/>
+      },
 
     ]
   }

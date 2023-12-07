@@ -56,7 +56,7 @@ export default function PetShow({pet}) {
       <CardMedia
         component="img"
         height="194"
-        image="../../../public/image/perro-husky.jpg"
+        image=""
         alt="imagen"
       />
       <CardContent>
