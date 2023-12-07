@@ -9,6 +9,15 @@ const getAllUsers = async () => {
   }
 }
 
+const getAllVolunteers = async () => {
+  try {
+    const { data } = await api.get("/users")
+    return data.filter(user => user.userRole === "volunteer")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const getOneUser = async (id) => {
   try {
     const { data } = await api.get(`/users/${id}`)
@@ -72,4 +81,4 @@ const deleteUser = async (id) => {
   }
 }
 
-export { getAllUsers, getOneUser, getOwnUser, createUser, updateOwnUser, updateUser, deleteOwnUser, deleteUser  }
+export { getAllUsers,getAllVolunteers, getOneUser, getOwnUser, createUser, updateOwnUser, updateUser, deleteOwnUser, deleteUser  }

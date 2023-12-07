@@ -9,6 +9,24 @@ const getAllPets = async () => {
   }
 }
 
+const getEmbracePets = async () => {
+  try {
+    const { data } = await api.get("/pets")
+    return data.filter(pet => pet.role === "embrace")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getAdoptionPets = async () => {
+  try {
+    const { data } = await api.get("/pets")
+    return data.filter(pet => pet.role === "adoption")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const getOnePet = async (id) => {
   try {
     const { data } = await api.get(`/pets/${id}`)
@@ -72,7 +90,7 @@ const deleteOwnPet = async (id) => {
   }
 }
 
-const deletePet = async (id) => {
+const deletePet = async (id,body) => {
   try {
     const { data } = await api.delete(`/pets/${id}`)
     return data
@@ -81,5 +99,5 @@ const deletePet = async (id) => {
   }
 }
 
-export { getAllPets, getOnePet, getOwnPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet  }
+export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet  }
 

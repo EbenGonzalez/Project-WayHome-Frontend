@@ -1,6 +1,6 @@
 import './PageAdoption.css'
 
-import { getAllPets } from '../../services/pet.services'
+import { getAllPets, getAdoptionPets } from '../../services/pet.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PetShow from '../../components/PetShow/PetShow'
@@ -13,7 +13,7 @@ function PageAdoption() {
   
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getAllPets()
+      const result = await getAdoptionPets()
       setPetShow(result)
     }
     fetchData()
