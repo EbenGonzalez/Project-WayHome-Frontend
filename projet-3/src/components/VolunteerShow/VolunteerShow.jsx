@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 export default function VolunteerShow({volunteer}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin:'20px' }}>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/contemplative-reptile.jpg"

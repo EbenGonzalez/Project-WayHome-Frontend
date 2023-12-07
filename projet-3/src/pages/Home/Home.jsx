@@ -1,13 +1,12 @@
 import './Home.css'
 
 import Grid from '@mui/material/Grid';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const defaultTheme = createTheme();
+import Typography from '@mui/material/Typography';
 
 function Home() {
   return (
     <div className='home'>
+      <div>
       <Grid
         item
         xs={false}
@@ -23,7 +22,14 @@ function Home() {
           height: "100vh",
           width:"50vw"
         }}
+        
       />
+       <Typography variant="body2" color="text.secondary">
+          Lizards are a widespread group of squamate reptiles, with over 6,000
+          species, ranging across all continents except Antarctica
+        </Typography>
+      </div>
+      <div>
       <Grid
         item
         xs={false}
@@ -40,6 +46,7 @@ function Home() {
           width: "50vw"
         }}
       />
+      </div>
     </div>
   )
 }
