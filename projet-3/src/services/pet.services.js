@@ -56,7 +56,7 @@ const updateOwnPet = async (id,body) => {
 
 const updatePet = async (id,body) => {
   try {
-    const { data } = await api.post(`/pets/${id}`,body)
+    const { data } = await api.put(`/pets/${id}`,body)
     return data
   } catch (error) {
     console.log(error)
