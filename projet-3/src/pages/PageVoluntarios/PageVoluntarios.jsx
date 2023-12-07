@@ -4,6 +4,7 @@ import { getAllVolunteers } from '../../services/user.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PetShow from '../../components/PetShow/PetShow'
+import VolunteerShow from '../../components/VolunteerShow/VolunteerShow'
 
 function PageVoluntarios() {
 
@@ -22,7 +23,7 @@ function PageVoluntarios() {
         return volunteers.map(volunteer => {
             return (
                 <Link to='/voluntarios' key={volunteer.id}>
-                    <PetShow volunteer={ volunteer }/>
+                    <VolunteerShow volunteer={ volunteer }/>
                 </Link>
             )
         })
