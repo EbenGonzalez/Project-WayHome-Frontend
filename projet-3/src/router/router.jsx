@@ -3,11 +3,13 @@ import Home from '../pages/Home/Home'
 import Root from '../layout'
 import PageAdoption from '../pages/PageAdoption/PageAdoption'
 import PageAcogida from '../pages/PageAcogida/PageAcogida'
+import NotFound from '../pages/NotFound/NotFound'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: < Root />,
+    errorElement: <NotFound />,
     children: [
       {
         path: '/',
