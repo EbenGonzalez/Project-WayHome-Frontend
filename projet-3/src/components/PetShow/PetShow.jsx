@@ -16,6 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import PropTypes from 'prop-types'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -98,4 +99,8 @@ export default function PetShow({pet}) {
       </Collapse>
     </Card>
   );
+}
+
+PetShow.propTypes = {
+  pet: PropTypes.object
 }
