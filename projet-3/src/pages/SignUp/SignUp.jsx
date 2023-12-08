@@ -14,6 +14,7 @@ import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { signup } from '../../services/auth'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Copyright(props) {
   return (
@@ -32,16 +33,23 @@ function Copyright(props) {
 const defaultTheme = createTheme()
 
 export default function SignUp() {
-  const handleSubmit = async(event) => {
+  const navigate = useNavigate()
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const response = await signup({
-      email: data.get('email'),
-      password: data.get('password'),
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName")
-      
-    })
+    try {
+      const response = await signup({
+        email: data.get('email'),
+        password: data.get('password'),
+        firstName: data.get("firstName"),
+        lastName: data.get("lastName")
+      })
+      if (response === 200) {
+        navigate('/perfil')
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

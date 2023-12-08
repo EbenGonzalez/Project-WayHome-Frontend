@@ -27,7 +27,7 @@ function Copyright(props) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const defaultTheme = createTheme();
@@ -44,7 +44,7 @@ export default function SignInSide() {
       const payload = {
         email,
         password,
-      };
+      }
 
       const result = await login(payload);
      if (result === 200) {
