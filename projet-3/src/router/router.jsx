@@ -7,6 +7,7 @@ import NotFound from '../pages/NotFound/NotFound'
 import PageVoluntarios from '../pages/PageVoluntarios/PageVoluntarios'
 import SignInSide from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
+import DashBoard from '../pages/DashBoard/DashBoard'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp/>
+      },
+      {
+        path: '/perfil',
+        element: <DashBoard/>
       },
 
     ]

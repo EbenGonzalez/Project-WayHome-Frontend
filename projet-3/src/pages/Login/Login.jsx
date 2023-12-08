@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/auth';
 import './Login.css'
 
@@ -37,6 +37,8 @@ export default function SignInSide() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate()
+
   const handleClick = async () => {
     try {
       const payload = {
@@ -46,7 +48,7 @@ export default function SignInSide() {
 
       const result = await login(payload);
      if (result === 200) {
-
+      navigate('/perfil')
      }
     } catch (error) {
       console.log(error);
