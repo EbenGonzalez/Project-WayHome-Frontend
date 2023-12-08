@@ -1,12 +1,12 @@
 import './PageAcogida.css'
 
-import { getAllPets, getEmbracePets } from '../../services/pet.services'
+import { getEmbracePets } from '../../services/pet.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PetShow from '../../components/PetShow/PetShow'
 
 
-function PageAcogida() {
+function PageEmbrace() {
 
   const [petShow, setPetShow] = useState([])
   console.log(petShow)
@@ -34,4 +34,4 @@ function PageAcogida() {
   )
 }
 
-export default PageAcogida
+export default PageEmbrace
