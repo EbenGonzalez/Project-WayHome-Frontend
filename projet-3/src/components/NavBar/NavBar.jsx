@@ -1,20 +1,20 @@
 import './NavBar.css'
-import { useState } from 'react';
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-
-import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import Container from '@mui/material/Container'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip'
+import MenuItem from '@mui/material/MenuItem'
+import MenuIcon from '@mui/icons-material/Menu'
+import { logout } from '../../services/auth'
 
 const pages = [
   {
@@ -29,7 +29,7 @@ const pages = [
     name: "Voluntarios",
     path: "/voluntarios"
   }
-];
+]
 
 const settings = [
   {
@@ -40,51 +40,51 @@ const settings = [
     name: "Login",
     path: "/login"
   },
-];
+]
 
-const ariaLabel = { 'aria-label': 'description' };
+const ariaLabel = { 'aria-label': 'description' }
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+    setAnchorElNav(event.currentTarget)
+  }
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    setAnchorElUser(event.currentTarget)
+  }
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    setAnchorElNav(null)
+  }
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    setAnchorElUser(null)
+  }
 
   return (
     <AppBar>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to='/'>
-              <Typography
-                variant="h6"
-                noWrap
-                component="span"
-                href="#app-bar-with-responsive-menu"
-                sx={{
-                  mr: 2,
-                  display: { xs: 'none', md: 'flex' },
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'white',
-                  textDecoration: 'none',
-                }}
-              >
+            <Typography
+              variant="h6"
+              noWrap
+              component="span"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'white',
+                textDecoration: 'none',
+              }}
+            >
               WAY-HOME
-              </Typography>      
+            </Typography>
           </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -181,16 +181,19 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <Link to={setting.path} key={setting.name}>
-                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting.name}</Typography>
-                </MenuItem>
+                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.name}</Typography>
+                  </MenuItem>
                 </Link>
               ))}
+              <Link to={"/"}>
+                <MenuItem onClick={() => { logout(), handleCloseUserMenu() }}>Logout</MenuItem>
+              </Link>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
-export default ResponsiveAppBar;
+export default ResponsiveAppBar

@@ -1,4 +1,4 @@
-import api from "./config";
+import api from "./config"
 
 const login = async (body) => {
   try {
@@ -20,4 +20,8 @@ const signup = async (body) => {
   }
 }
 
-export { login, signup }
+function logout() {
+  localStorage.removeItem('token')
+}
+
+export { login, signup, logout }
