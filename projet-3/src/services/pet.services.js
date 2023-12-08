@@ -30,6 +30,7 @@ const getAdoptionPets = async () => {
 const getOnePet = async (id) => {
   try {
     const { data } = await api.get(`/pets/${id}`)
+    console.log(data)
     return data
   } catch (error) {
     console.log(error)

@@ -8,16 +8,21 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import BasicRating from "../Rating/Rating"
+import { Link } from "react-router-dom"
+
+
 
 
 export default function VolunteerShow({volunteer}) {
   return (
     <Card sx={{ maxWidth: 345, margin:'20px' }}>
+      <Link to={`/voluntarios/${(volunteer.id)}`}>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/contemplative-reptile.jpg"
         title="green iguana"
       />
+      </Link>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {volunteer.firstName}

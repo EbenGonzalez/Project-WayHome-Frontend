@@ -8,6 +8,9 @@ import PageVoluntarios from '../pages/PageVoluntarios/PageVoluntarios'
 import SignInSide from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
 import DashBoard from '../pages/DashBoard/DashBoard'
+import Voluntario from '../pages/Voluntario/Voluntario'
+import Pet from '../pages/Pet/Pet'
+
 
 const router = createBrowserRouter([
   {
@@ -28,8 +31,16 @@ const router = createBrowserRouter([
         element: <PageEmbrace/>
       },
       {
+        path: '/mascota/:id',
+        element: <Pet/>
+      },
+      {
         path: '/voluntarios',
         element: <PageVoluntarios />
+      },
+      {
+        path: '/voluntarios/:id',
+        element: <Voluntario />
       },
       {
         path: '/login',

@@ -17,6 +17,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -42,7 +44,7 @@ export default function PetShow({pet}) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {pet.name[0]}
+            {pet.name}
           </Avatar>
         }
         action={
@@ -53,12 +55,14 @@ export default function PetShow({pet}) {
         title={pet.name}
         subheader= {`${pet.age} años`}
       />
+      <Link to={`/mascota/${(pet.id)}`}>
       <CardMedia
         component="img"
         height="194"
         image=""
         alt="imagen"
       />
+      </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
          {pet.name}

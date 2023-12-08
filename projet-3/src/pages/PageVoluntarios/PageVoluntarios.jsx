@@ -2,9 +2,8 @@ import './PageVoluntarios.css'
 import { getAllVolunteers } from '../../services/user.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import PetShow from '../../components/PetShow/PetShow'
 import VolunteerShow from '../../components/VolunteerShow/VolunteerShow'
-import BasicRating from '../../components/Rating/Rating'
+
 
 function PageVoluntarios() {
 
