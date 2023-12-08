@@ -44,8 +44,10 @@ export default function SignInSide() {
         password,
       };
 
-      const data = await login(payload);
-      console.log(data);
+      const result = await login(payload);
+     if (result === 200) {
+
+     }
     } catch (error) {
       console.log(error);
     }
