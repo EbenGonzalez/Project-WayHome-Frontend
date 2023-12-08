@@ -20,14 +20,14 @@ function Home() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: "100vh",
-          width:"50vw"
+          width:"50vw",
+          '@media (max-width: 900px)': {
+            width: '100vh', 
+            height:'50vh'
+          },
         }}
         
       />
-       <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
       </div>
       <div>
       <Grid
@@ -43,7 +43,11 @@ function Home() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: "100vh",
-          width: "50vw"
+          width: "50vw",
+          '@media (max-width: 900px)': {
+            width: '100vh', 
+            height:'50vh'
+          },
         }}
       />
       </div>

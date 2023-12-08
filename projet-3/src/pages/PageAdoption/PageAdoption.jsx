@@ -1,6 +1,6 @@
 import './PageAdoption.css'
 
-import { getAllPets, getAdoptionPets } from '../../services/pet.services'
+import { getAdoptionPets } from '../../services/pet.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PetShow from '../../components/PetShow/PetShow'

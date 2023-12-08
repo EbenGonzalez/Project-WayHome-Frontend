@@ -29,7 +29,13 @@ const getOneUser = async (id) => {
 
 const getOwnUser = async () => {
   try {
-    const { data } = await api.get("/users/me")
+    const { data } = await api.get("/users/me", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
+    console.log(data.user.role)
+    localStorage.setItem('role', data.user.role)
     return data
   } catch (error) {
     console.log(error)
