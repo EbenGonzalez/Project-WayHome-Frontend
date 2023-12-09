@@ -9,7 +9,7 @@ import PetShow from '../../components/PetShow/PetShow'
 function PageEmbrace() {
 
   const [petShow, setPetShow] = useState([])
-  console.log(petShow)
+  // console.log(petShow)
   
   useEffect(() => {
     const fetchData = async () => {
