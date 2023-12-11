@@ -6,7 +6,7 @@ import { getOwnPets } from '../../services/pet.services.js'
 import { getOwnHistory } from '../../services/history.services.js'
 import PetShow from '../../components/PetShow/PetShow'
 import MyHistory from '../../components/myHistory/myHistory.jsx'
-import TemporaryDrawer from '../../components/Drawer/Drawer.jsx'
+
 
 
 function Mypets() {
@@ -58,7 +58,7 @@ function Mypets() {
   return (
     <div>
       <h1>Mis Mascotas</h1>
-      <TemporaryDrawer/>
+
       <div className='pet-card'>
         {myPetsFun()}
       </div>

@@ -52,7 +52,12 @@ const getOwnPets = async () => {
 
 const createOwnPet = async (body) => {
   try {
-    const { data } = await api.post("/pets/me",body)
+    const { data } = await api.post("/pets/me",body,
+    {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
@@ -104,5 +109,13 @@ const deletePet = async (id,body) => {
   }
 }
 
-export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet  }
+const getRaces = async (id) => {
+  try {
+    const { data } = await api.get(`/races`)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
 
+export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet,getRaces  }
