@@ -10,6 +10,8 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
 
 function DashBoard() {
   const [user, setUser] = useState({})
@@ -123,7 +125,10 @@ function DashBoard() {
                       onChange={(e) => setLocation(e.target.value)}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
+                  <Grid item xs={12}>
                     <TextField
                       label="Info"
                       fullWidth
@@ -154,3 +159,4 @@ function DashBoard() {
 }
 
 export default DashBoard
+

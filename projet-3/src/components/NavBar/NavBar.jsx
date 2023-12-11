@@ -64,7 +64,7 @@ function ResponsiveAppBar() {
   }
 
   return (
-    <AppBar>
+    <AppBar sx={{/* ajusta la altura según tus necesidades */ }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to='/'>

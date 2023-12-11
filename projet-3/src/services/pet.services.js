@@ -39,8 +39,12 @@ const getOnePet = async (id) => {
 
 const getOwnPets = async () => {
   try {
-    const { data } = await api.get("/pets/me")
-    return data
+    const { data } = await api.get("/pets/me", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
+    return data.pet
   } catch (error) {
     console.log(error)
   }

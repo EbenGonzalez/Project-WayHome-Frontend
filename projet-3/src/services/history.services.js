@@ -11,7 +11,12 @@ const getAllHistories = async () => {
 
 const getOwnHistory = async () => {
   try {
-    const { data } = await api.get(`/history/me`)
+    const { data } = await api.get(`/history/me`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
+    // console.log(data)
     return data
   } catch (error) {
     console.log(error)
@@ -38,7 +43,7 @@ const getOneHistory = async (id) => {
 
 const createHistory = async (body) => {
   try {
-    const { data } = await api.post("/history",body)
+    const { data } = await api.post("/history", body)
     return data
   } catch (error) {
     console.log(error)
@@ -47,25 +52,25 @@ const createHistory = async (body) => {
 
 const createOwnHistory = async (body) => {
   try {
-    const { data } = await api.post("/history/me",body)
+    const { data } = await api.post("/history/me", body)
     return data
   } catch (error) {
     console.log(error)
   }
 }
 
-const updateOwnHistory = async (id,body) => {
+const updateOwnHistory = async (id, body) => {
   try {
-    const { data } = await api.put(`/history/me/${id}`,body)
+    const { data } = await api.put(`/history/me/${id}`, body)
     return data
   } catch (error) {
     console.log(error)
   }
 }
 
-const updateHistory = async (id,body) => {
+const updateHistory = async (id, body) => {
   try {
-    const { data } = await api.put(`/history/${id}`,body)
+    const { data } = await api.put(`/history/${id}`, body)
     return data
   } catch (error) {
     console.log(error)
@@ -81,4 +86,14 @@ const deleteHistory = async (id) => {
   }
 }
 
-export { getAllHistories, getOneOwnHistory, getOwnHistory,getOneHistory, createHistory,createOwnHistory, updateOwnHistory, updateHistory, deleteHistory, deleteHistory  }
+export {
+  getAllHistories,
+  getOneOwnHistory,
+  getOwnHistory,
+  getOneHistory,
+  createHistory,
+  createOwnHistory,
+  updateOwnHistory,
+  updateHistory,
+  deleteHistory,
+}
