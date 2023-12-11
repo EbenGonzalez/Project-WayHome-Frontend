@@ -1,18 +1,17 @@
 import './DashBoard.css'
-import { useEffect, useState } from 'react';
-import { getOwnUser, updateOwnUser } from '../../services/user.services';
+import { useEffect, useState } from 'react'
+import { getOwnUser, updateOwnUser } from '../../services/user.services'
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import AddIcon from '@mui/icons-material/Add';
-import Fab from '@mui/material/Fab';
-import FormDropdown from '../../components/DropDown/DropDown';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Avatar from '@mui/material/Avatar'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import FormDropdown from '../../components/DropDown/DropDown'
+import { Navigate } from 'react-router-dom'
 
 function DashBoard() {
   const [user, setUser] = useState({})
@@ -44,7 +43,7 @@ function DashBoard() {
 
       const result = await updateOwnUser(payload);
       if (result === 200) {
-        navigate('/perfil')
+        Navigate('/perfil')
       }
     } catch (error) {
       console.log(error)
@@ -135,7 +134,7 @@ function DashBoard() {
                     />
                   </Grid>
                   <>
-                  <FormDropdown/>
+                  <FormDropdown user={user}/>
                   </>
                 </Grid>
               </Grid>
