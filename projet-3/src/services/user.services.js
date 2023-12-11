@@ -44,7 +44,7 @@ const getOwnUser = async () => {
 
 const createUser = async (body) => {
   try {
-    const { data } = await api.post("/users",body)
+    const { data } = await api.post("/users", body)
     return data
   } catch (error) {
     console.log(error)
@@ -53,16 +53,20 @@ const createUser = async (body) => {
 
 const updateOwnUser = async (body) => {
   try {
-    const { data } = await api.put(`/users/me`,body)
+    const { data } = await api.put(`/users/me`, body, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
   }
 }
 
-const updateUser = async (id,body) => {
+const updateUser = async (id, body) => {
   try {
-    const { data } = await api.put(`/users/${id}`,body)
+    const { data } = await api.put(`/users/${id}`, body)
     return data
   } catch (error) {
     console.log(error)
@@ -87,4 +91,4 @@ const deleteUser = async (id) => {
   }
 }
 
-export { getAllUsers,getAllVolunteers, getOneUser, getOwnUser, createUser, updateOwnUser, updateUser, deleteOwnUser, deleteUser  }
+export { getAllUsers, getAllVolunteers, getOneUser, getOwnUser, createUser, updateOwnUser, updateUser, deleteOwnUser, deleteUser }

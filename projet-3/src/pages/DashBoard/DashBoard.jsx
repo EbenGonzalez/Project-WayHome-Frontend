@@ -1,6 +1,6 @@
 import './DashBoard.css'
 import { useEffect, useState } from 'react';
-import { getOwnUser } from '../../services/user.services';
+import { getOwnUser, updateOwnUser } from '../../services/user.services';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,17 +12,41 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 function DashBoard() {
-
   const [user, setUser] = useState({})
-  console.log(user)
 
   useEffect(() => {
     const fetchData = async () => {
-      const {user} = await getOwnUser()
+      const { user } = await getOwnUser()
       setUser(user)
     }
     fetchData()
   }, [])
+  const [firstName, setFirstName] = useState(user.firstName)
+  const [lastName, setLastName] = useState(user.lastName)
+  const [email, setEmail] = useState(user.email)
+  const [phone, setPhone] = useState(user.phone)
+  const [info, setInfo] = useState(user.info)
+  const [location, setLocation] = useState(user.location)
+
+  const handleClick = async () => {
+    try {
+      const payload = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        info,
+        location
+      }
+
+      const result = await updateOwnUser(payload);
+      if (result === 200) {
+        navigate('/perfil')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Box
@@ -31,7 +55,7 @@ function DashBoard() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh', // Altura completa de la ventana
+        height: '100vh',
       }}
     >
       <Card>
@@ -62,6 +86,7 @@ function DashBoard() {
                       label="Nombre"
                       fullWidth
                       margin="normal"
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -69,13 +94,41 @@ function DashBoard() {
                       label="Apellido"
                       fullWidth
                       margin="normal"
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6}>
                     <TextField
-                      label="Ubicación"
+                      label="Email"
                       fullWidth
                       margin="normal"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      id="filled-helperText"
+                      label="Telefono"
+                      defaultValue={phone}
+                      fullWidth
+                      margin="normal"
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      label="Poblacion"
+                      fullWidth
+                      margin="normal"
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      label="Info"
+                      fullWidth
+                      margin="normal"
+                      onChange={(e) => setInfo(e.target.value)}
                     />
                   </Grid>
                 </Grid>
@@ -86,7 +139,7 @@ function DashBoard() {
           {/* Botones para actualizar y otros controles */}
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Button variant="contained" color="primary" style={{ marginRight: '10px' }}>
+              <Button onClick={handleClick} variant="contained" color="primary" style={{ marginRight: '10px' }}>
                 Guardar Cambios
               </Button>
               <Button variant="outlined" color="primary">
