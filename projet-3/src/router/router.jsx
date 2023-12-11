@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 import Home from '../pages/Home/Home'
 import Root from '../layout'
 import PageAdoption from '../pages/PageAdoption/PageAdoption'
@@ -37,7 +37,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/voluntarios',
-        element: <PageVoluntarios />
+        element: <PageVoluntarios />,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/login")
+          } else {
+            return null;
+          }
+        }
       },
       {
         path: '/voluntarios/:id',
