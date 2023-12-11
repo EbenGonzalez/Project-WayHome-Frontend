@@ -6,7 +6,7 @@ import { getAdoptionPets } from '../../services/pet.services';
 
 function PageAdoption() {
   const [petShow, setPetShow] = useState([]);
-  // console.log(petShow)
+  console.log(petShow)
   const [racesFilter, setRacesFilter] = useState('');
 
   useEffect(() => {
@@ -40,6 +40,7 @@ function PageAdoption() {
   return (
     <div className='container'>
       <input
+        className='input'
         type="text"
         placeholder='Buscar por raza'
         value={racesFilter}

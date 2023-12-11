@@ -43,6 +43,7 @@ function PageEmbrace() {
   return (
     <>
       <input
+        className='input'
         type="text"
         placeholder='Buscar por raza'
         value={racesFilter}

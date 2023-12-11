@@ -40,7 +40,9 @@ export default function PetShow({pet}) {
   };
 
   return (
-  
+    <div>
+    {Object.keys(pet).length !== 0 ? 
+    <>
     <Card sx={{ width:"350px", margin:'20px' }}>
       <CardHeader
         avatar={
@@ -66,7 +68,7 @@ export default function PetShow({pet}) {
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-         {pet.race.name}
+         {pet.name}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -103,6 +105,12 @@ export default function PetShow({pet}) {
         </CardContent>
       </Collapse>
     </Card>
+    </> :
+    <h1>
+      loading
+    </h1>
+    }
+    </div>
   );
 }
 
