@@ -1,6 +1,7 @@
 import './PetShow.css'
 
-import * as React from 'react';
+// import * as React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -32,7 +33,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function PetShow({pet}) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -40,7 +41,7 @@ export default function PetShow({pet}) {
 
   return (
   
-    <Card sx={{ maxWidth: 345, margin:'20px' }}>
+    <Card sx={{ width:"350px", margin:'20px' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -59,7 +60,7 @@ export default function PetShow({pet}) {
       <CardMedia
         component="img"
         height="194"
-        image=""
+        image="https://source.unsplash.com/random?dog"
         alt="imagen"
       />
       </Link>

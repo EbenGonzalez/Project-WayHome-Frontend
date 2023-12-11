@@ -1,20 +1,20 @@
 import './MyPets.css'
 
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { getOwnPets } from '../../services/pet.services.js'
 import { getOwnHistory } from '../../services/history.services.js'
 import PetShow from '../../components/PetShow/PetShow'
 import MyHistory from '../../components/myHistory/myHistory.jsx'
+import TemporaryDrawer from '../../components/Drawer/Drawer.jsx'
 
 
 function Mypets() {
 
   const [myPet, setMyPet] = useState([])
-  
+
   const [myHistory, setMyHistory] = useState([])
-// console.log(myHistory)
+  // console.log(myHistory)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,7 @@ function Mypets() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const {history} = await getOwnHistory()
+      const { history } = await getOwnHistory()
       setMyHistory(history)
     }
     fetchData()
@@ -35,9 +35,9 @@ function Mypets() {
   const myPetsFun = () => {
     return myPet.map(pet => {
       return (
-        <Link key={pet.location}>
+        <div key={pet.location}>
           <PetShow pet={pet} />
-        </Link>
+        </div>
       )
     })
   }
@@ -46,22 +46,25 @@ function Mypets() {
     return myHistory.map(history => {
       console.log(history)
       return (
-       <>
-       <MyHistory history = {history}/>
-       </>
+        <div key={history.id}>
+          <MyHistory history={history} />
+        </div>
       )
     })
   }
 
-  
+
 
   return (
     <div>
       <h1>Mis Mascotas</h1>
+      <TemporaryDrawer/>
       <div className='pet-card'>
         {myPetsFun()}
       </div>
-     <div>{myHistoryFun()}</div>
+      <div className='card-myPets'>
+        {myHistoryFun()}
+      </div>
     </div>
   )
 }
