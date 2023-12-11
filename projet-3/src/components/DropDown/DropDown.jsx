@@ -4,9 +4,47 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
 import { createOwnPet } from '../../services/pet.services'
 import { Navigate } from 'react-router-dom'
 
+const genero = [
+  {
+    value: 'Masculino',
+    label: 'Macho',
+  },
+  {
+    value: 'Femenino',
+    label: 'Hembra',
+  }
+]
+
+const tamaño = [
+  {
+    value: 'Pequeño',
+    label: 'Pequeño',
+  },
+  {
+    value: 'Mediano',
+    label: 'Mediano',
+  },
+  {
+    value: 'Grande',
+    label: 'Grande',
+  }
+]
+
+const especie = [
+  {
+    value: 1,
+    label: 'Perro',
+  },
+  {
+    value: 2,
+    label: 'Gato',
+  },
+  
+]
 
 function FormDropdown() {
   const [open, setOpen] = useState(false)
@@ -24,6 +62,9 @@ function FormDropdown() {
   const [gender, setGender] = useState()
   const [size, setSize] = useState()
   const [info, setInfo] = useState()
+  const [role, setRole] = useState()
+  const [speciesId, setSpeciesId] = useState()
+  const [raceId, setRaceId] = useState()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -33,7 +74,10 @@ function FormDropdown() {
         age,
         gender,
         size,
-        info
+        info,
+        role,
+        speciesId,
+        raceId
       }
       const result = await createOwnPet(payload)
       if (result === 200) {
@@ -58,10 +102,48 @@ function FormDropdown() {
               onChange={(e) => setName(e.target.value)} />
             <TextField label="Edad" fullWidth margin="normal"
               onChange={(e) => setAge(e.target.value)} />
-            <TextField label="Genero" fullWidth margin="normal"
-              onChange={(e) => setGender(e.target.value)} />
-            <TextField label="Tamaño" fullWidth margin="normal"
-              onChange={(e) => setSize(e.target.value)} />
+            <TextField fullWidth margin="normal"
+              id="outlined-select-currency"
+              select
+              label="Genero"
+              defaultValue="Masculino"
+              helperText="Selecciona el genero"
+              onChange={(e) => setGender(e.target.value)}
+            >
+              {genero.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField fullWidth margin="normal"
+              id="outlined-select-currency"
+              select
+              label="Tamaño"
+              defaultValue="Pequeño"
+              helperText="Elige un tamaño"
+              onChange={(e) => setSize(e.target.value)}
+            >
+              {tamaño.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField fullWidth margin="normal"
+              id="outlined-select-currency"
+              select
+              label="Especie"
+              defaultValue="1"
+              helperText="Elige una especie"
+              onChange={(e) => setSpeciesId(e.target.value)}
+            >
+              {especie.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
             <TextField label="Informacion" fullWidth margin="normal"
               onChange={(e) => setInfo(e.target.value)} />
             <Button type="submit" variant="contained" color="primary">
