@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import { createOwnPet } from '../../services/pet.services'
+import { createOwnPet, getRaces } from '../../services/pet.services'
 import { Navigate } from 'react-router-dom'
+
 
 const genero = [
   {
@@ -46,8 +47,37 @@ const especie = [
   
 ]
 
+const roles = [
+  {
+    value: "Free",
+    label: "Mascota",
+  },
+  {
+    value: "Embrace",
+    label: "Acogida",
+  },
+  {
+    value: "Adoption",
+    label: "Adopcion",
+  },
+  
+]
+
 function FormDropdown() {
   const [open, setOpen] = useState(false)
+  const [allRaces, setAllRaces] = useState([]) 
+
+  useEffect(() => {
+    const fetchSpecies = async () => {
+      try {
+        const datosRaza = await getRaces()
+        setAllRaces(datosRaza)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchSpecies()
+  },[])
 
   const handleOpen = () => {
     setOpen(true)
@@ -64,7 +94,8 @@ function FormDropdown() {
   const [info, setInfo] = useState()
   const [role, setRole] = useState()
   const [speciesId, setSpeciesId] = useState()
-  const [raceId, setRaceId] = useState()
+  const [raceId, setRace] = useState()
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -78,10 +109,11 @@ function FormDropdown() {
         role,
         speciesId,
         raceId
+        
       }
       const result = await createOwnPet(payload)
       if (result === 200) {
-        Navigate('/perfil')
+        Navigate('/perfil/misMascotas')
       }
     } catch (error) {
       console.log(error)
@@ -144,8 +176,36 @@ function FormDropdown() {
                 </MenuItem>
               ))}
             </TextField>
+            <TextField fullWidth margin="normal"
+              id="outlined-select-currency"
+              select
+              label="Raza"
+              defaultValue=""
+              helperText="Elige una raza"
+              onChange={(e) => setRace(e.target.value)} 
+            >
+              {allRaces.map((option) => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>
             <TextField label="Informacion" fullWidth margin="normal"
               onChange={(e) => setInfo(e.target.value)} />
+              <TextField fullWidth margin="normal"
+              id="outlined-select-currency"
+              select
+              label="Role"
+              defaultValue="1"
+              helperText="Elige una opcion para tu mascota"
+              onChange={(e) => setRole(e.target.value)}
+            >
+              {roles.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
             <Button type="submit" variant="contained" color="primary">
               Enviar
             </Button>
