@@ -8,7 +8,7 @@ import { createOwnPet } from '../../services/pet.services'
 import { Navigate } from 'react-router-dom'
 
 
-function FormDropdown({ user }) {
+function FormDropdown() {
   const [open, setOpen] = useState(false)
 
   const handleOpen = () => {
