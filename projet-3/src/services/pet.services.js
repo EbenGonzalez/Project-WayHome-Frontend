@@ -118,5 +118,13 @@ const getRaces = async (id) => {
   }
 }
 
-export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet,getRaces  }
+const getRaces = async (id) => {
+  try {
+    const { data } = await api.get(`/races`)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
 
+export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet,getRaces,getRaces  }

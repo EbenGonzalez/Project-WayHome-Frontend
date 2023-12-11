@@ -9,7 +9,8 @@ import PetShow from '../../components/PetShow/PetShow'
 function PageEmbrace() {
 
   const [petShow, setPetShow] = useState([])
-  // console.log(petShow)
+  console.log(petShow)
+  const [racesFilter, setRacesFilter] = useState('');
   
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,7 @@ function PageEmbrace() {
   }, [])
 
   const petsShowFunc = () => {
-    return petShow.map(pet => {
+    return filteredPets.map(pet => {
       return (
         <Link to='/acogida' key={pet.id}>
           <PetShow pet = {pet}/>
@@ -29,8 +30,26 @@ function PageEmbrace() {
     })
   }
 
+  const handleRacesFilterChange = (e) => {
+    setRacesFilter(e.target.value);
+  };
+
+  const filteredPets = petShow.filter(
+    (pet) =>
+      pet.race &&
+      pet.race.name.toLowerCase().includes(racesFilter.toLowerCase())
+  );
+
   return (
+    <>
+      <input
+        type="text"
+        placeholder='Buscar por raza'
+        value={racesFilter}
+        onChange={handleRacesFilterChange}
+      />
     <div className='pet-card'>{petsShowFunc()}</div>
+    </>
   )
 }
 
