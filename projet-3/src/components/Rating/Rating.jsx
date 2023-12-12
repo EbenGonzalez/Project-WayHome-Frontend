@@ -1,25 +1,55 @@
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import Rating from '@mui/material/Rating'
-import Typography from '@mui/material/Typography'
+import * as React from 'react';
+import Rating from '@mui/material/Rating';
+import Box from '@mui/material/Box';
+import StarIcon from '@mui/icons-material/Star';
+
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
+
+function getLabelText(value) {
+  return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+}
 
 export default function BasicRating() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(1);
+  const [hover, setHover] = React.useState(-1);
+
 
   return (
     <Box
       sx={{
-        '& > legend': { mt: 2 },
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
       }}
     >
-      <Typography component="legend">Puntuacion</Typography>
       <Rating
-        name="simple-controlled"
+        name="hover-feedback"
         value={value}
-        onChange={(event, newValue) => {
+        precision={0.5}
+        getLabelText={getLabelText}
+        onChangegit={(event, newValue) => {
+          console.log(newValue)
           setValue(newValue);
         }}
+        onChangeActive={(event, newHover) => {
+          setHover(newHover);
+        }}
+        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
       />
+      {value !== null && (
+        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+      )}
     </Box>
-  )
+  );
 }
