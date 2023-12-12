@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import FormDropdown from '../../components/DropDown/DropDown'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 function DashBoard() {
   const [user, setUser] = useState({})
@@ -134,7 +134,12 @@ function DashBoard() {
                     />
                   </Grid>
                   <>
-                  <FormDropdown />
+                    <FormDropdown />
+                    <Link to={'/perfil/misMascotas'}>
+                    <Button type="button" variant="contained" color="primary">
+                      Mis Mascotas
+                    </Button>
+                    </Link>
                   </>
                 </Grid>
               </Grid>

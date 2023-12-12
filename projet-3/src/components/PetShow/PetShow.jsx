@@ -21,6 +21,10 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinearProgress from '@mui/material/LinearProgress';
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -69,7 +73,7 @@ export default function PetShow({pet}) {
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-         {pet.race.name}
+         {pet.name}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -79,6 +83,7 @@ export default function PetShow({pet}) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <DropDownPetUpdate/>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

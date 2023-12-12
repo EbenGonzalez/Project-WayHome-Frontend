@@ -118,5 +118,8 @@ const getRaces = async (id) => {
   }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 776f9665b681e4aca2e909d6eeb9ed20801b8574
 export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet, getRaces }
