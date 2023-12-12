@@ -118,4 +118,4 @@ const getRaces = async (id) => {
   }
 }
 
-export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet, getRaces }
+export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet,getRaces  }

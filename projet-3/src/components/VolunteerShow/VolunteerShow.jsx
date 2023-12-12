@@ -7,8 +7,9 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import BasicRating from "../Rating/Rating"
+import myRating from "../Rating/Rating"
 import { Link } from "react-router-dom"
+import { Rating } from "@mui/material"
 
 
 
@@ -31,12 +32,13 @@ export default function VolunteerShow({volunteer}) {
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
-        <BasicRating/>
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
+      <Rating name="half" defaultValue={3.5}  
+                        precision={0.5} size="large" readOnly/>
     </Card>
   )
 }
