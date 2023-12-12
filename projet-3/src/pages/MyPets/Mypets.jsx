@@ -35,7 +35,7 @@ function Mypets() {
   const myPetsFun = () => {
     return myPet.map(pet => {
       return (
-        <div key={pet.location}>
+        <div key={pet.id}>
           <PetShow pet={pet} />
         </div>
       )

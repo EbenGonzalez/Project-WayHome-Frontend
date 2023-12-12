@@ -19,6 +19,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
 
 
 const ExpandMore = styled((props) => {
@@ -76,6 +77,7 @@ export default function PetShow({pet}) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <DropDownPetUpdate/>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

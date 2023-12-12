@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { updateOwnPet, getRaces } from '../../services/pet.services'
 import { Link, useNavigate } from 'react-router-dom'
+import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
 
 
 
@@ -139,7 +140,9 @@ function UpdateFormDropdown() {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
+      <Button variant="outlined" color="primary" 
+      onClick={handleOpen}
+      startIcon={<PublishedWithChangesOutlinedIcon />}>
         Editar Mascota
       </Button>
       <Dialog open={open} onClose={handleClose}>
