@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PetShow from '../../components/PetShow/PetShow';
 import { getAdoptionPets } from '../../services/pet.services';
 
+
 function PageAdoption() {
   const [petShow, setPetShow] = useState([]);
   // console.log(petShow)
@@ -50,6 +51,7 @@ function PageAdoption() {
       <div className='pet-card'>
         {petsShowFunc()}
       </div>
+      
     </div>
   );
 }

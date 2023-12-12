@@ -23,6 +23,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
+import FormDialog from '../Contact/Contact.jsx';
+
 
 
 const ExpandMore = styled((props) => {
@@ -74,6 +76,7 @@ export default function PetShow({pet}) {
         <Typography variant="body2" color="text.secondary">
          {pet.name}
         </Typography>
+        <FormDialog pet = {pet}/>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
@@ -83,6 +86,7 @@ export default function PetShow({pet}) {
           <ShareIcon />
         </IconButton>
         <DropDownPetUpdate/>
+        
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
