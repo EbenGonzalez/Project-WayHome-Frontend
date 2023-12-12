@@ -35,7 +35,7 @@ function Mypets() {
   const myPetsFun = () => {
     return myPet.map(pet => {
       return (
-        <div key={pet.location}>
+        <div key={pet.id}>
           <PetShow pet={pet} />
         </div>
       )
@@ -53,19 +53,15 @@ function Mypets() {
     })
   }
 
-
-
   return (
-    <div>
-      <h1>Mis Mascotas</h1>
-
+    <>
       <div className='pet-card'>
         {myPetsFun()}
       </div>
       <div className='card-myPets'>
         {myHistoryFun()}
       </div>
-    </div>
+    </>
   )
 }
 

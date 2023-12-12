@@ -36,8 +36,8 @@ function PageEmbrace() {
 
   const filteredPets = petShow.filter(
     (pet) =>
-      pet.race &&
-      pet.race.name.toLowerCase().includes(racesFilter.toLowerCase())
+      pet.info &&
+      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
   );
 
   return (
@@ -45,7 +45,7 @@ function PageEmbrace() {
       <input
         className='input'
         type="text"
-        placeholder='Buscar por raza'
+        placeholder='    Buscar por palabra clave...'
         value={racesFilter}
         onChange={handleRacesFilterChange}
       />

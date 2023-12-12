@@ -1,5 +1,10 @@
 import './PetShow.css'
+
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import PropTypes from 'prop-types'
+
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -15,9 +20,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
-
+import LinearProgress from '@mui/material/LinearProgress';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -45,7 +48,7 @@ export default function PetShow({pet}) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[700] }} aria-label="recipe">
-            {pet.name}
+            {pet.name[0]}
           </Avatar>
         }
         action={
@@ -66,7 +69,7 @@ export default function PetShow({pet}) {
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-         {pet.name}
+         {pet.race.name}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -104,9 +107,9 @@ export default function PetShow({pet}) {
       </Collapse>
     </Card>
     </> :
-    <h1>
-      loading
-    </h1>
+    
+      <LinearProgress />
+    
     }
     </div>
   );
