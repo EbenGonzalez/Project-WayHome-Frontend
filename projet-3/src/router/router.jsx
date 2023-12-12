@@ -11,6 +11,7 @@ import DashBoard from '../pages/DashBoard/DashBoard'
 import Voluntario from '../pages/Voluntario/Voluntario'
 import Pet from '../pages/Pet/Pet'
 import Mypets from '../pages/MyPets/Mypets'
+import QuienesSomos from '../pages/QuienesSomos/QuienesSomos'
 
 
 const router = createBrowserRouter([
@@ -66,7 +67,10 @@ const router = createBrowserRouter([
         path: '/perfil/misMascotas',
         element: <Mypets/>
       },
-
+      {
+        path: '/quienesSomos',
+        element: <QuienesSomos />
+      },
     ]
   }
 

@@ -1,7 +1,10 @@
 import './PetShow.css'
 
-// import * as React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import PropTypes from 'prop-types'
+
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -17,9 +20,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom';
+import LinearProgress from '@mui/material/LinearProgress';
+
 import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
+import FormDialog from '../Contact/Contact.jsx';
+
 
 
 const ExpandMore = styled((props) => {
@@ -41,12 +46,14 @@ export default function PetShow({pet}) {
   };
 
   return (
-  
+    <div>
+    {Object.keys(pet).length !== 0 ? 
+    <>
     <Card sx={{ width:"350px", margin:'20px' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[700] }} aria-label="recipe">
-            {pet.name}
+            {pet.name[0]}
           </Avatar>
         }
         action={
@@ -69,6 +76,7 @@ export default function PetShow({pet}) {
         <Typography variant="body2" color="text.secondary">
          {pet.name}
         </Typography>
+        <FormDialog pet = {pet}/>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
@@ -105,6 +113,12 @@ export default function PetShow({pet}) {
         </CardContent>
       </Collapse>
     </Card>
+    </> :
+    
+      <LinearProgress />
+    
+    }
+    </div>
   );
 }
 

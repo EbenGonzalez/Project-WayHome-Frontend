@@ -44,7 +44,7 @@ const getOwnPets = async () => {
         authorization: localStorage.getItem('token')
       }
     })
-    return data.pet
+    return data
   } catch (error) {
     console.log(error)
   }
@@ -122,4 +122,4 @@ const getRaces = async (id) => {
   }
 }
 
-export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet, getRaces }
+export { getAllPets, getOnePet, getOwnPets,getEmbracePets,getAdoptionPets, createOwnPet, createPet, updateOwnPet, updatePet, deleteOwnPet, deletePet,getRaces  }

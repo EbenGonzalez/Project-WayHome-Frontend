@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PetShow from '../../components/PetShow/PetShow';
 import { getAdoptionPets } from '../../services/pet.services';
 
+
 function PageAdoption() {
   const [petShow, setPetShow] = useState([]);
   // console.log(petShow)
@@ -20,7 +21,7 @@ function PageAdoption() {
   const petsShowFunc = () => {
     return filteredPets.map(pet => {
       return (
-        <Link to='/acogida' key={pet.id}>
+        <Link to='/adopcion' key={pet.id}>
           <PetShow pet = {pet}/>
         </Link>
       )
@@ -36,18 +37,21 @@ function PageAdoption() {
       pet.info &&
       pet.info.toLowerCase().includes(racesFilter.toLowerCase())
   );
+  console.log(filteredPets)
 
   return (
     <div className='container'>
       <input
+        className='input'
         type="text"
-        placeholder='Buscar por raza'
+        placeholder='    Buscar por palabra clave...'
         value={racesFilter}
         onChange={handleRacesFilterChange}
       />
       <div className='pet-card'>
         {petsShowFunc()}
       </div>
+      
     </div>
   );
 }

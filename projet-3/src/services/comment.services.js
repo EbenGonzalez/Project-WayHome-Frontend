@@ -47,7 +47,12 @@ const createComment = async (body) => {
 
 const sendComment = async (body) => {
   try {
-    const { data } = await api.post("/comment",body)
+    const { data } = await api.post("/comment/me",body,
+    {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)

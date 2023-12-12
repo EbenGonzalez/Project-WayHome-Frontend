@@ -43,8 +43,9 @@ function PageEmbrace() {
   return (
     <>
       <input
+        className='input'
         type="text"
-        placeholder='Buscar por raza'
+        placeholder='    Buscar por palabra clave...'
         value={racesFilter}
         onChange={handleRacesFilterChange}
       />
