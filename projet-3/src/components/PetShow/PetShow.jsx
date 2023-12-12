@@ -12,7 +12,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { blue, red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -44,7 +44,7 @@ export default function PetShow({pet}) {
     <Card sx={{ width:"350px", margin:'20px' }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: blue[700] }} aria-label="recipe">
             {pet.name}
           </Avatar>
         }
@@ -66,7 +66,7 @@ export default function PetShow({pet}) {
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-         {pet.name}
+         {pet.race.name}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

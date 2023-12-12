@@ -1,17 +1,17 @@
 import './DashBoard.css'
-import { useEffect, useState } from 'react';
-import { getOwnUser, updateOwnUser } from '../../services/user.services';
+import { useEffect, useState } from 'react'
+import { getOwnUser, updateOwnUser } from '../../services/user.services'
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import AddIcon from '@mui/icons-material/Add';
-import Fab from '@mui/material/Fab';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Avatar from '@mui/material/Avatar'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import FormDropdown from '../../components/DropDown/DropDown'
+import { Navigate } from 'react-router-dom'
 
 function DashBoard() {
   const [user, setUser] = useState({})
@@ -43,7 +43,7 @@ function DashBoard() {
 
       const result = await updateOwnUser(payload);
       if (result === 200) {
-        navigate('/perfil')
+        Navigate('/perfil')
       }
     } catch (error) {
       console.log(error)
@@ -125,10 +125,7 @@ function DashBoard() {
                       onChange={(e) => setLocation(e.target.value)}
                     />
                   </Grid>
-                  <Fab color="primary" aria-label="add">
-        <AddIcon />
-      </Fab>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6}>
                     <TextField
                       label="Info"
                       fullWidth
@@ -136,6 +133,9 @@ function DashBoard() {
                       onChange={(e) => setInfo(e.target.value)}
                     />
                   </Grid>
+                  <>
+                  <FormDropdown />
+                  </>
                 </Grid>
               </Grid>
             </Grid>

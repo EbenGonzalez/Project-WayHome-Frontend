@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import { logout } from '../../services/auth'
 
+
 const pages = [
   {
     name: "Acogida",
@@ -86,7 +87,7 @@ function ResponsiveAppBar() {
               WAY-HOME
             </Typography>
           </Link>
-
+                
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
