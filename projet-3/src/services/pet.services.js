@@ -44,7 +44,7 @@ const getOwnPets = async () => {
         authorization: localStorage.getItem('token')
       }
     })
-    return data.pet
+    return data
   } catch (error) {
     console.log(error)
   }

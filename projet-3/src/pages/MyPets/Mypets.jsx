@@ -7,19 +7,17 @@ import { getOwnHistory } from '../../services/history.services.js'
 import PetShow from '../../components/PetShow/PetShow'
 import MyHistory from '../../components/myHistory/myHistory.jsx'
 
-
-
 function Mypets() {
 
   const [myPet, setMyPet] = useState([])
-
+  console.log(myPet)
   const [myHistory, setMyHistory] = useState([])
-  // console.log(myHistory)
-
+  const [racesFilter, setRacesFilter] = useState('');
+ 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getOwnPets()
-      setMyPet(result)
+      const {pet} = await getOwnPets()
+      setMyPet(pet)
     }
     fetchData()
   }, [])
@@ -33,7 +31,7 @@ function Mypets() {
   }, [])
 
   const myPetsFun = () => {
-    return myPet.map(pet => {
+    return filteredPets.map(pet => {
       return (
         <div key={pet.id}>
           <PetShow pet={pet} />
@@ -44,7 +42,7 @@ function Mypets() {
 
   const myHistoryFun = () => {
     return myHistory.map(history => {
-      console.log(history)
+      // console.log(history)
       return (
         <div key={history.id}>
           <MyHistory history={history} />
@@ -53,8 +51,25 @@ function Mypets() {
     })
   }
 
+  const handleRacesFilterChange = (e) => {
+    setRacesFilter(e.target.value);
+  };
+
+  const filteredPets = myPet.filter(
+    (pet) =>
+      pet.info &&
+      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
+  );
+
   return (
     <>
+     <input
+        className='input'
+        type="text"
+        placeholder='    Buscar por palabra clave...'
+        value={racesFilter}
+        onChange={handleRacesFilterChange}
+      />
       <div className='pet-card'>
         {myPetsFun()}
       </div>
