@@ -77,7 +77,7 @@ export default function PetShow({pet}) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <DropDownPetUpdate/>
+        <DropDownPetUpdate pet={pet}/>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

@@ -65,7 +65,7 @@ const roles = [
   
 ]
 
-function UpdateFormDropdown() {
+function UpdateFormDropdown({pet}) {
   const [open, setOpen] = useState(false)
   const [allRaces, setAllRaces] = useState([])
   const [allRacesData, setAllRacesData] = useState([])
@@ -92,14 +92,14 @@ function UpdateFormDropdown() {
     setOpen(false)
   }
 
-  const [name, setName] = useState()
-  const [age, setAge] = useState()
-  const [gender, setGender] = useState()
-  const [size, setSize] = useState()
-  const [info, setInfo] = useState()
-  const [role, setRole] = useState()
-  const [speciesId, setSpeciesId] = useState()
-  const [raceId, setRace] = useState()
+  const [name, setName] = useState(pet.name)
+  const [age, setAge] = useState(pet.age)
+  const [gender, setGender] = useState(pet.gender)
+  const [size, setSize] = useState(pet.size)
+  const [info, setInfo] = useState(pet.info)
+  const [role, setRole] = useState(pet.role)
+  const [speciesId, setSpeciesId] = useState(pet.speciesId)
+  const [raceId, setRace] = useState(pet.raceId)
 
   useEffect(() => {
     if (speciesId===1) {
@@ -127,7 +127,7 @@ function UpdateFormDropdown() {
         raceId
         
       }
-      const result = await updateOwnPet(payload)
+      const result = await updateOwnPet(pet.id,payload)
       if (result.state === 200) {
         
       }

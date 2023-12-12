@@ -75,7 +75,11 @@ const createPet = async (body) => {
 
 const updateOwnPet = async (id,body) => {
   try {
-    const { data } = await api.put(`/pets/me/${id}`,body)
+    const { data } = await api.put(`/pets/me/${id}`,body,{
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
