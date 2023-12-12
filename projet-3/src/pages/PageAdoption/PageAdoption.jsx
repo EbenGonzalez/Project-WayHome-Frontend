@@ -33,8 +33,8 @@ function PageAdoption() {
 
   const filteredPets = petShow.filter(
     (pet) =>
-      pet.race &&
-      pet.race.name.toLowerCase().includes(racesFilter.toLowerCase())
+      pet.info &&
+      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
   );
 
   return (

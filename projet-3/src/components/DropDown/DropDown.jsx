@@ -6,7 +6,8 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { createOwnPet, getRaces } from '../../services/pet.services'
-import { Navigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 
 const genero = [
@@ -65,13 +66,16 @@ const roles = [
 
 function FormDropdown() {
   const [open, setOpen] = useState(false)
-  const [allRaces, setAllRaces] = useState([]) 
+  const [allRaces, setAllRaces] = useState([])
+  const [allRacesData, setAllRacesData] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchSpecies = async () => {
       try {
         const datosRaza = await getRaces()
-        setAllRaces(datosRaza)
+        setAllRacesData(datosRaza)
       } catch (error) {
         console.error(error)
       }
@@ -95,6 +99,17 @@ function FormDropdown() {
   const [role, setRole] = useState()
   const [speciesId, setSpeciesId] = useState()
   const [raceId, setRace] = useState()
+
+  useEffect(() => {
+    if (speciesId===1) {
+      const tipoEspecie = allRacesData.filter((option) => option.speciesId === 1)
+      setAllRaces(tipoEspecie)
+    }
+    if (speciesId===2) {
+      const tipoEspecie = allRacesData.filter((option) => option.speciesId === 2)
+      setAllRaces(tipoEspecie)
+    }
+  }, [speciesId,allRacesData])
   
 
   const handleSubmit = async (event) => {
@@ -113,7 +128,8 @@ function FormDropdown() {
       }
       const result = await createOwnPet(payload)
       if (result === 200) {
-        Navigate('/perfil/misMascotas')
+        console.log("ahora me muevo")
+        navigate('/perfil/misMascotas')
       }
     } catch (error) {
       console.log(error)
@@ -166,7 +182,7 @@ function FormDropdown() {
               id="outlined-select-currency"
               select
               label="Especie"
-              defaultValue="1"
+              defaultValue=""
               helperText="Elige una especie"
               onChange={(e) => setSpeciesId(e.target.value)}
             >
@@ -196,7 +212,7 @@ function FormDropdown() {
               id="outlined-select-currency"
               select
               label="Role"
-              defaultValue="1"
+              defaultValue="Free"
               helperText="Elige una opcion para tu mascota"
               onChange={(e) => setRole(e.target.value)}
             >
