@@ -9,6 +9,7 @@ function Pet() {
   let { id } = useParams()
 
   const [pet, setPet] = useState({})
+  
   useEffect(() => {
     const fetchData = async () => {
       const result = await getOnePet(id)
@@ -20,10 +21,11 @@ function Pet() {
   }, [])
 
   return (
-
+    <>
     <div id="mascota">
       <PetShow pet={pet} />
     </div>
+    </>
   )
 }
 

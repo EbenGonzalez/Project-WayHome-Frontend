@@ -20,7 +20,7 @@ function PageAdoption() {
   const petsShowFunc = () => {
     return filteredPets.map(pet => {
       return (
-        <Link to='/acogida' key={pet.id}>
+        <Link to='/adopcion' key={pet.id}>
           <PetShow pet = {pet}/>
         </Link>
       )
@@ -36,12 +36,14 @@ function PageAdoption() {
       pet.info &&
       pet.info.toLowerCase().includes(racesFilter.toLowerCase())
   );
+  console.log(filteredPets)
 
   return (
     <div className='container'>
       <input
+        className='input'
         type="text"
-        placeholder='Buscar por raza'
+        placeholder='    Buscar por palabra clave...'
         value={racesFilter}
         onChange={handleRacesFilterChange}
       />
