@@ -127,13 +127,13 @@ function FormDropdown() {
         
       }
       const result = await createOwnPet(payload)
-      if (result === 200) {
-        console.log("ahora me muevo")
-        navigate('/perfil/misMascotas')
+      if (result.state === 200) {
+        
       }
     } catch (error) {
       console.log(error)
     }
+    navigate('/perfil/misMascotas')
     handleClose()
   }
 
