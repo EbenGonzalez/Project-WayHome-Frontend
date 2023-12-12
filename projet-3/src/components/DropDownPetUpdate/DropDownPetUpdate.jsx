@@ -5,8 +5,9 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import { createOwnPet, getRaces } from '../../services/pet.services'
+import { updateOwnPet, getRaces } from '../../services/pet.services'
 import { Link, useNavigate } from 'react-router-dom'
+import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
 
 
 
@@ -64,7 +65,7 @@ const roles = [
   
 ]
 
-function FormDropdown() {
+function UpdateFormDropdown() {
   const [open, setOpen] = useState(false)
   const [allRaces, setAllRaces] = useState([])
   const [allRacesData, setAllRacesData] = useState([])
@@ -126,7 +127,7 @@ function FormDropdown() {
         raceId
         
       }
-      const result = await createOwnPet(payload)
+      const result = await updateOwnPet(payload)
       if (result.state === 200) {
         
       }
@@ -139,11 +140,13 @@ function FormDropdown() {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        Añadir Mascota
+      <Button variant="outlined" color="primary" 
+      onClick={handleOpen}
+      startIcon={<PublishedWithChangesOutlinedIcon />}>
+        Editar Mascota
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Nueva Mascota</DialogTitle>
+        <DialogTitle>Editar Mascota</DialogTitle>
         <DialogContent>
           <form onSubmit={handleSubmit}>
             <TextField label="Nombre" fullWidth margin="normal"
@@ -223,7 +226,7 @@ function FormDropdown() {
               ))}
             </TextField>
             <Button type="submit" variant="contained" color="primary">
-              Enviar
+              Actualizar
             </Button>
           </form>
         </DialogContent>
@@ -232,4 +235,4 @@ function FormDropdown() {
   )
 }
 
-export default FormDropdown
+export default UpdateFormDropdown
