@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem'
 import { createOwnPet, getRaces } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
 import { fire } from "../../services/firebase.service"
-import { getStorage, ref, uploadBytes } from "firebase/storage"
+import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage"
 
 
 
@@ -123,8 +123,9 @@ function FormDropdown() {
       let imageUrl = ''
       if (image) {
         const storage = getStorage(fire)
-        const storageRef = ref(storage, 'some-child')
-        imageUrl=await uploadBytes(storageRef, image)
+        const storageRef = ref(storage, 'images/' + image.name)
+        await uploadBytes(storageRef, image)
+        imageUrl=await getDownloadURL(storageRef)
       }
 
       const payload = {
