@@ -26,11 +26,25 @@ const router = createBrowserRouter([
       },
       {
         path: '/adopcion',
-        element: <PageAdoption />
+        element: <PageAdoption />,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/login")
+          } else {
+            return null;
+          }
+        }
       },
       {
         path: '/acogida',
-        element: <PageEmbrace/>
+        element: <PageEmbrace/>,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/login")
+          } else {
+            return null;
+          }
+        }
       },
       {
         path: '/mascota/:id',
