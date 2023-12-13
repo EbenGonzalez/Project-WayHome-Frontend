@@ -70,7 +70,7 @@ export default function PetShow({ pet }) {
               <CardMedia
                 component="img"
                 height="194"
-                image="https://source.unsplash.com/random?dog"
+                image={pet.image || "https://source.unsplash.com/random?dog"}
                 alt="imagen"
               />
             </Link>
