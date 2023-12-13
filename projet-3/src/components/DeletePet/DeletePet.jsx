@@ -7,8 +7,6 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import { deleteOwnPet } from '../../services/pet.services'
 import { Link, useNavigate } from 'react-router-dom'
-import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
-
 
 function DeletePet({ pet }) {
   const [open, setOpen] = useState(false)
