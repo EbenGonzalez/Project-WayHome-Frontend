@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react'
 
 import { getOwnPets } from '../../services/pet.services.js'
 import { getOwnHistory } from '../../services/history.services.js'
-import PetShow from '../../components/PetShow/PetShow'
+import PetShowMyPets from '../../components/PetShowMyPets/PetShowMyPets.jsx'
 import MyHistory from '../../components/myHistory/myHistory.jsx'
 
 function Mypets() {
 
   const [myPet, setMyPet] = useState([])
-  console.log(myPet)
+ 
   const [myHistory, setMyHistory] = useState([])
+
   const [racesFilter, setRacesFilter] = useState('');
  
   useEffect(() => {
@@ -34,7 +35,7 @@ function Mypets() {
     return filteredPets.map(pet => {
       return (
         <div key={pet.id}>
-          <PetShow pet={pet} />
+          <PetShowMyPets pet={pet} />
         </div>
       )
     })
@@ -42,7 +43,6 @@ function Mypets() {
 
   const myHistoryFun = () => {
     return myHistory.map(history => {
-      // console.log(history)
       return (
         <div key={history.id}>
           <MyHistory history={history} />
