@@ -1,6 +1,7 @@
 import './NavBar.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Inbox from '../Inbox/Inbox'
 
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -16,6 +17,10 @@ import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import { logout } from '../../services/auth'
 
+import Stack from '@mui/material/Stack';
+import Badge from '@mui/material/Badge';
+import MailIcon from '@mui/icons-material/Mail';
+import { getInboxComments } from '../../services/comment.services'
 
 const pages = [
   {
@@ -48,6 +53,19 @@ const ariaLabel = { 'aria-label': 'description' }
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [comment, setComment] = useState([])
+  const [inbox, setInbox] = useState(0)
+  const [showInbox, setShowInbox] = useState(false)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getInboxComments()
+      setComment(result)
+      setInbox(result.length)
+    }
+    fetchData()
+  }, [])
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -63,6 +81,16 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+
+  const handleOpenInbox = () => {
+    setShowInbox(true);
+  };
+
+  const handleCloseInbox = () => {
+    setShowInbox(false);
+  };
+
+
 
   return (
     <AppBar sx={{/* ajusta la altura según tus necesidades */ }}>
@@ -87,7 +115,7 @@ function ResponsiveAppBar() {
               WAY-HOME
             </Typography>
           </Link>
-                
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -158,6 +186,16 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
           </Box>
+          <IconButton onClick={handleOpenInbox}>
+          <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>
+            <Badge color="secondary" badgeContent={inbox}>
+              <MailIcon />
+            </Badge>
+          </Stack>
+          </IconButton>
+          {showInbox && (
+            <Inbox onClose={handleCloseInbox} />
+          )}
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

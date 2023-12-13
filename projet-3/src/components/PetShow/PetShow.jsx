@@ -76,7 +76,7 @@ export default function PetShow({ pet }) {
             </Link>
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                {pet.name}
+                {pet.race.name}
               </Typography>
             </CardContent>
             <CardActions disableSpacing>

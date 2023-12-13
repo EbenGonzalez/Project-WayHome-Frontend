@@ -1,0 +1,6 @@
+.send {
+  display:flex;
+  justify-content: space-between;
+  margin:40px;
+  width: 500px;
+}

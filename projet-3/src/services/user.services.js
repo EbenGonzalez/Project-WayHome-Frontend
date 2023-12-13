@@ -34,7 +34,6 @@ const getOwnUser = async () => {
         authorization: localStorage.getItem('token')
       }
     })
-    console.log(data.user.role)
     localStorage.setItem('role', data.user.role)
     return data
   } catch (error) {

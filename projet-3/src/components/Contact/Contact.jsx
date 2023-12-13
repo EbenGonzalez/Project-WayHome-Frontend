@@ -12,6 +12,8 @@ import { sendComment } from '../../services/comment.services';
 export default function FormDialog({ pet }) {
 
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('')
+  const [receiver_id, setReceiver_id] = useState(pet.userId)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,10 +22,6 @@ export default function FormDialog({ pet }) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const [message, setMessage] = useState('')
-  const [receiver_id, setReceiver_id] = useState(pet.userId)
-
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -36,7 +34,6 @@ export default function FormDialog({ pet }) {
       const result = await sendComment(payload)
       if (result === 200) {
 
-
       }
     } catch (error) {
       console.log(error)
@@ -46,7 +43,10 @@ export default function FormDialog({ pet }) {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button 
+      variant="outlined" 
+      onClick={handleClickOpen}
+      >
         Contactar
       </Button>
       <Dialog open={open} onClose={handleClose}>
