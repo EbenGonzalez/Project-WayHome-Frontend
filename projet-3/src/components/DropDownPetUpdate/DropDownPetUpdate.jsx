@@ -151,7 +151,7 @@ function UpdateFormDropdown({pet}) {
           <form onSubmit={handleSubmit}>
             <TextField label="Nombre" fullWidth margin="normal"
               onChange={(e) => setName(e.target.value)} />
-            <TextField label="Edad" fullWidth margin="normal"
+            <TextField label="Edad" fullWidth margin="normal" type='number'
               onChange={(e) => setAge(e.target.value)} />
             <TextField fullWidth margin="normal"
               id="outlined-select-currency"

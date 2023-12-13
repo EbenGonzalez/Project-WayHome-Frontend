@@ -22,10 +22,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinearProgress from '@mui/material/LinearProgress';
 
-import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
 import FormDialog from '../Contact/Contact.jsx';
-
-
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,87 +35,90 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PetShow({pet}) {
+export default function PetShow({ pet }) {
   const [expanded, setExpanded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+  }
+
   return (
     <div>
-    {Object.keys(pet).length !== 0 ? 
-    <>
-    <Card sx={{ width:"350px", margin:'20px' }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: blue[700] }} aria-label="recipe">
-            {pet.name[0]}
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={pet.name}
-        subheader= {`${pet.age} años`}
-      />
-      <Link to={`/mascota/${(pet.id)}`}>
-      <CardMedia
-        component="img"
-        height="194"
-        image={pet.image||"https://source.unsplash.com/random?dog"}
-        alt="imagen"
-        sx={{ objectFit: 'fill' }}
-      />
-      </Link>
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-         {pet.name}
-        </Typography>
-        <FormDialog pet = {pet}/>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <DropDownPetUpdate pet={pet}/>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-          {pet.info}
-          </Typography>
-          <Typography paragraph>
-        
-          </Typography>
-          <Typography paragraph>
-      
-          </Typography>
-          <Typography>
-           
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-    </> :
-    
-      <LinearProgress />
-    
-    }
+      {Object.keys(pet).length !== 0 ?
+        <>
+          <Card sx={{ width: "350px", margin: '20px' }}>
+            <CardHeader
+              avatar={
+                <Avatar sx={{ bgcolor: blue[700] }} aria-label="recipe">
+                  {pet.name[0]}
+                </Avatar>
+              }
+              action={
+                <IconButton aria-label="settings">
+                  <MoreVertIcon />
+                </IconButton>
+              }
+              title={pet.name}
+              subheader={`${pet.age} años`}
+            />
+            <Link to={`/mascota/${(pet.id)}`}>
+              <CardMedia
+                component="img"
+                height="194"
+                image={pet.image || "https://source.unsplash.com/random?dog"}
+                alt="imagen"
+              />
+            </Link>
+            <CardContent>
+              <Typography variant="body2" color="text.secondary">
+                {pet.name}
+              </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+              <IconButton
+                aria-label="Añadir a tus favoritos"
+                onClick={handleFavoriteClick}
+                color={isFavorite ? 'warning' : 'default'}>
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton aria-label="share">
+                <ShareIcon />
+              </IconButton>
+              <FormDialog pet={pet} />
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="Mostrar más">
+                <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography paragraph>Method:</Typography>
+                <Typography paragraph>
+                  {pet.info}
+                </Typography>
+                <Typography paragraph>
+
+                </Typography>
+                <Typography paragraph>
+
+                </Typography>
+                <Typography>
+
+                </Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
+        </> :
+        <LinearProgress />
+      }
     </div>
   );
 }

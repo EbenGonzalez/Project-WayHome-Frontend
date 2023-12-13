@@ -1,4 +1,5 @@
-import * as React from 'react';
+import { useState } from 'react';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -8,8 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { sendComment } from '../../services/comment.services';
 
-export default function FormDialog({pet}) {
-  const [open, setOpen] = React.useState(false);
+export default function FormDialog({ pet }) {
+
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,9 +21,9 @@ export default function FormDialog({pet}) {
     setOpen(false);
   };
 
-  const [message, setMessage] = React.useState()
-  const [receiver_id, setReceiver_id] = React.useState(pet.userId)
-  
+  const [message, setMessage] = useState('')
+  const [receiver_id, setReceiver_id] = useState(pet.userId)
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -29,12 +31,12 @@ export default function FormDialog({pet}) {
       const payload = {
         message,
         receiver_id
-        
+
       }
       const result = await sendComment(payload)
       if (result === 200) {
-        
-        
+
+
       }
     } catch (error) {
       console.log(error)
@@ -43,7 +45,7 @@ export default function FormDialog({pet}) {
   }
 
   return (
-    <React.Fragment>
+    <>
       <Button variant="outlined" onClick={handleClickOpen}>
         Contactar
       </Button>
@@ -51,21 +53,21 @@ export default function FormDialog({pet}) {
         <DialogTitle>Contacta con la persona responsable del animal</DialogTitle>
         <DialogContent>
           <DialogContentText>
-           Realiza un primer contacto para poneros de acuerdo, rrrrrrrrrrrrrrrrrrrrrr
+            Esta comunidad no se hace responsable de acuerdos entre personas a cambio de intereses económicos. Solo buscamos el bienestar de los animales...
           </DialogContentText>
           <TextareaAutosize
-      aria-label="Escriba su mensaje"
-      placeholder="Escriba su mensaje..."
-      minRows={10}
-      style={{ width: '100%' }}
-      onChange={(e) => setMessage(e.target.value)}
-    />
+            aria-label="Escriba su mensaje"
+            placeholder="Escriba su mensaje..."
+            minRows={10}
+            style={{ width: '100%' }}
+            onChange={(e) => setMessage(e.target.value)}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancelar</Button>
           <Button onClick={handleSubmit}>Enviar</Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </>
   );
 }
