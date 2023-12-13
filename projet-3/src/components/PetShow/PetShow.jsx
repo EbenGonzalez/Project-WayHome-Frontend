@@ -70,6 +70,7 @@ export default function PetShow({pet}) {
         height="194"
         image={pet.image||"https://source.unsplash.com/random?dog"}
         alt="imagen"
+        sx={{ objectFit: 'fill' }}
       />
       </Link>
       <CardContent>
