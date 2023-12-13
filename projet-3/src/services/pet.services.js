@@ -97,7 +97,11 @@ const updatePet = async (id,body) => {
 
 const deleteOwnPet = async (id) => {
   try {
-    const { data } = await api.delete(`/pets/me/${id}`)
+    const { data } = await api.delete(`/pets/me/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
