@@ -127,8 +127,10 @@ export default function PetShow({ pet }) {
 
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                <Typography paragraph>Method:</Typography>
-                <Typography paragraph>
+                <Typography variant="body2" color="text.secondary" style={{ backgroundColor: '#e0e0e0', width: '100%', padding: '8px' }}>
+                  SOBRE MI:
+                  </Typography>
+                <Typography variant="body2" color="text.secondary" style={{ backgroundColor: '#f0f0f0', width: '100%', padding: '8px' }}>
                   {pet.info}
                 </Typography>
               </CardContent>
