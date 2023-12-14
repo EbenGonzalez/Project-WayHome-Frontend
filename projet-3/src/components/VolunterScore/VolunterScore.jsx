@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import { Grid } from '@mui/material'
 import { CardActionArea } from '@mui/material'
 import { updateUser } from '../../services/user.services'
 import { Link } from 'react-router-dom'
@@ -68,8 +69,20 @@ export default function RatingCard({ volunteer }) {
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
           </Typography>
-          <ThumbUpIcon onClick={handleUpChange} color={liked ? 'primary' : 'action'} />{volunteer.background}
-          <ThumbDownAltIcon onClick={handleDownChange} color={disliked ? 'error' : 'action'} />{volunteer.media}
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item>
+              <ThumbUpIcon onClick={handleUpChange} color={liked ? 'primary' : 'action'} />
+            </Grid>
+            <Grid item sx={{ marginRight: 1 }}>
+              <Typography color={"green"}>{volunteer.background}</Typography>
+            </Grid>
+            <Grid item>
+              <ThumbDownAltIcon onClick={handleDownChange} color={disliked ? 'error' : 'action'} />
+            </Grid>
+            <Grid item sx={{ marginLeft: 1 }}>
+              <Typography color={"red"}>{volunteer.media}</Typography>
+            </Grid>
+          </Grid>
         </CardContent>
       </CardActionArea>
     </Card>
