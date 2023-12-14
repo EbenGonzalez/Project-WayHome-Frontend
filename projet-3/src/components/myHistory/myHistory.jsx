@@ -4,56 +4,6 @@ import { Box, Typography } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
-  5: 'Excellent+',
-};
-
-function getLabelText(value) {
-  return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
-}
-
-function HoverRating({ initialValue }) {
-  const [value, setValue] = useState(initialValue);
-  const [hover, setHover] = useState(-1);
-
-  return (
-    <Box
-      sx={{
-        width: 200,
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <Rating
-        name="hover-feedback"
-        value={value}
-        precision={0.5}
-        getLabelText={getLabelText}
-        onChange={(event, newValue) => {
-          // setValue(newValue);
-        }}
-        onChangeActive={(event, newHover) => {
-          // setHover(newHover);
-        }}
-        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-        readOnly
-      />
-      {value !== null && (
-        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
-      )}
-    </Box>
-  );
-}
-
 function MyHistory({ history }) {
   return (
     <Box
@@ -61,12 +11,13 @@ function MyHistory({ history }) {
         backgroundColor: '#f0f0f0',
         margin:"20px",
         padding: 5,
-        borderRadius: 8,
+        borderRadius:4,
         boxShadow: 3,
-        display: 'flex',
+        display: 'block',
         justifyContent: 'space-between',
-        width: "600px",
-        height:"500px"
+        width: "300px",
+        height:"1200px",
+        overflow: 'hidden', // Añadir overflow: hidden
       }}
     >
       {Object.keys(history).length !== 0 ?
@@ -77,54 +28,60 @@ function MyHistory({ history }) {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              textAlign: 'center',
+              overflow: 'hidden',
+              marginBottom: 2, // Añadir margen inferior
             }}
           >
             <img
               src="https://source.unsplash.com/random?dog"
               alt="Image 1"
               style={{
-                borderRadius: '50%',
+                borderRadius: '5%',
                 marginBottom: 10,
-                width: "150px",
-                height:"200px"
+                width: "300px",
+                height:"250px"
               }}
             />
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ overflowWrap: 'break-word' }}>
               {history.pet.name}
             </Typography>
             <Typography variant="h6" gutterBottom>
               {`${history.pet.age} años`}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{ overflowWrap: 'break-word' }}>
               {history.pet.info}
             </Typography>
           </Box>
 
-          <HoverRating initialValue={history.score} />
+         
           {/* Box 2 */}
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              textAlign: 'center',
+              overflow: 'hidden',
+              marginTop: 5, // Añadir margen superior
             }}
           >
             <img
               src="https://source.unsplash.com/random?person"
               alt="Image 2"
               style={{ 
-                borderRadius: '50%', 
+                borderRadius: '5%', 
                 marginBottom: 10,
-                width: "150px",
-                height:"200px" }}
+                width: "250px",
+                height:"250px" }}
             />
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ overflowWrap: 'break-word' }}>
               {history.user.firstName}
             </Typography>
             <Typography variant="h6" gutterBottom>
               {history.user.location}
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{ overflowWrap: 'break-word' }}>
               {history.user.info}
             </Typography>
           </Box>
