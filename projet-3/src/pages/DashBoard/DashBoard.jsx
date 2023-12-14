@@ -19,6 +19,8 @@ import FormDropdown from '../../components/DropDown/DropDown'
 import { Link } from 'react-router-dom'
 import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
 import Divider from '@mui/material/Divider'
+import { display } from '@mui/system'
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
 function DashBoard() {
   const [user, setUser] = useState({})
@@ -32,62 +34,125 @@ function DashBoard() {
   }, [])
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <Card sx={{ margin: 'auto', marginTop: '200px', marginBottom: '100px', width: '100vh', boxShadow: "20" }}>
-        <Avatar alt={`${user.firstName} ${user.lastName}`} src={user.profile} sx={{ width: 250, height: 250, margin: 'auto', marginTop: '20px' }} />
-        <CardContent sx={{ textAlign: 'center' }}>
-          <Grid container spacing={2} alignItems="center" justifyContent="center">
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+
+      <Card sx={{
+        margin: 'auto',
+        marginTop: '200px',
+        marginBottom: '100px',
+        width: '100vh',
+        boxShadow: "20",
+        borderRadius: '10px',
+        
+      }}>
+
+
+        <Avatar
+          alt={`${user.firstName} ${user.lastName}`}
+          src={user.profile}
+          sx={{
+            width: 250,
+            height: 250,
+            margin: 'auto',
+            marginTop: '20px',
+            border: '5px solid',
+            borderColor: (theme) => theme.palette.primary.main,
+          }} />
+
+        <CardContent
+          sx={{ textAlign: 'center' }}>
+          <Grid
+            container spacing={2}
+            alignItems="center"
+            justifyContent="center">
+
             <Grid item xs={12}>
-              <Typography variant="h5" gutterBottom>
+              <Typography
+                variant="h4"
+                gutterBottom>
                 {`${user.firstName} ${user.lastName}`}
               </Typography>
             </Grid>
-            <Divider />
-            <Grid item container alignItems="center" spacing={1}>
-              <Grid item>
-                <AccountCircleIcon />
-              </Grid>
-              <Grid item>
-                <Typography variant="body1" align='center'>{`${user.firstName} ${user.lastName}`}</Typography>
-              </Grid>
+
+            <div style={{ display: "block",}}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom>
+                <LocationOnIcon />
+                {`${user.location}`}
+              </Typography>
             </Grid>
+
             <Grid item container alignItems="center" spacing={1}>
               <Grid item>
                 <EmailIcon />
               </Grid>
               <Grid item>
-                <Typography variant="body1" align='center'>{user.email}</Typography>
+                <Typography
+                  variant="body1"
+                  align='center'>
+                  {user.email}
+                </Typography>
               </Grid>
             </Grid>
-            <Grid item container alignItems="center" spacing={1}>
+            </div>
+
+            <Grid item container alignItems="center" spacing={1} sx={{marginLeft: '365px'}}>
               <Grid item>
                 <PhoneIcon />
               </Grid>
               <Grid item>
-                <Typography variant="body1" align='center'>{user.phone}</Typography>
+                <Typography 
+                variant="body1" 
+                align='center'>
+                  {user.phone}
+                  </Typography>
               </Grid>
             </Grid>
+            
             <Grid item container alignItems="center" spacing={1}>
-              <Grid item>
-                <LocationOnIcon />
-              </Grid>
-              <Grid item>
-                <Typography variant="body1" align='center'>{user.location}</Typography>
+              <Grid item 
+              sx={{ 
+                borderRadius: '10px', 
+                backgroundColor: '#e0e0e0', 
+                boxShadow: '20',
+                margin: '50px' }}>
+                <Typography 
+                variant="body1" 
+                align='center' >
+                  {/* <InfoIcon 
+                  sx={{ color: "red" }} />  */}
+                  <VolunteerActivismIcon/>
+                  {user.info}
+                  </Typography>
               </Grid>
             </Grid>
-            <Grid item container alignItems="center" spacing={1}>
-              <Grid item sx={{ border: '1px solid black', borderRadius: '10px' }}>
-                <Typography variant="body1" align='center'><InfoIcon sx={{ color: "red" }} /> {user.info}</Typography>
-              </Grid>
-            </Grid>
+
           </Grid>
         </CardContent>
         <FormDropdown />
-        <Link to={'/perfil/misMascotas'} style={{ textDecoration: 'none', display: 'block', marginTop: '10px', textAlign: 'center' }}>
-          <Button type="button" variant="contained" color="primary" sx={{ marginTop: '10px' }}>
+
+        {/* <Link 
+        to={'/perfil/misMascotas'} 
+        style={{ 
+          textDecoration: 'none', 
+          display: 'flex', 
+          marginTop: '10px', 
+          textAlign: 'center' }}>
+          <Button 
+          type="button" 
+          variant="contained" 
+          sx={{ marginTop: '10px', }}>
             Mis Mascotas
           </Button>
-        </Link>
+        </Link> */}
+
         <UserDropdown user={user} />
       </Card>
     </div>

@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { signup } from '../../services/auth'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { customTheme } from '../../themes/custom.js'
 
 function Copyright(props) {
   return (
@@ -53,7 +54,7 @@ export default function SignUp() {
   }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={customTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

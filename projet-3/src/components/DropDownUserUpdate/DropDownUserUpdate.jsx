@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { fire } from "../../services/firebase.service"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { updateOwnUser } from '../../services/user.services'
+import EditIcon from '@mui/icons-material/Edit';
+import { Typography } from '@mui/material'
 
 
 const roles = [
@@ -79,8 +81,9 @@ function UserDropdown({user}) {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        Editar Perfil
+      <Button variant="contained" onClick={handleOpen} sx={{marginBottom:'40px'}} >
+       <EditIcon/>
+       <Typography>Editar Perfil</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Editar Perfil</DialogTitle>

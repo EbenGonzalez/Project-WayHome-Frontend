@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     element: <SignInSide/>
   },
   {
+    path: '/signup',
+    element: <SignUp/>
+  },
+  {
     path: '/',
     element: < Root />,
     loader: () => {
@@ -54,10 +58,6 @@ const router = createBrowserRouter([
       {
         path: '/voluntarios/:id',
         element: <Voluntario />
-      },
-      {
-        path: '/signup',
-        element: <SignUp/>
       },
       {
         path: '/perfil',

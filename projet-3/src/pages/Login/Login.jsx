@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-
+import { customTheme } from '../../themes/custom.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/auth'
@@ -47,9 +47,9 @@ export default function SignInSide() {
       }
 
       const result = await login(payload);
-     if (result === 200) {
-      navigate('/')
-     }
+      if (result === 200) {
+        navigate('/')
+      }
     } catch (error) {
       console.log(error)
     }
@@ -64,7 +64,7 @@ export default function SignInSide() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={customTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -95,7 +95,7 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Login
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -131,7 +131,7 @@ export default function SignInSide() {
                 sx={{ mt: 3, mb: 2 }}
                 onClick={handleClick}
               >
-                Sign In
+                Login
               </Button>
               <Grid container>
                 <Grid item xs>
@@ -141,7 +141,8 @@ export default function SignInSide() {
                 </Grid>
                 <Grid item>
                   <Link href="/signup" variant="body2">
-                    {"No tengo una cuenta. Registrarme."}
+                    {"¿No tienes cuenta?, "}
+                    <span style={{ color: 'tu_color_preferido' }}>Regístrate.</span>
                   </Link>
                 </Grid>
               </Grid>
