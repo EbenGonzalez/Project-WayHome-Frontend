@@ -1,24 +1,32 @@
 import './Inbox.css'
+import Send from '../Send/Send';
+
 import React, { useState, useEffect } from 'react';
 import { getInboxComments, updateComment } from '../../services/comment.services'
-import Send from '../Send/Send';
-import ActionAlerts from '../ActionAlert/ActionAlert';
 
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography'
+import {
+  Button,
+  Divider,
+  IconButton,
+  Stack,
+  Tab,
+  Tabs,
+  Typography
+} from '@mui/material';
 
-import DeleteIcon from '@mui/icons-material/Delete';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { Divider } from '@mui/material';
-import ReplyIcon from '@mui/icons-material/Reply';
-import IconButton from '@mui/material/IconButton'
-import Stack from '@mui/material/Stack';
+import {
+  Delete as DeleteIcon,
+  Reply as ReplyIcon
+} from '@mui/icons-material';
+
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField
+} from '@mui/material';
+
 
 const Inbox = ({ onClose }) => {
 
@@ -43,7 +51,6 @@ const Inbox = ({ onClose }) => {
 
   const handleCloseReplyDialog = () => {
     setOpenReplyDialog(false);
-
     setAnswer('');
   };
 
@@ -58,17 +65,18 @@ const Inbox = ({ onClose }) => {
       const payload = {
         answer
       }
-
       const result = await updateComment(commentId, payload)
       if (result.status === 200) {
 
       }
     } catch (error) {
       console.log(error)
-
     }
     handleCloseReplyDialog()
+  }
 
+  const handleExitMessaging = () => {
+    onClose();
   }
 
   const showMessages = () => {
@@ -78,6 +86,9 @@ const Inbox = ({ onClose }) => {
           <div className='inbox'>
             <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
               {`Tienes un mensaje de ${message.user.firstName}`}
+              <Typography sx={{ fontStyle: 'italic' }}>
+                {message.user.email}
+              </Typography>
               <Typography>{message.message}</Typography>
             </Typography>
             <Stack direction="row" spacing={1}>
@@ -111,25 +122,26 @@ const Inbox = ({ onClose }) => {
             </DialogActions>
           </Dialog>
         </div>
-
       )
     })
-  }
-  const handleExitMessaging = () => {
-    onClose();
   }
 
   return (
     <Dialog open={true} onClose={onClose}>
-      <Tabs value={value} onChange={handleChange}>
-        <Tab label="Bandeja de Entrada" />
-        <Tab label="Bandeja de Salida" />
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Tab
+          label="Tu mascota tiene un nuevo amigo" />
+        <Tab
+          label="Tus conversaciones"
+          style={{ marginLeft: '30px', marginRight: '10px' }} />
       </Tabs>
       {value === 0 && (
         <div key={comment.id}>
           {showMessages()}
         </div>
-
       )}
       {value === 1 && (
         <div>
@@ -139,7 +151,6 @@ const Inbox = ({ onClose }) => {
       <Button onClick={handleExitMessaging}>
         Salir de mensajería
       </Button>
-
     </Dialog>
   );
 };

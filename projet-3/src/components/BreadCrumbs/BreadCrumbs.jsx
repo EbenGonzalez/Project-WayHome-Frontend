@@ -29,7 +29,7 @@ const getPathParts = () => {
       path: isLast ? null : path,
     };
   });
-  return [{ label: <HomeIcon />, path: '/' }, ...parts];
+  return [{ label: <HomeIcon color='primary' />, path: '/' }, ...parts];
 };
 
 const BasicBreadcrumbs = () => {

@@ -2,7 +2,12 @@ import api from "./config"
 
 const getAllHistories = async () => {
   try {
-    const { data } = await api.get("/history")
+    const { data } = await api.get("/history", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
+    console.log(data)
     return data
   } catch (error) {
     console.log(error)

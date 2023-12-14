@@ -1,6 +1,6 @@
 import "./VolunteerShow.css"
 
-import * as React from 'react'
+import { useEffect,useState } from "react"
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -12,9 +12,8 @@ import { Link } from "react-router-dom"
 import { Rating } from "@mui/material"
 
 
-
-
 export default function VolunteerShow({volunteer}) {
+
   return (
     <Card sx={{ maxWidth: 345, margin:'20px' }}>
       <Link to={`/voluntarios/${(volunteer.id)}`}>
@@ -29,15 +28,14 @@ export default function VolunteerShow({volunteer}) {
           {volunteer.firstName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+         {volunteer.info}
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
         <Button size="small">Learn More</Button>
       </CardActions>
-      <Rating name="half" defaultValue={3.5}  
+      <Rating name="half" defaultValue={5}  
                         precision={0.5} size="large" readOnly/>
     </Card>
   )

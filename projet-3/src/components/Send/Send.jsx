@@ -5,7 +5,7 @@ import { deleteOwnComment, getSendComments } from '../../services/comment.servic
 
 import Typography from '@mui/material/Typography'
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Divider } from '@mui/material';
+import { Divider} from '@mui/material';
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack';
 
@@ -41,8 +41,14 @@ function Send() {
         <div key={message.id}>
           <div className='send'>
             <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
-              {`Has enviado un mensaje a ${message.receiver_id}`}
+             {`Has enviado un mensaje al usuario nº ${message.receiver_id}`}
               <Typography>{message.message}</Typography>
+              {message.answer && message.answer.trim() !== '' && (
+              <>
+                <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>Te han respondido</Typography>
+                <Typography>{message.answer}</Typography>
+              </>
+            )}
             </Typography>
             <Stack direction="row" spacing={1} >
 

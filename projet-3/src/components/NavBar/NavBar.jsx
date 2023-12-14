@@ -61,7 +61,15 @@ function ResponsiveAppBar() {
     const fetchData = async () => {
       const result = await getInboxComments()
       setComment(result)
-      setInbox(result.length)
+      if (localStorage.token) {
+        if (result) {
+          setInbox(result.length)
+        } else {
+          return null
+        }
+      } else {
+        return null
+      }
     }
     fetchData()
   }, [])
@@ -115,6 +123,7 @@ function ResponsiveAppBar() {
               WAY-HOME
             </Typography>
           </Link>
+
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -187,21 +196,25 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
           </Box>
           <IconButton onClick={handleOpenInbox}>
-          <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>
-            <Badge color="secondary" badgeContent={inbox}>
-              <MailIcon />
-            </Badge>
-          </Stack>
+            <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>
+              <Badge max={99} overlap="rectangular" color="error" badgeContent={inbox} invisible={showInbox}>
+                <MailIcon color='secondary' />
+              </Badge>
+            </Stack>
           </IconButton>
           {showInbox && (
             <Inbox onClose={handleCloseInbox} />
           )}
+
+           <Box sx={{ width: 26 }} />
+
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Way Home" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

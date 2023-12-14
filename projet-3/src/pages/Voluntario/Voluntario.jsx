@@ -9,6 +9,7 @@ function Voluntario() {
   let { id } = useParams()
 
   const [volunteer, setVolunteer] = useState({})
+  console.log(volunteer)
 
   useEffect(() => {
     const fetchData = async () => {
