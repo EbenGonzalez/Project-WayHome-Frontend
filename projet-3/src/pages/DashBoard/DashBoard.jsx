@@ -78,10 +78,10 @@ function DashBoard() {
             </Grid>
             <Grid item container alignItems="center" spacing={1}>
               <Grid item>
-                <InfoIcon />
+                <InfoIcon sx={{color:"red"}} />
               </Grid>
               <Grid item>
-                <Typography variant="body1" align='center'>{user.nfo}</Typography>
+                <Typography variant="body1" align='center'>{user.info}</Typography>
               </Grid>
             </Grid>
           </Grid>
