@@ -6,7 +6,7 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { updateOwnPet, getRaces } from '../../services/pet.services'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
 
 
@@ -97,7 +97,7 @@ function UpdateFormDropdown({pet}) {
   const [gender, setGender] = useState(pet.gender)
   const [size, setSize] = useState(pet.size)
   const [info, setInfo] = useState(pet.info)
-  const [role, setRole] = useState(pet.role)
+  const [role, setRole] = useState("free")
   const [speciesId, setSpeciesId] = useState(pet.speciesId)
   const [raceId, setRace] = useState(pet.raceId)
 

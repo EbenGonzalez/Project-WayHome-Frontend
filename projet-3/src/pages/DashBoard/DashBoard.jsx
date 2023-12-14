@@ -12,6 +12,7 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import FormDropdown from '../../components/DropDown/DropDown'
 import { Link, Navigate } from 'react-router-dom'
+import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
 
 function DashBoard() {
   const [user, setUser] = useState({})
@@ -140,6 +141,7 @@ function DashBoard() {
                       Mis Mascotas
                     </Button>
                     </Link>
+                    <UserDropdown user={user}/>
                   </>
                 </Grid>
               </Grid>
