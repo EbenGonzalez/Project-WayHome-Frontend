@@ -20,8 +20,12 @@ const getOneComment = async (id) => {
 
 const getInboxComments = async () => {
   try {
-    const { data } = await api.get("/comment/inbox")
-    return data
+    const { data } = await api.get("/comment/inbox", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
+    return data.comment
   } catch (error) {
     console.log(error)
   }
@@ -29,8 +33,12 @@ const getInboxComments = async () => {
 
 const getSendComments = async () => {
   try {
-    const { data } = await api.get("/comment/send")
-    return data
+    const { data } = await api.get("/comment/send", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
+    return data.comment
   } catch (error) {
     console.log(error)
   }
@@ -70,7 +78,12 @@ const updateOwnComment = async (id,body) => {
 
 const updateComment = async (id,body) => {
   try {
-    const { data } = await api.put(`/comment/${id}`,body)
+    const { data } = await api.put(`/comment/${id}`,body,
+    {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
@@ -79,7 +92,12 @@ const updateComment = async (id,body) => {
 
 const deleteOwnComment = async (id) => {
   try {
-    const { data } = await api.delete(`/comment/me/${id}`)
+    const { data } = await api.delete(`/comment/me/${id}`,
+    {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)

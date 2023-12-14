@@ -6,7 +6,10 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { createOwnPet, getRaces } from '../../services/pet.services'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { fire } from "../../services/firebase.service"
+import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage"
+
 
 
 
@@ -45,7 +48,7 @@ const especie = [
     value: 2,
     label: 'Gato',
   },
-  
+
 ]
 
 const roles = [
@@ -61,7 +64,7 @@ const roles = [
     value: "Adoption",
     label: "Adopcion",
   },
-  
+
 ]
 
 function FormDropdown() {
@@ -81,7 +84,7 @@ function FormDropdown() {
       }
     }
     fetchSpecies()
-  },[])
+  }, [])
 
   const handleOpen = () => {
     setOpen(true)
@@ -99,22 +102,32 @@ function FormDropdown() {
   const [role, setRole] = useState()
   const [speciesId, setSpeciesId] = useState()
   const [raceId, setRace] = useState()
+  const [image, setImage] = useState("")
 
   useEffect(() => {
-    if (speciesId===1) {
+    if (speciesId === 1) {
       const tipoEspecie = allRacesData.filter((option) => option.speciesId === 1)
       setAllRaces(tipoEspecie)
     }
-    if (speciesId===2) {
+    if (speciesId === 2) {
       const tipoEspecie = allRacesData.filter((option) => option.speciesId === 2)
       setAllRaces(tipoEspecie)
     }
-  }, [speciesId,allRacesData])
-  
+  }, [speciesId, allRacesData])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
+
+      let imageUrl = ''
+      if (image) {
+        const storage = getStorage(fire)
+        const storageRef = ref(storage, 'images/' + image.name)
+        await uploadBytes(storageRef, image)
+        imageUrl=await getDownloadURL(storageRef)
+      }
+
       const payload = {
         name,
         age,
@@ -123,12 +136,13 @@ function FormDropdown() {
         info,
         role,
         speciesId,
-        raceId
-        
+        raceId,
+        image:imageUrl
+
       }
       const result = await createOwnPet(payload)
-      if (result.state === 200) {
-        
+      if (result === 200) {
+
       }
     } catch (error) {
       console.log(error)
@@ -148,6 +162,9 @@ function FormDropdown() {
           <form onSubmit={handleSubmit}>
             <TextField label="Nombre" fullWidth margin="normal"
               onChange={(e) => setName(e.target.value)} />
+            <TextField label="" fullWidth margin="normal" type='file'
+              onChange={(e) => e.target.files[0] && setImage(e.target.files[0])} />
+
             <TextField label="Edad" fullWidth margin="normal"
               onChange={(e) => setAge(e.target.value)} />
             <TextField fullWidth margin="normal"
@@ -198,7 +215,7 @@ function FormDropdown() {
               label="Raza"
               defaultValue=""
               helperText="Elige una raza"
-              onChange={(e) => setRace(e.target.value)} 
+              onChange={(e) => setRace(e.target.value)}
             >
               {allRaces.map((option) => (
                 <MenuItem key={option.id} value={option.id}>
@@ -208,7 +225,7 @@ function FormDropdown() {
             </TextField>
             <TextField label="Informacion" fullWidth margin="normal"
               onChange={(e) => setInfo(e.target.value)} />
-              <TextField fullWidth margin="normal"
+            <TextField fullWidth margin="normal"
               id="outlined-select-currency"
               select
               label="Role"

@@ -34,7 +34,6 @@ const getOwnUser = async () => {
         authorization: localStorage.getItem('token')
       }
     })
-    console.log(data.user.role)
     localStorage.setItem('role', data.user.role)
     return data
   } catch (error) {
@@ -66,7 +65,11 @@ const updateOwnUser = async (body) => {
 
 const updateUser = async (id, body) => {
   try {
-    const { data } = await api.put(`/users/${id}`, body)
+    const { data } = await api.put(`/users/${id}`, body, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)

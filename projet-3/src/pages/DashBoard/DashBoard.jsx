@@ -1,20 +1,29 @@
 import './DashBoard.css'
 import { useEffect, useState } from 'react'
-import { getOwnUser, updateOwnUser } from '../../services/user.services'
+import { getOwnUser } from '../../services/user.services'
 
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email'
+import PhoneIcon from '@mui/icons-material/Phone'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import InfoIcon from '@mui/icons-material/Info'
 import FormDropdown from '../../components/DropDown/DropDown'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
+
 
 function DashBoard() {
   const [user, setUser] = useState({})
+  console.log(user.profile)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,143 +32,69 @@ function DashBoard() {
     }
     fetchData()
   }, [])
-  const [firstName, setFirstName] = useState(user.firstName)
-  const [lastName, setLastName] = useState(user.lastName)
-  const [email, setEmail] = useState(user.email)
-  const [phone, setPhone] = useState(user.phone)
-  const [info, setInfo] = useState(user.info)
-  const [location, setLocation] = useState(user.location)
-
-  const handleClick = async () => {
-    try {
-      const payload = {
-        firstName,
-        lastName,
-        email,
-        phone,
-        info,
-        location
-      }
-
-      const result = await updateOwnUser(payload);
-      if (result === 200) {
-        Navigate('/perfil')
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-      }}
-    >
-      <Card>
-        {/* Imagen de fondo */}
-        <div style={{ height: '200px', backgroundImage: 'url("/path/to/background-image.jpg")', backgroundSize: 'cover' }} />
-
-        {/* Contenido del perfil */}
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Card sx={{ maxWidth: 600}}>
+        <Avatar alt={`${user.firstName} ${user.lastName}`} src={user.profile} sx={{ width: 150, height: 150, margin: 'auto' }} />
         <CardContent>
-          <Grid container spacing={2} alignItems="center" justifyContent="center" style={{ marginBottom: '20px' }}>
-            {/* Foto de perfil a la izquierda */}
-            <Grid item>
-              <Avatar alt={user.firstName} src="/path/to/avatar.jpg" sx={{ width: 200, height: 200 }} />
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12}>
+              <Typography variant="h5" gutterBottom>
+                {`${user.firstName} ${user.lastName}`}
+              </Typography>
             </Grid>
-
-            {/* Información del perfil a la derecha */}
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={2}>
-                {/* Nombre y más información */}
-                <Grid item>
-                  <Typography variant="h5">{user.firstName}</Typography>
-                  <Typography variant="body1" color="textSecondary">{user.info}</Typography>
-                </Grid>
-
-                {/* Campos para actualizar información */}
-                <Grid item container spacing={1}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label="Nombre"
-                      fullWidth
-                      margin="normal"
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label="Apellido"
-                      fullWidth
-                      margin="normal"
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label="Email"
-                      fullWidth
-                      margin="normal"
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      id="filled-helperText"
-                      label="Telefono"
-                      defaultValue={phone}
-                      fullWidth
-                      margin="normal"
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label="Poblacion"
-                      fullWidth
-                      margin="normal"
-                      onChange={(e) => setLocation(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      label="Info"
-                      fullWidth
-                      margin="normal"
-                      onChange={(e) => setInfo(e.target.value)}
-                    />
-                  </Grid>
-                  <>
-                    <FormDropdown />
-                    <Link to={'/perfil/misMascotas'}>
-                    <Button type="button" variant="contained" color="primary">
-                      Mis Mascotas
-                    </Button>
-                    </Link>
-                  </>
-                </Grid>
+            <Grid item container alignItems="center" spacing={1}>
+              <Grid item>
+                <AccountCircleIcon />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1" align='center'>{`${user.firstName} ${user.lastName}`}</Typography>
+              </Grid>
+            </Grid>
+            <Grid item container alignItems="center" spacing={1}>
+              <Grid item>
+                <EmailIcon />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1" align='center'>{user.email}</Typography>
+              </Grid>
+            </Grid>
+            <Grid item container alignItems="center" spacing={1}>
+              <Grid item>
+                <PhoneIcon />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1">{user.phone}</Typography>
+              </Grid>
+            </Grid>
+            <Grid item container alignItems="center" spacing={1}>
+              <Grid item>
+                <LocationOnIcon />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1">{user.location}</Typography>
+              </Grid>
+            </Grid>
+            <Grid item container alignItems="center" spacing={1}>
+              <Grid item>
+                <InfoIcon sx={{color:"red"}} />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1" align='center'>{user.info}</Typography>
               </Grid>
             </Grid>
           </Grid>
-
-          {/* Botones para actualizar y otros controles */}
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Button onClick={handleClick} variant="contained" color="primary" style={{ marginRight: '10px' }}>
-                Guardar Cambios
-              </Button>
-              <Button variant="outlined" color="primary">
-                Cancelar
-              </Button>
-            </Grid>
-          </Grid>
         </CardContent>
+          <FormDropdown />
+          <Link to={'/perfil/misMascotas'}>
+            <Button type="button" variant="contained" color="primary">
+              Mis Mascotas
+            </Button >
+          </Link>
+          <UserDropdown user={user} />
       </Card>
-    </Box>
+    </div>
   )
 }
 
