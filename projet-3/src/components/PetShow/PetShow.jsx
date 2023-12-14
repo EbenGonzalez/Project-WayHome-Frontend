@@ -22,6 +22,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box'
 import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Divider from '@mui/material/Divider'
 
 import FormDialog from '../Contact/Contact.jsx';
 
@@ -52,18 +53,13 @@ export default function PetShow({ pet }) {
     <div>
       {Object.keys(pet).length !== 0 ?
         <>
-          <Card sx={{ width: "350px", margin: '20px' }}>
+          <Card sx={{ width: "350px", margin: '15px',marginTop:'150px', borderRadius: '10px',boxShadow: '20' }}>
 
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: '#168da0' }} aria-label="recipe">
                   {pet.speciesId === 1 ? <PetsIcon/> : <GitHubIcon/> }
                 </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
               }
               title={pet.race.name}
               titleTypographyProps={{ variant: 'h6', color: 'primary' }}

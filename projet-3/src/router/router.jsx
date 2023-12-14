@@ -16,8 +16,19 @@ import QuienesSomos from '../pages/QuienesSomos/QuienesSomos'
 
 const router = createBrowserRouter([
   {
+    path: '/login',
+    element: <SignInSide/>
+  },
+  {
     path: '/',
     element: < Root />,
+    loader: () => {
+      if (!localStorage.getItem("token")) {
+        return redirect("/login")
+      } else {
+        return null;
+      }
+    },
     errorElement: <NotFound />,
     children: [
       {
@@ -39,21 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/voluntarios',
         element: <PageVoluntarios />,
-        loader: () => {
-          if (!localStorage.getItem("token")) {
-            return redirect("/login")
-          } else {
-            return null;
-          }
-        }
       },
       {
         path: '/voluntarios/:id',
         element: <Voluntario />
-      },
-      {
-        path: '/login',
-        element: <SignInSide/>
       },
       {
         path: '/signup',

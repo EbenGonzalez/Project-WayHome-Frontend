@@ -139,7 +139,7 @@ function UpdateFormDropdown({pet}) {
   }
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div style={{ textAlign: 'center' }}>
       <Button variant="outlined" color="primary" 
       onClick={handleOpen}
       startIcon={<PublishedWithChangesOutlinedIcon />}>

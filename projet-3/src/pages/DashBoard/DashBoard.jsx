@@ -8,7 +8,6 @@ import CardMedia from '@mui/material/CardMedia'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -19,11 +18,10 @@ import InfoIcon from '@mui/icons-material/Info'
 import FormDropdown from '../../components/DropDown/DropDown'
 import { Link } from 'react-router-dom'
 import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
-
+import Divider from '@mui/material/Divider'
 
 function DashBoard() {
   const [user, setUser] = useState({})
-  console.log(user.profile)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,16 +32,17 @@ function DashBoard() {
   }, [])
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Card sx={{ maxWidth: 600}}>
-        <Avatar alt={`${user.firstName} ${user.lastName}`} src={user.profile} sx={{ width: 150, height: 150, margin: 'auto' }} />
-        <CardContent>
-          <Grid container spacing={2} alignItems="center">
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Card sx={{ margin: 'auto', marginTop: '200px', marginBottom: '100px', width: '100vh', boxShadow: "20" }}>
+        <Avatar alt={`${user.firstName} ${user.lastName}`} src={user.profile} sx={{ width: 250, height: 250, margin: 'auto', marginTop: '20px' }} />
+        <CardContent sx={{ textAlign: 'center' }}>
+          <Grid container spacing={2} alignItems="center" justifyContent="center">
             <Grid item xs={12}>
               <Typography variant="h5" gutterBottom>
                 {`${user.firstName} ${user.lastName}`}
               </Typography>
             </Grid>
+            <Divider />
             <Grid item container alignItems="center" spacing={1}>
               <Grid item>
                 <AccountCircleIcon />
@@ -65,7 +64,7 @@ function DashBoard() {
                 <PhoneIcon />
               </Grid>
               <Grid item>
-                <Typography variant="body1">{user.phone}</Typography>
+                <Typography variant="body1" align='center'>{user.phone}</Typography>
               </Grid>
             </Grid>
             <Grid item container alignItems="center" spacing={1}>
@@ -73,26 +72,23 @@ function DashBoard() {
                 <LocationOnIcon />
               </Grid>
               <Grid item>
-                <Typography variant="body1">{user.location}</Typography>
+                <Typography variant="body1" align='center'>{user.location}</Typography>
               </Grid>
             </Grid>
             <Grid item container alignItems="center" spacing={1}>
-              <Grid item>
-                <InfoIcon sx={{color:"red"}} />
-              </Grid>
-              <Grid item>
-                <Typography variant="body1" align='center'>{user.info}</Typography>
+              <Grid item sx={{ border: '1px solid black', borderRadius: '10px' }}>
+                <Typography variant="body1" align='center'><InfoIcon sx={{ color: "red" }} /> {user.info}</Typography>
               </Grid>
             </Grid>
           </Grid>
         </CardContent>
-          <FormDropdown />
-          <Link to={'/perfil/misMascotas'}>
-            <Button type="button" variant="contained" color="primary">
-              Mis Mascotas
-            </Button >
-          </Link>
-          <UserDropdown user={user} />
+        <FormDropdown />
+        <Link to={'/perfil/misMascotas'} style={{ textDecoration: 'none', display: 'block', marginTop: '10px', textAlign: 'center' }}>
+          <Button type="button" variant="contained" color="primary" sx={{ marginTop: '10px' }}>
+            Mis Mascotas
+          </Button>
+        </Link>
+        <UserDropdown user={user} />
       </Card>
     </div>
   )

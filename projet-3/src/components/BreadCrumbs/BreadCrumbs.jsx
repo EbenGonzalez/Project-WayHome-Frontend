@@ -38,7 +38,7 @@ const BasicBreadcrumbs = () => {
   const breadcrumbParts = getPathParts();
 
   return (
-    <Box m={2} role="presentation" sx={{ position: 'absolute', top: '64px', left: 0 }}>
+    <Box m={2} role="presentation" sx={{ position: 'fixed', top: '64px', left: 0 }}>
       <Breadcrumb parts={breadcrumbParts} />
     </Box>
   );
