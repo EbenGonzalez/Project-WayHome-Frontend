@@ -62,7 +62,7 @@ function UserDropdown({user}) {
         email,
         phone,
         info,
-        profile,
+        profile:imageUrl,
         location,
         userRole
       }
