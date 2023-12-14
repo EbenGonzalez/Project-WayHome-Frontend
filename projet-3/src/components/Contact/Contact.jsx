@@ -46,6 +46,7 @@ export default function FormDialog({ pet }) {
       <Button 
       variant="outlined" 
       onClick={handleClickOpen}
+      
       >
         Contactar
       </Button>

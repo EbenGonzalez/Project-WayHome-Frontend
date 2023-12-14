@@ -15,12 +15,13 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { blue, red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box'
+import PetsIcon from '@mui/icons-material/Pets';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 import FormDialog from '../Contact/Contact.jsx';
 
@@ -52,10 +53,11 @@ export default function PetShow({ pet }) {
       {Object.keys(pet).length !== 0 ?
         <>
           <Card sx={{ width: "350px", margin: '20px' }}>
+
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: blue[700] }} aria-label="recipe">
-                  {pet.name[0]}
+                <Avatar sx={{ bgcolor: '#168da0' }} aria-label="recipe">
+                  {pet.speciesId === 1 ? <PetsIcon/> : <GitHubIcon/> }
                 </Avatar>
               }
               action={
@@ -63,9 +65,10 @@ export default function PetShow({ pet }) {
                   <MoreVertIcon />
                 </IconButton>
               }
-              title={pet.name}
-              subheader={`${pet.age} años`}
+              title={pet.race.name}
+              titleTypographyProps={{ variant: 'h6', color: 'primary' }}
             />
+
             <Link to={`/mascota/${(pet.id)}`}>
               <CardMedia
                 component="img"
@@ -74,22 +77,29 @@ export default function PetShow({ pet }) {
                 alt="imagen"
               />
             </Link>
+
             <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                {pet.race.name}
+              <Typography variant="body2" color="text.secondary" style={{ backgroundColor: '#e0e0e0', width: '100%', padding: '8px' }}>
+                {pet.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" style={{ backgroundColor: '#f0f0f0', width: '100%', padding: '8px' }}>
+                {pet.age === 1 ? `${pet.age} año` : `${pet.age} años`}
               </Typography>
             </CardContent>
+
             <CardActions disableSpacing>
+
               <IconButton
                 aria-label="Añadir a tus favoritos"
                 onClick={handleFavoriteClick}
                 color={isFavorite ? 'warning' : 'default'}>
                 <FavoriteIcon />
               </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
+
+              <Box sx={{ width: 66 }} />
+
               <FormDialog pet={pet} />
+
               <ExpandMore
                 expand={expanded}
                 onClick={handleExpandClick}
@@ -97,24 +107,18 @@ export default function PetShow({ pet }) {
                 aria-label="Mostrar más">
                 <ExpandMoreIcon />
               </ExpandMore>
+
             </CardActions>
+
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
                 <Typography paragraph>Method:</Typography>
                 <Typography paragraph>
                   {pet.info}
                 </Typography>
-                <Typography paragraph>
-
-                </Typography>
-                <Typography paragraph>
-
-                </Typography>
-                <Typography>
-
-                </Typography>
               </CardContent>
             </Collapse>
+
           </Card>
         </> :
         <LinearProgress />
