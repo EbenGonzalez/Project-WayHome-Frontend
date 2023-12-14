@@ -26,6 +26,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
+import { Divider } from '@mui/material';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -49,18 +50,13 @@ export default function PetShowMyPets({ pet }) {
     <div>
       {Object.keys(pet).length !== 0 ?
         <>
-          <Card sx={{ width: "350px", margin: '20px' }}>
+          <Card sx={{ width: "350px", margin: '15px',marginTop:'150px', borderRadius: '10px', boxShadow: '20' }}>
 
             <CardHeader
-               avatar={
+              avatar={
                 <Avatar sx={{ bgcolor: '#168da0' }} aria-label="recipe">
-                  {pet.speciesId === 1 ? <PetsIcon/> : <GitHubIcon/> }
+                  {pet.speciesId === 1 ? <PetsIcon /> : <GitHubIcon />}
                 </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
               }
               title={pet.race.name}
               titleTypographyProps={{ variant: 'h6', color: 'primary' }}
@@ -86,11 +82,7 @@ export default function PetShowMyPets({ pet }) {
 
             <CardActions disableSpacing>
 
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-
-              <Box sx={{ width: 36 }} />
+              <Box sx={{ width: 60 }} />
 
               <DropDownPetUpdate pet={pet} />
 

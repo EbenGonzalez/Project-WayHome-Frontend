@@ -10,7 +10,7 @@ export const customTheme = createTheme({
       light: '#39aaaa',
     },
     secondary: {
-      main: '#f5f200',
+      main: '#fdfdfd',
       light: '#f9f633',
       dark: '#a6a404',
       // contrastText: 'rgba(12,12,12,0.87)',
@@ -53,7 +53,7 @@ export const customTheme = createTheme({
     contrastText: 'rgba(26,26,26,0.87)',
   },
   info: {
-    main: '#2196f5',
+    main: '#ffffff',
     light: '#5ba6e2',
     dark: '#0c4b7b',
     contrastText: '#d4cccc',
@@ -64,5 +64,5 @@ export const customTheme = createTheme({
     dark: '#336736',
     contrastText: 'rgba(16,16,16,0.87)',
   },
-  divider: 'rgba(117,86,86,0.12)',
+  divider: '#168da0',
 })

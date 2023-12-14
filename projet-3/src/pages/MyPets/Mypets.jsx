@@ -1,35 +1,31 @@
 import './MyPets.css'
+import { getOwnPets } from '../../services/pet.services.js'
+import PetShowMyPets from '../../components/PetShowMyPets/PetShowMyPets.jsx'
 
 import { useEffect, useState } from 'react'
-
-import { getOwnPets } from '../../services/pet.services.js'
-import { getOwnHistory } from '../../services/history.services.js'
-import PetShowMyPets from '../../components/PetShowMyPets/PetShowMyPets.jsx'
-import MyHistory from '../../components/myHistory/myHistory.jsx'
 
 function Mypets() {
 
   const [myPet, setMyPet] = useState([])
- 
-  const [myHistory, setMyHistory] = useState([])
-
   const [racesFilter, setRacesFilter] = useState('');
- 
+
+  const handleRacesFilterChange = (e) => {
+    setRacesFilter(e.target.value);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      const {pet} = await getOwnPets()
+      const { pet } = await getOwnPets()
       setMyPet(pet)
     }
     fetchData()
   }, [])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { history } = await getOwnHistory()
-      setMyHistory(history)
-    }
-    fetchData()
-  }, [])
+  const filteredPets = myPet.filter(
+    (pet) =>
+      pet.info &&
+      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
+  );
 
   const myPetsFun = () => {
     return filteredPets.map(pet => {
@@ -41,29 +37,9 @@ function Mypets() {
     })
   }
 
-  const myHistoryFun = () => {
-    return myHistory.map(history => {
-      return (
-        <div key={history.id}>
-          <MyHistory history={history} />
-        </div>
-      )
-    })
-  }
-
-  const handleRacesFilterChange = (e) => {
-    setRacesFilter(e.target.value);
-  };
-
-  const filteredPets = myPet.filter(
-    (pet) =>
-      pet.info &&
-      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
-  );
-
   return (
     <>
-     <input
+      <input
         className='input'
         type="text"
         placeholder='    Buscar por palabra clave...'
@@ -72,9 +48,6 @@ function Mypets() {
       />
       <div className='pet-card'>
         {myPetsFun()}
-      </div>
-      <div className='card-myPets'>
-        {myHistoryFun()}
       </div>
     </>
   )

@@ -28,7 +28,11 @@ function Send() {
 
       const result = await deleteOwnComment(deleteComment)
       if (result.status === 200) {
-
+        console.log('Antes de actualizar:', commentSend);
+        setCommentSend((prevComments) =>
+          prevComments.filter((comment) => comment.id !== deleteCommentId)
+        );
+        console.log('Después de actualizar:', commentSend);
       }
     } catch (error) {
       console.log(error)
