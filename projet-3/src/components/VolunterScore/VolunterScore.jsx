@@ -56,7 +56,7 @@ export default function RatingCard({ volunteer }) {
         <Link to={`/voluntarios/${(volunteer.id)}`}>
           <CardMedia
             component="img"
-            height="140"
+            height="180"
             image={volunteer.profile || "https://source.unsplash.com/random?person"}
             alt="green iguana"
           />
@@ -69,11 +69,11 @@ export default function RatingCard({ volunteer }) {
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
           </Typography>
-          <Grid container alignItems="center" justifyContent="space-between">
+          <Grid container alignItems="center" justifyContent="baseline">
             <Grid item>
               <ThumbUpIcon onClick={handleUpChange} color={liked ? 'primary' : 'action'} />
             </Grid>
-            <Grid item sx={{ marginRight: 1 }}>
+            <Grid item sx={{ marginLeft: 1 , marginRight: 1 }}>
               <Typography color={"green"}>{volunteer.background}</Typography>
             </Grid>
             <Grid item>
