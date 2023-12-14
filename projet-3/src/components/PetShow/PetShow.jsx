@@ -24,6 +24,8 @@ import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import FormDialog from '../Contact/Contact.jsx';
+import { updatePet } from '../../services/pet.services.js';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -39,13 +41,26 @@ const ExpandMore = styled((props) => {
 export default function PetShow({ pet }) {
   const [expanded, setExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [likes, setLikes] = useState(pet.likes)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
+  const handleFavoriteClick = async () => {
+    if (!isFavorite){
+      try {
+        const sumar = likes + 1
+        setLikes(sumar)
+        const payload = {
+          likes: sumar
+        }
+        const result = await updatePet(pet.id, payload)
+        setIsFavorite(true)
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 
   return (
@@ -92,8 +107,8 @@ export default function PetShow({ pet }) {
               <IconButton
                 aria-label="Añadir a tus favoritos"
                 onClick={handleFavoriteClick}
-                color={isFavorite ? 'warning' : 'default'}>
-                <FavoriteIcon />
+                color={isFavorite ? 'error' : 'default'}>
+                <FavoriteIcon /><Typography>{pet.likes}</Typography>
               </IconButton>
 
               <Box sx={{ width: 66 }} />

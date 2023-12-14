@@ -29,7 +29,7 @@ export default function RatingCard({ volunteer }) {
         const result = await updateUser(volunteer.id, payload)
         setLiked(true)
       } catch (error) {
-        console.log(ErrorEvent)
+        console.log(error)
       }
     }
   }
