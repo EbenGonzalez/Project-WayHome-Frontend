@@ -7,9 +7,10 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import { deleteOwnPet } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function DeletePet({ pet }) {
-  console.log(pet)
+ 
   const [open, setOpen] = useState(false)
 
   const navigate = useNavigate()
@@ -39,7 +40,7 @@ function DeletePet({ pet }) {
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleOpen}>
-        Borrar Mascota
+        <DeleteIcon/>
       </Button>
       <Dialog
         open={open}
@@ -48,11 +49,11 @@ function DeletePet({ pet }) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"¿Esta seguro que desea borrar su mascota"}
+          {"¿Está seguro que desea borrar su mascota?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Asegurese de que esta es la mascota que desea borrar, esta accion es irreversible.
+            Asegúrese de que esta es la mascota que desea borrar, esta acción es irreversible.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

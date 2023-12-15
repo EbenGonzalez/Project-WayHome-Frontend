@@ -198,6 +198,8 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
           </Box>
 
+          <FormControlLabel control={<Switch defaultChecked />} label="Label" />
+
           <IconButton onClick={handleOpenInbox}>
             <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>
               <Badge max={99} overlap="rectangular" color="error" badgeContent={inbox} invisible={showInbox}>
@@ -208,7 +210,7 @@ function ResponsiveAppBar() {
           {showInbox && (
             <Inbox onClose={handleCloseInbox} />
           )}
-        <FormControlLabel control={<Switch defaultChecked />} label="Label" />
+        
 
            <Box sx={{ width: 26 }} />
 

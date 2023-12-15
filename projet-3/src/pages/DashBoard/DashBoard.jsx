@@ -22,7 +22,6 @@ import PetsIcon from '@mui/icons-material/Pets';
 function DashBoard() {
 
   const [user, setUser] = useState({})
-  console.log(user)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +49,7 @@ function DashBoard() {
 
       }}>
 
-        
+
         <Avatar
           alt={`${user.firstName} ${user.lastName}`}
           src={user.profile}
@@ -78,7 +77,7 @@ function DashBoard() {
               </Typography>
             </Grid>
 
-            <Box sx={{ height: 66 }} />
+            <Box sx={{ height: 0 }} />
             <Divider sx={{ width: '400px' }} />
 
 
@@ -91,7 +90,7 @@ function DashBoard() {
               </Typography>
             </Grid>
 
-            <Box sx={{ height: 26 }} />
+            <Box sx={{ height: 0 }} />
             <Divider sx={{ width: '400px' }} />
 
             <Grid item xs={12}>
@@ -99,11 +98,11 @@ function DashBoard() {
                 variant="h6"
                 gutterBottom>
                 <PetsIcon /> <br />
-                {user.userRole === 'volunteer' ? (user.gender === 'mujer' ? 'Voluntaria' : 'Voluntario') : 'Usuaria'}
+                {user.userRole === 'volunteer' ? (user.gender === 'Mujer' ? 'Voluntaria' : 'Voluntario') : 'Usuario'}
               </Typography>
             </Grid>
 
-            <Box sx={{ height: 26 }} />
+            <Box sx={{ height: 0 }} />
             <Divider sx={{ width: '400px' }} />
 
             <Grid item xs={12}>
@@ -125,9 +124,7 @@ function DashBoard() {
                 <PhoneIcon /> <br />
                 {user.phone}
               </Typography>
-
             </Grid>
-
 
             <Grid item container alignItems="center" spacing={1}>
               <Grid item
@@ -140,9 +137,9 @@ function DashBoard() {
                 <Typography
                   variant="body1"
                   align='center'
-                  sx={{margin:'20px'}} >
+                  sx={{ margin: '20px' }} >
                   <VolunteerActivismIcon /> <br />
-                  <Divider />
+                  {/* <Divider /> */}
                   {user.info}
                 </Typography>
               </Grid>

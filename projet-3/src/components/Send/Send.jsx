@@ -40,7 +40,7 @@ function Send() {
       return (
         <div key={message.id}>
           <div className='send'>
-            <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
+            <div sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
              {`Has enviado un mensaje al usuario nº ${message.receiver_id}`}
               <Typography>{message.message}</Typography>
               {message.answer && message.answer.trim() !== '' && (
@@ -49,7 +49,7 @@ function Send() {
                 <Typography>{message.answer}</Typography>
               </>
             )}
-            </Typography>
+            </div>
             <Stack direction="row" spacing={1} >
 
               <IconButton onClick={()=>handleSubmit(event,message.id)} >

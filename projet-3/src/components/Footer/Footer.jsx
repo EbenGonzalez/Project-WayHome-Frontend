@@ -1,13 +1,11 @@
 import './Footer.css'
-<<<<<<< HEAD
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import PetsIcon from '@mui/icons-material/Pets';
+// import FacebookIcon from '@mui/icons-material/Facebook';
+// import InstagramIcon from '@mui/icons-material/Instagram';
+// import YouTubeIcon from '@mui/icons-material/YouTube';
+// import LinkedInIcon from '@mui/icons-material/LinkedIn';
+// import GitHubIcon from '@mui/icons-material/GitHub';
+// import PetsIcon from '@mui/icons-material/Pets';
 import { Link } from 'react-router-dom'
-=======
 import {
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
@@ -16,7 +14,6 @@ import {
   GitHub as GitHubIcon,
   Pets as PetsIcon
 } from '@mui/icons-material';
->>>>>>> origin/dev
 
 import {
   Box,
@@ -31,12 +28,8 @@ function Footer() {
   const elements = [
     {
       header: 'Contacto',
-<<<<<<< HEAD
       path: '/contacto',
       links: [<div><FacebookIcon/><InstagramIcon/><YouTubeIcon/></div>]
-=======
-      links: [<div><FacebookIcon /><InstagramIcon /><YouTubeIcon /></div>]
->>>>>>> origin/dev
     },
     {
       header: 'Login',
@@ -45,19 +38,15 @@ function Footer() {
     },
     {
       header: 'Quienes somos',
-<<<<<<< HEAD
       path: '/quienesSomos',
       links: [<div><LinkedInIcon/><GitHubIcon/><PetsIcon/></div>]
-=======
-      links: [<div><LinkedInIcon /><GitHubIcon /><PetsIcon /></div>]
->>>>>>> origin/dev
     }
   ]
 
   function generateFooterElements() {
     const footerElements = elements.map((column, columnIndex) => {
       return (
-        <Link  key={columnIndex} to={column.path} item xs={12} md={4}>
+        <Link  key={columnIndex} to={column.path} xs={12} md={4}>
           <Grid>
               <Box borderBottom={1}>
                 <Button sx={{ color: 'white', fontWeight: 'bold' }}>

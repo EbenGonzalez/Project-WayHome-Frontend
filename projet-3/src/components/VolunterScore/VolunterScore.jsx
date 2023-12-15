@@ -53,14 +53,14 @@ export default function RatingCard({ volunteer }) {
   return (
     <Card sx={{ maxWidth: 345, margin: '20px' }}>
       <CardActionArea>
-        <Link to={`/voluntarios/${(volunteer.id)}`}>
+       
           <CardMedia
             component="img"
             height="180"
             image={volunteer.profile || "https://source.unsplash.com/random?person"}
             alt="green iguana"
           />
-        </Link>
+       
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {volunteer.firstName}

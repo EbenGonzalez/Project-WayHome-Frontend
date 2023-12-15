@@ -9,7 +9,6 @@ import PetShow from '../../components/PetShow/PetShow'
 function PageEmbrace() {
 
   const [petShow, setPetShow] = useState([])
-  console.log(petShow)
   const [racesFilter, setRacesFilter] = useState('');
   
   useEffect(() => {

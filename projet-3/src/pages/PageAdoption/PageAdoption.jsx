@@ -7,7 +7,6 @@ import { getAdoptionPets } from '../../services/pet.services';
 
 function PageAdoption() {
   const [petShow, setPetShow] = useState([]);
-  // console.log(petShow)
   const [racesFilter, setRacesFilter] = useState('');
 
   useEffect(() => {
@@ -37,20 +36,22 @@ function PageAdoption() {
       pet.info &&
       pet.info.toLowerCase().includes(racesFilter.toLowerCase())
   );
-  console.log(filteredPets)
 
   return (
     <>
-      <input
+    <div className='scroll-container'>
+    <input
         className='input'
         type="text"
         placeholder='    Buscar por palabra clave...'
         value={racesFilter}
         onChange={handleRacesFilterChange}
       />
+    </div>
       <div className='pet-card'>
         {petsShowFunc()}
       </div>
+    
     </>
   );
 }

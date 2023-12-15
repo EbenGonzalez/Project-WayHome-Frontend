@@ -14,10 +14,13 @@
   width: 100%;
   height: 50px;
   border: none;
+  outline: none;
 }
 
 .input:hover {
   background-color: rgb(222, 231, 234);
+  border: none;
+  outline: none;
 }
 
 .container {
@@ -25,3 +28,4 @@
   margin-top: 150px;
   border: none;
 }
+

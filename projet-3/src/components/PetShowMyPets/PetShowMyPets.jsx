@@ -84,9 +84,12 @@ export default function PetShowMyPets({ pet }) {
 
             <CardActions disableSpacing>
 
-              <Box sx={{ width: 60 }} />
+              <Box sx={{ width: 16 }} />
 
+              <DeletePet pet= {pet}  />
+              <Box sx={{ width: 36 }} />
               <DropDownPetUpdate pet={pet} />
+              
 
               <ExpandMore
                 expand={expanded}
@@ -107,7 +110,7 @@ export default function PetShowMyPets({ pet }) {
               </CardContent>
             </Collapse>
 
-            <DeletePet pet= {pet}/>
+           
 
           </Card>
         </> :

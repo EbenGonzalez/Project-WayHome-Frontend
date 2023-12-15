@@ -71,7 +71,7 @@ export default function PetShow({ pet }) {
 
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: '#168da0' }} aria-label="recipe">
+                <Avatar sx={{ bgcolor: '#168da0'}} aria-label="recipe">
                   {pet.speciesId === 1 ? <PetsIcon/> : <GitHubIcon/> }
                 </Avatar>
               }
@@ -79,7 +79,7 @@ export default function PetShow({ pet }) {
               titleTypographyProps={{ variant: 'h6', color: 'primary' }}
             />
 
-            <Link to={`/mascota/${(pet.id)}`}>
+            
               <CardMedia
                 component="img"
                 height="350"
@@ -90,7 +90,7 @@ export default function PetShow({ pet }) {
                   objectPosition: "center",  // Esto centra la imagen horizontalmente
                 }}
               />
-            </Link>
+            
 
             <CardContent>
               <Typography variant="body2" color="text.secondary" style={{ backgroundColor: '#e0e0e0', width: '100%', padding: '8px' }}>
