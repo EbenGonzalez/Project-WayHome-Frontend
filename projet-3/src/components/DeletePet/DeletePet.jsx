@@ -6,9 +6,10 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import { deleteOwnPet } from '../../services/pet.services'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function DeletePet({ pet }) {
+  console.log(pet)
   const [open, setOpen] = useState(false)
 
   const navigate = useNavigate()
@@ -24,6 +25,7 @@ function DeletePet({ pet }) {
   const handleSubmit = async () => {
     try {
       const result = await deleteOwnPet(pet.id)
+      console.log(pet.id)
       if (result.state === 200) {
 
       }

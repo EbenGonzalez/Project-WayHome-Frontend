@@ -22,6 +22,7 @@ import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
+import DeletePet from '../DeletePet/DeletePet';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -105,6 +106,8 @@ export default function PetShowMyPets({ pet }) {
                 </Typography>
               </CardContent>
             </Collapse>
+
+            <DeletePet pet= {pet}/>
 
           </Card>
         </> :

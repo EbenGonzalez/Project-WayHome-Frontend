@@ -21,6 +21,9 @@ import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { getInboxComments } from '../../services/comment.services'
 
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+
 
 
 const pages = [
@@ -205,7 +208,7 @@ function ResponsiveAppBar() {
           {showInbox && (
             <Inbox onClose={handleCloseInbox} />
           )}
-        
+        <FormControlLabel control={<Switch defaultChecked />} label="Label" />
 
            <Box sx={{ width: 26 }} />
 
