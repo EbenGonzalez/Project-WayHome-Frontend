@@ -5,6 +5,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import PetsIcon from '@mui/icons-material/Pets';
+import { Link } from 'react-router-dom'
 
 import React from 'react'
 
@@ -14,14 +15,17 @@ function Footer() {
   const elements = [
     {
       header: 'Contacto',
+      path: '/contacto',
       links: [<div><FacebookIcon/><InstagramIcon/><YouTubeIcon/></div>]
     },
     {
       header: 'Login',
+      path: '/login',
       links: ['Registrarse']
     },
     {
       header: 'Quienes somos',
+      path: '/quienesSomos',
       links: [<div><LinkedInIcon/><GitHubIcon/><PetsIcon/></div>]
     }
   ]
@@ -29,20 +33,22 @@ function Footer() {
   function generateFooterElements() {
     const footerElements = elements.map((column, columnIndex) => {
       return (
-        <Grid key={columnIndex} item xs={12} md={4}>
-          <Box borderBottom={1}>
-            <Button sx={{ color: 'white', fontWeight: 'bold' }}>
-              {column.header}
-            </Button>
-          </Box>
-          {column.links.map((link, linkIndex) => {
-            return (
-              <Box key={linkIndex}>
-                <Button sx={{ color: 'white' }}>{link}</Button>
+        <Link  key={columnIndex} to={column.path} item xs={12} md={4}>
+          <Grid>
+              <Box borderBottom={1}>
+                <Button sx={{ color: 'white', fontWeight: 'bold' }}>
+                  {column.header}
+                </Button>
               </Box>
-            )
-          })}
-        </Grid>
+            {column.links.map((link, linkIndex) => {
+              return (
+                <Box key={linkIndex}>
+                  <Button sx={{ color: 'white' }}>{link}</Button>
+                </Box>
+              )
+            })}
+          </Grid>
+        </Link>
       )
     })
     return footerElements
@@ -63,7 +69,7 @@ function Footer() {
         height: '20%'
       }}>
         <Container>
-          <Grid container columnSpacing={10}>
+          <Grid container columnSpacing={0} justifyContent="center" >
             {generateFooterElements()}
           </Grid>
         </Container>
