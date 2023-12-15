@@ -3,6 +3,8 @@ import { getAllVolunteers } from '../../services/user.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import RatingCard from '../../components/VolunterScore/VolunterScore'
+import Mapa from '../../components/Mapa/Mapa'
+
 
 
 function PageVoluntarios() {
@@ -42,6 +44,7 @@ function PageVoluntarios() {
 
   return (
     <>
+<<<<<<< HEAD
      <input
         className='input2'
         type="text"
@@ -52,6 +55,10 @@ function PageVoluntarios() {
       <div className='ultimatum'>
       <div className='volunteer-card'>{ volunteerShowFunc() }</div>
       </div>
+=======
+    <div className='volunteer-card'>{ volunteerShowFunc() }</div>
+    <Mapa volunteers={volunteers}/>
+>>>>>>> 431b700e62e13bc1847b0706b8433c741adc5de3
     </>
   )
 }
