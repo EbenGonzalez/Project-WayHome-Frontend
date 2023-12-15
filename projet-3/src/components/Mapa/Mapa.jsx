@@ -1,9 +1,22 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useState, useEffect } from 'react'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function Mapa({ volunteers }) {
   const [markers, setMarkers] = useState([])
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   useEffect(() => {
     if (volunteers && volunteers.length > 0) {
@@ -28,39 +41,49 @@ function Mapa({ volunteers }) {
                 volunteerData: volunteer,
               }
             } catch (error) {
-              console.error('Error al obtener coordenadas:', error);
+              console.error('Error al obtener coordenadas:', error)
               return null
             }
           })
         )
 
-        setMarkers(markersData.filter((marker) => marker !== null));
+        setMarkers(markersData.filter((marker) => marker !== null))
       }
 
       getGeocodedLocations()
     }
   }, [volunteers])
 
-  const defaultCenter = [27.88343, -15.44213]
+  const defaultCenter = [27.97446346788845, -15.568283785891554]
 
   if (!volunteers || volunteers.length === 0) {
     return <p>No hay voluntarios disponibles</p>
   }
 
   return (
-    <MapContainer center={defaultCenter} zoom={10} scrollWheelZoom={false} style={{ height: '400px', width: '100%' }}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {markers.map((marker, index) => (
-        <Marker key={index} position={marker.position}>
-          <Popup>
-            {marker.volunteerData.location} <br /> {marker.volunteerData.firstName}
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <div style={{ textAlign: 'center' }}>
+      <Button variant="contained" color="primary" onClick={handleOpen} startIcon={<LocationOnIcon />}>
+        MOSTRAR MAPA
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>MAPA DE VOLUNTARIOS</DialogTitle>
+        <DialogContent>
+          <MapContainer center={defaultCenter} zoom={10} style={{ height: '500px', width: '500px' }}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {markers.map((marker, index) => (
+              <Marker key={index} position={marker.position}>
+                <Popup>
+                  <b>{marker.volunteerData.firstName}</b><br /> {marker.volunteerData.location} <br />Votos:{marker.volunteerData.background}
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        </DialogContent>
+      </Dialog>
+    </div>
   )
 }
 

@@ -17,5 +17,5 @@ body {
 .leaflet-container {
   width: 450px;
   height: 350px;
-  margin-left: 40%;
+  font-size: 15px;
 }
