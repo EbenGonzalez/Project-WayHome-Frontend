@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { fire } from "../../services/firebase.service"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { updateOwnUser } from '../../services/user.services'
+import EditIcon from '@mui/icons-material/Edit';
+import { Typography } from '@mui/material'
 
 
 const roles = [
@@ -19,6 +21,16 @@ const roles = [
   {
     value: "volunteer",
     label: "Voluntario",
+  }
+]
+const genero = [
+  {
+    value: "Mujer",
+    label: "Mujer",
+  },
+  {
+    value: "Hombre",
+    label: "Hombre",
   }
 ]
 
@@ -43,6 +55,8 @@ function UserDropdown({user}) {
   const [userRole, setUserRole] = useState("user")
   const [profile, setProfile] = useState("")
   const [location, setLocation] = useState(user.location)
+  const [gender, setGender] = useState(user.gender)
+  const [address, setAddress] = useState(user.address)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -64,11 +78,13 @@ function UserDropdown({user}) {
         info,
         profile:imageUrl,
         location,
-        userRole
+        address,
+        userRole, 
+        gender
       }
       const result = await updateOwnUser(payload)
       if (result === 200) {
-
+    
       }
     } catch (error) {
       console.log(error)
@@ -79,8 +95,9 @@ function UserDropdown({user}) {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        Editar Perfil
+      <Button variant="contained" onClick={handleOpen} sx={{marginBottom:'40px'}} >
+       <EditIcon/>
+       <Typography>Editar Perfil</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Editar Perfil</DialogTitle>
@@ -96,8 +113,24 @@ function UserDropdown({user}) {
               onChange={(e) => setPhone(e.target.value)} />
               <TextField label="Localidad" fullWidth margin="normal"
               onChange={(e) => setLocation(e.target.value)} />
+              <TextField label="Dirección" fullWidth margin="normal"
+              onChange={(e) => setAddress(e.target.value)} />
             <TextField label="Sobre Mi" fullWidth margin="normal"
-              onChange={(e) => setInfo(e.target.value)} />
+              onChange={(e) => setInfo(e.target.value)} helperText="Escribe algo sobre ti"/>
+            <TextField fullWidth margin="normal"
+              id="outlined-select-currency"
+              select
+              label="Género"
+              defaultValue="Mujer"
+              helperText="Elige un Género"
+              onChange={(e) => setGender(e.target.value)}
+            >
+              {genero.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
             <TextField fullWidth margin="normal"
               id="outlined-select-currency"
               select

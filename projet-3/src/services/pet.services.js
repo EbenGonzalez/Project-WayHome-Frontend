@@ -88,7 +88,11 @@ const updateOwnPet = async (id,body) => {
 
 const updatePet = async (id,body) => {
   try {
-    const { data } = await api.put(`/pets/${id}`,body)
+    const { data } = await api.put(`/pets/${id}`,body,{
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)

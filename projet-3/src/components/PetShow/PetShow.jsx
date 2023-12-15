@@ -24,6 +24,8 @@ import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import FormDialog from '../Contact/Contact.jsx';
+import { updatePet } from '../../services/pet.services.js';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -39,31 +41,39 @@ const ExpandMore = styled((props) => {
 export default function PetShow({ pet }) {
   const [expanded, setExpanded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [likes, setLikes] = useState(pet.likes)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
+  const handleFavoriteClick = async () => {
+    if (!isFavorite){
+      try {
+        const sumar = likes + 1
+        setLikes(sumar)
+        const payload = {
+          likes: sumar
+        }
+        const result = await updatePet(pet.id, payload)
+        setIsFavorite(true)
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 
   return (
     <div>
       {Object.keys(pet).length !== 0 ?
         <>
-          <Card sx={{ width: "350px", margin: '20px' }}>
+          <Card sx={{ width: "400px", margin: '15px',marginTop:'150px', borderRadius: '10px',boxShadow: '20' }}>
 
             <CardHeader
               avatar={
                 <Avatar sx={{ bgcolor: '#168da0' }} aria-label="recipe">
                   {pet.speciesId === 1 ? <PetsIcon/> : <GitHubIcon/> }
                 </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
               }
               title={pet.race.name}
               titleTypographyProps={{ variant: 'h6', color: 'primary' }}
@@ -72,9 +82,13 @@ export default function PetShow({ pet }) {
             <Link to={`/mascota/${(pet.id)}`}>
               <CardMedia
                 component="img"
-                height="194"
+                height="350"
                 image={pet.image || "https://source.unsplash.com/random?dog"}
                 alt="imagen"
+                style={{
+                  objectFit: "cover",  // Esto asegura que la imagen cubra completamente el contenedor
+                  objectPosition: "center",  // Esto centra la imagen horizontalmente
+                }}
               />
             </Link>
 
@@ -92,8 +106,8 @@ export default function PetShow({ pet }) {
               <IconButton
                 aria-label="Añadir a tus favoritos"
                 onClick={handleFavoriteClick}
-                color={isFavorite ? 'warning' : 'default'}>
-                <FavoriteIcon />
+                color={isFavorite ? 'error' : 'default'}>
+                <FavoriteIcon /><Typography>{likes}</Typography>
               </IconButton>
 
               <Box sx={{ width: 66 }} />
@@ -112,7 +126,7 @@ export default function PetShow({ pet }) {
 
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                <Typography paragraph>Method:</Typography>
+                <Typography paragraph>{pet.name}</Typography>
                 <Typography paragraph>
                   {pet.info}
                 </Typography>

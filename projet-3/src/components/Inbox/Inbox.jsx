@@ -139,10 +139,16 @@ const Inbox = ({ onClose }) => {
           style={{ marginLeft: '30px', marginRight: '10px' }} />
       </Tabs>
       {value === 0 && (
-        <div key={comment.id}>
-          {showMessages()}
-        </div>
-      )}
+  <div key={comment.id}>
+    {comment.length > 0 ? (
+      showMessages()
+    ) : (
+      <Typography sx={{ textAlign: 'center', margin: 'auto' }}>
+        No tiene mensajes nuevos
+      </Typography>
+    )}
+  </div>
+)}
       {value === 1 && (
         <div>
           <Send />

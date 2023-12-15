@@ -28,7 +28,7 @@ function Send() {
 
       const result = await deleteOwnComment(deleteComment)
       if (result.status === 200) {
-
+       
       }
     } catch (error) {
       console.log(error)

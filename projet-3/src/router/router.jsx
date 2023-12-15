@@ -17,8 +17,23 @@ import Contacto from '../pages/Contacto/Contacto'
 
 const router = createBrowserRouter([
   {
+    path: '/login',
+    element: <SignInSide/>
+  },
+  {
+    path: '/signup',
+    element: <SignUp/>
+  },
+  {
     path: '/',
     element: < Root />,
+    loader: () => {
+      if (!localStorage.getItem("token")) {
+        return redirect("/login")
+      } else {
+        return null;
+      }
+    },
     errorElement: <NotFound />,
     children: [
       {
@@ -54,25 +69,10 @@ const router = createBrowserRouter([
       {
         path: '/voluntarios',
         element: <PageVoluntarios />,
-        loader: () => {
-          if (!localStorage.getItem("token")) {
-            return redirect("/login")
-          } else {
-            return null;
-          }
-        }
       },
       {
         path: '/voluntarios/:id',
         element: <Voluntario />
-      },
-      {
-        path: '/login',
-        element: <SignInSide/>
-      },
-      {
-        path: '/signup',
-        element: <SignUp/>
       },
       {
         path: '/perfil',

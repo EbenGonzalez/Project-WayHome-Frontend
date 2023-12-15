@@ -9,6 +9,8 @@ import { createOwnPet, getRaces } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
 import { fire } from "../../services/firebase.service"
 import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage"
+import AddIcon from '@mui/icons-material/Add';
+import { Typography } from '@mui/material'
 
 
 
@@ -154,7 +156,7 @@ function FormDropdown() {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <Button variant="contained" color="primary" onClick={handleOpen}>
-        Añadir Mascota
+        <AddIcon/> <Typography>Añadir Mascota</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Nueva Mascota</DialogTitle>

@@ -16,11 +16,12 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import { logout } from '../../services/auth'
-
 import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { getInboxComments } from '../../services/comment.services'
+
+
 
 const pages = [
   {
@@ -43,12 +44,10 @@ const settings = [
     path: "/perfil"
   },
   {
-    name: "Login",
-    path: "/login"
+    name: "Mis mascotas",
+    path: "/perfil/misMascotas"
   },
 ]
-
-const ariaLabel = { 'aria-label': 'description' }
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -195,6 +194,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
           </Box>
+
           <IconButton onClick={handleOpenInbox}>
             <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>
               <Badge max={99} overlap="rectangular" color="error" badgeContent={inbox} invisible={showInbox}>
@@ -205,13 +205,14 @@ function ResponsiveAppBar() {
           {showInbox && (
             <Inbox onClose={handleCloseInbox} />
           )}
+        
 
            <Box sx={{ width: 26 }} />
 
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Way Home" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="" src="https://source.unsplash.com/random?person" />
               </IconButton>
             </Tooltip>
 
@@ -238,7 +239,7 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 </Link>
               ))}
-              <Link to={"/"}>
+              <Link to={"/login"}>
                 <MenuItem onClick={() => { logout(), handleCloseUserMenu() }}>Logout</MenuItem>
               </Link>
             </Menu>
