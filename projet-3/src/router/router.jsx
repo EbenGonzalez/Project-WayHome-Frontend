@@ -12,6 +12,7 @@ import Voluntario from '../pages/Voluntario/Voluntario'
 import Pet from '../pages/Pet/Pet'
 import Mypets from '../pages/MyPets/Mypets'
 import QuienesSomos from '../pages/QuienesSomos/QuienesSomos'
+import Contacto from '../pages/Contacto/Contacto'
 
 
 const router = createBrowserRouter([
@@ -41,11 +42,25 @@ const router = createBrowserRouter([
       },
       {
         path: '/adopcion',
-        element: <PageAdoption />
+        element: <PageAdoption />,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/login")
+          } else {
+            return null;
+          }
+        }
       },
       {
         path: '/acogida',
-        element: <PageEmbrace/>
+        element: <PageEmbrace/>,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/login")
+          } else {
+            return null;
+          }
+        }
       },
       {
         path: '/mascota/:id',
@@ -70,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: '/quienesSomos',
         element: <QuienesSomos />
+      },
+      {
+        path: '/contacto',
+        element: <Contacto />
       },
     ]
   }

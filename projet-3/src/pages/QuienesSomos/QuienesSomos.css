@@ -1,12 +1,21 @@
+.quienes-somos-container {
+    margin-top: 50px;
+}
+
 .header {
-    margin-top: 100px;
+    text-align: center;
+    background-color: #118da0 ;
+    color: #fff;
+    padding: 10px;
+}
+
+.sectionQuienesSomos {
+    margin-top: 20px;
+    text-align: justify;
 }
 
 .perfil {
-    display:inline-block;
-    margin: 50px;
-}
-
-.title{
-    margin-top: 30px;
+    display: inline-block;
+    align-items: center;
+    margin-inline: 50px;
 }
