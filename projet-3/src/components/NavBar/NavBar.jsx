@@ -16,11 +16,12 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import { logout } from '../../services/auth'
-
 import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { getInboxComments } from '../../services/comment.services'
+
+
 
 const pages = [
   {
@@ -43,12 +44,10 @@ const settings = [
     path: "/perfil"
   },
   {
-    name: "Login",
-    path: "/login"
+    name: "Mis mascotas",
+    path: "/perfil/misMascotas"
   },
 ]
-
-const ariaLabel = { 'aria-label': 'description' }
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -195,6 +194,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
           </Box>
+
           <IconButton onClick={handleOpenInbox}>
             <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>
               <Badge max={99} overlap="rectangular" color="error" badgeContent={inbox} invisible={showInbox}>
@@ -205,6 +205,7 @@ function ResponsiveAppBar() {
           {showInbox && (
             <Inbox onClose={handleCloseInbox} />
           )}
+        
 
            <Box sx={{ width: 26 }} />
 

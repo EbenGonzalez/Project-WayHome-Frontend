@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Grid, Typography } from '@mui/material'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const handleMouseEnter = (event) => {
@@ -15,6 +16,7 @@ const Home = () => {
   return (
     <div className='home'>
       <Grid container spacing={0}>
+      
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -37,12 +39,16 @@ const Home = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
+            <Link to='/adopcion'>
             <Typography className='image-text' sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
              color: 'transparent', transition: 'color 0.3s ease-in-out',fontSize: '1.5em', fontWeight: 'bold' }}>
-              Adoptame
+              Adóptame
             </Typography>
+            </Link>
           </Box>
-        </Grid>
+         </Grid>
+       
+        
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -65,12 +71,15 @@ const Home = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
+            <Link to='/acogida'>
             <Typography className='image-text' sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
              color: 'transparent', transition: 'color 0.3s ease-in-out',fontSize: '1.5em', fontWeight: 'bold' }}>
-              Acogeme
+              Acógeme
             </Typography>
+            </Link>
           </Box>
         </Grid>
+       
       </Grid>
     </div>
   )

@@ -15,18 +15,13 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { blue, red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box'
 import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
-import { Divider } from '@mui/material';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -50,7 +45,13 @@ export default function PetShowMyPets({ pet }) {
     <div>
       {Object.keys(pet).length !== 0 ?
         <>
-          <Card sx={{ width: "350px", margin: '15px',marginTop:'150px', borderRadius: '10px', boxShadow: '20' }}>
+          <Card sx={{
+            width: "400px",
+            margin: '15px',
+            marginTop: '150px',
+            borderRadius: '10px',
+            boxShadow: '20'
+          }}>
 
             <CardHeader
               avatar={
@@ -65,7 +66,7 @@ export default function PetShowMyPets({ pet }) {
             <Link to={`/mascota/${(pet.id)}`}>
               <CardMedia
                 component="img"
-                height="194"
+                height="350"
                 image={pet.image || "https://source.unsplash.com/random?dog"}
                 alt="imagen"
               />

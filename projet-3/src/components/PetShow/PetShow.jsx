@@ -22,7 +22,6 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box'
 import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import Divider from '@mui/material/Divider'
 
 import FormDialog from '../Contact/Contact.jsx';
 import { updatePet } from '../../services/pet.services.js';
@@ -68,7 +67,7 @@ export default function PetShow({ pet }) {
     <div>
       {Object.keys(pet).length !== 0 ?
         <>
-          <Card sx={{ width: "350px", margin: '15px',marginTop:'150px', borderRadius: '10px',boxShadow: '20' }}>
+          <Card sx={{ width: "400px", margin: '15px',marginTop:'150px', borderRadius: '10px',boxShadow: '20' }}>
 
             <CardHeader
               avatar={
@@ -83,9 +82,13 @@ export default function PetShow({ pet }) {
             <Link to={`/mascota/${(pet.id)}`}>
               <CardMedia
                 component="img"
-                height="194"
+                height="350"
                 image={pet.image || "https://source.unsplash.com/random?dog"}
                 alt="imagen"
+                style={{
+                  objectFit: "cover",  // Esto asegura que la imagen cubra completamente el contenedor
+                  objectPosition: "center",  // Esto centra la imagen horizontalmente
+                }}
               />
             </Link>
 
@@ -104,7 +107,7 @@ export default function PetShow({ pet }) {
                 aria-label="Añadir a tus favoritos"
                 onClick={handleFavoriteClick}
                 color={isFavorite ? 'error' : 'default'}>
-                <FavoriteIcon /><Typography>{pet.likes}</Typography>
+                <FavoriteIcon /><Typography>{likes}</Typography>
               </IconButton>
 
               <Box sx={{ width: 66 }} />

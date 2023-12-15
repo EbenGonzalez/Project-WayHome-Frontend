@@ -1,29 +1,28 @@
 import './DashBoard.css'
-import { useEffect, useState } from 'react'
 import { getOwnUser } from '../../services/user.services'
+import FormDropdown from '../../components/DropDown/DropDown'
+import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
+
+import { useEffect, useState } from 'react'
 
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
+
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Divider from '@mui/material/Divider'
 import EmailIcon from '@mui/icons-material/Email'
 import PhoneIcon from '@mui/icons-material/Phone'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import InfoIcon from '@mui/icons-material/Info'
-import FormDropdown from '../../components/DropDown/DropDown'
-import { Link } from 'react-router-dom'
-import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
-import Divider from '@mui/material/Divider'
-import { display } from '@mui/system'
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import PetsIcon from '@mui/icons-material/Pets';
 
 function DashBoard() {
+
   const [user, setUser] = useState({})
+  console.log(user)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,15 +42,15 @@ function DashBoard() {
 
       <Card sx={{
         margin: 'auto',
-        marginTop: '200px',
+        marginTop: '150px',
         marginBottom: '100px',
-        width: '100vh',
+        width: '800px',
         boxShadow: "20",
         borderRadius: '10px',
-        
+
       }}>
 
-
+        
         <Avatar
           alt={`${user.firstName} ${user.lastName}`}
           src={user.profile}
@@ -79,58 +78,73 @@ function DashBoard() {
               </Typography>
             </Grid>
 
-            <div style={{ display: "block",}}>
+            <Box sx={{ height: 66 }} />
+            <Divider sx={{ width: '400px' }} />
+
+
             <Grid item xs={12}>
               <Typography
                 variant="h6"
                 gutterBottom>
-                <LocationOnIcon />
-                {`${user.location}`}
+                <LocationOnIcon /> <br />
+                {`${user.address}, ${user.location}`}
               </Typography>
             </Grid>
 
+            <Box sx={{ height: 26 }} />
+            <Divider sx={{ width: '400px' }} />
+
+            <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom>
+                <PetsIcon /> <br />
+                {user.userRole === 'volunteer' ? (user.gender === 'mujer' ? 'Voluntaria' : 'Voluntario') : 'Usuaria'}
+              </Typography>
+            </Grid>
+
+            <Box sx={{ height: 26 }} />
+            <Divider sx={{ width: '400px' }} />
+
+            <Grid item xs={12}>
+              <Typography
+                variant="body1"
+                gutterBottom>
+                <EmailIcon /> <br />
+                {user.email}
+              </Typography>
+            </Grid>
+
+            <Box sx={{ height: 26 }} />
+            <Divider sx={{ width: '400px' }} />
+
+            <Grid item xs={12}>
+              <Typography
+                variant="body1"
+                gutterBottom>
+                <PhoneIcon /> <br />
+                {user.phone}
+              </Typography>
+
+            </Grid>
+
+
             <Grid item container alignItems="center" spacing={1}>
-              <Grid item>
-                <EmailIcon />
-              </Grid>
-              <Grid item>
+              <Grid item
+                sx={{
+                  borderRadius: '10px',
+                  backgroundColor: '#e0e0e0',
+                  boxShadow: '20',
+                  margin: '50px'
+                }}>
                 <Typography
                   variant="body1"
-                  align='center'>
-                  {user.email}
-                </Typography>
-              </Grid>
-            </Grid>
-            </div>
-
-            <Grid item container alignItems="center" spacing={1} sx={{marginLeft: '365px'}}>
-              <Grid item>
-                <PhoneIcon />
-              </Grid>
-              <Grid item>
-                <Typography 
-                variant="body1" 
-                align='center'>
-                  {user.phone}
-                  </Typography>
-              </Grid>
-            </Grid>
-            
-            <Grid item container alignItems="center" spacing={1}>
-              <Grid item 
-              sx={{ 
-                borderRadius: '10px', 
-                backgroundColor: '#e0e0e0', 
-                boxShadow: '20',
-                margin: '50px' }}>
-                <Typography 
-                variant="body1" 
-                align='center' >
-                  {/* <InfoIcon 
-                  sx={{ color: "red" }} />  */}
-                  <VolunteerActivismIcon/>
+                  align='center'
+                  sx={{margin:'20px'}} >
+                  <VolunteerActivismIcon /> <br />
+                  <Divider />
                   {user.info}
-                  </Typography>
+                </Typography>
               </Grid>
             </Grid>
 
@@ -138,22 +152,8 @@ function DashBoard() {
         </CardContent>
         <FormDropdown />
 
-        {/* <Link 
-        to={'/perfil/misMascotas'} 
-        style={{ 
-          textDecoration: 'none', 
-          display: 'flex', 
-          marginTop: '10px', 
-          textAlign: 'center' }}>
-          <Button 
-          type="button" 
-          variant="contained" 
-          sx={{ marginTop: '10px', }}>
-            Mis Mascotas
-          </Button>
-        </Link> */}
-
         <UserDropdown user={user} />
+
       </Card>
     </div>
   )

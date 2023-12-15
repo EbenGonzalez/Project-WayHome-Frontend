@@ -1,20 +1,27 @@
 import './Footer.css'
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import PetsIcon from '@mui/icons-material/Pets';
+import {
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  YouTube as YouTubeIcon,
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
+  Pets as PetsIcon
+} from '@mui/icons-material';
 
-import React from 'react'
+import {
+  Box,
+  Grid,
+  Container,
+  Typography,
+  Button
+} from '@mui/material'
 
-import { Box, Grid, Container, Typography, Button } from '@mui/material'
 
 function Footer() {
   const elements = [
     {
       header: 'Contacto',
-      links: [<div><FacebookIcon/><InstagramIcon/><YouTubeIcon/></div>]
+      links: [<div><FacebookIcon /><InstagramIcon /><YouTubeIcon /></div>]
     },
     {
       header: 'Login',
@@ -22,7 +29,7 @@ function Footer() {
     },
     {
       header: 'Quienes somos',
-      links: [<div><LinkedInIcon/><GitHubIcon/><PetsIcon/></div>]
+      links: [<div><LinkedInIcon /><GitHubIcon /><PetsIcon /></div>]
     }
   ]
 
@@ -50,34 +57,34 @@ function Footer() {
 
   return (
     <footer>
-      <Box  
-      textAlign={'center'}
-      component="footer"
-      bgcolor="primary.main"
-      color="white"
-      py={2}
-      sx={{
-       
-        bottom: 0,
-        width: '100%',
-        height: '20%'
-      }}>
+      <Box
+        textAlign={'center'}
+        component="footer"
+        bgcolor="primary.main"
+        color="white"
+        py={2}
+        sx={{
+
+          bottom: 0,
+          width: '100%',
+          height: '20%'
+        }}>
         <Container>
           <Grid container columnSpacing={10}>
             {generateFooterElements()}
           </Grid>
         </Container>
       </Box>
-      <Box textAlign={'center'} 
-      py={2} m={0} 
-      bgcolor='#118da0' 
-      color={'white'} 
-      sx={{
-        
-        bottom: 0,
-        width: '100%',
-        height: '8%'
-      }}>
+      <Box textAlign={'center'}
+        py={2} m={0}
+        bgcolor='#118da0'
+        color={'white'}
+        sx={{
+
+          bottom: 0,
+          width: '100%',
+          height: '8%'
+        }}>
         <Typography>© Way Home 2023 - Todos los derechos reservados</Typography>
       </Box>
     </footer>

@@ -74,13 +74,13 @@ export default function RatingCard({ volunteer }) {
               <ThumbUpIcon onClick={handleUpChange} color={liked ? 'primary' : 'action'} />
             </Grid>
             <Grid item sx={{ marginLeft: 1 , marginRight: 1 }}>
-              <Typography color={"green"}>{volunteer.background}</Typography>
+              <Typography color={"green"}>{background}</Typography>
             </Grid>
             <Grid item>
               <ThumbDownAltIcon onClick={handleDownChange} color={disliked ? 'error' : 'action'} />
             </Grid>
             <Grid item sx={{ marginLeft: 1 }}>
-              <Typography color={"red"}>{volunteer.media}</Typography>
+              <Typography color={"red"}>{media}</Typography>
             </Grid>
           </Grid>
         </CardContent>
