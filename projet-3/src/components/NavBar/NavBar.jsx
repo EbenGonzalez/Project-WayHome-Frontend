@@ -238,7 +238,7 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 </Link>
               ))}
-              <Link to={"/"}>
+              <Link to={"/login"}>
                 <MenuItem onClick={() => { logout(), handleCloseUserMenu() }}>Logout</MenuItem>
               </Link>
             </Menu>

@@ -22,7 +22,7 @@ function PageAdoption() {
     return filteredPets.map(pet => {
       return (
         <Link to='/adopcion' key={pet.id}>
-          <PetShow pet = {pet}/>
+          <PetShow pet={pet} />
         </Link>
       )
     })
@@ -40,7 +40,7 @@ function PageAdoption() {
   console.log(filteredPets)
 
   return (
-    <div className='container'>
+    <>
       <input
         className='input'
         type="text"
@@ -51,8 +51,7 @@ function PageAdoption() {
       <div className='pet-card'>
         {petsShowFunc()}
       </div>
-      
-    </div>
+    </>
   );
 }
 

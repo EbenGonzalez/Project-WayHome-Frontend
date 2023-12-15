@@ -24,6 +24,7 @@ function Voluntario() {
   return (
 
     <div id="voluntario">
+      <h1>eliminar</h1>
       <VolunteerShow volunteer={volunteer} />
     </div>
   )

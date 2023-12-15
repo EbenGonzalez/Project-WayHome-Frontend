@@ -20,6 +20,16 @@ function PageEmbrace() {
     fetchData()
   }, [])
 
+  const handleRacesFilterChange = (e) => {
+    setRacesFilter(e.target.value);
+  };
+  
+  const filteredPets = petShow.filter(
+    (pet) =>
+      pet.info &&
+      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
+  );
+
   const petsShowFunc = () => {
     return filteredPets.map(pet => {
       return (
@@ -30,15 +40,6 @@ function PageEmbrace() {
     })
   }
 
-  const handleRacesFilterChange = (e) => {
-    setRacesFilter(e.target.value);
-  };
-
-  const filteredPets = petShow.filter(
-    (pet) =>
-      pet.info &&
-      pet.info.toLowerCase().includes(racesFilter.toLowerCase())
-  );
 
   return (
     <>
