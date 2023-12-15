@@ -2,8 +2,9 @@ import './PageVoluntarios.css'
 import { getAllVolunteers } from '../../services/user.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import VolunteerShow from '../../components/VolunteerShow/VolunteerShow'
 import RatingCard from '../../components/VolunterScore/VolunterScore'
+import Mapa from '../../components/Mapa/Mapa'
+
 
 
 function PageVoluntarios() {
@@ -30,7 +31,10 @@ function PageVoluntarios() {
     }
 
   return (
+    <>
     <div className='volunteer-card'>{ volunteerShowFunc() }</div>
+    <Mapa volunteers={volunteers}/>
+    </>
   )
 }
 
