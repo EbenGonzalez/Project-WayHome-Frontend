@@ -6,6 +6,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { margin } from '@mui/system'
 
 function Mapa({ volunteers }) {
   const [markers, setMarkers] = useState([])
@@ -62,7 +63,7 @@ function Mapa({ volunteers }) {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <Button variant="contained" color="primary" onClick={handleOpen} startIcon={<LocationOnIcon />}>
+      <Button variant="contained" color="primary" onClick={handleOpen} sx={{margin: 10}} startIcon={<LocationOnIcon />}>
         MOSTRAR MAPA
       </Button>
       <Dialog open={open} onClose={handleClose}>

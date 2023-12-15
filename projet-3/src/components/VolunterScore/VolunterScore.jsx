@@ -51,12 +51,12 @@ export default function RatingCard({ volunteer }) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345, margin: '20px' }}>
+    <Card sx={{ width: 360, height:450, margin: '20px', borderRadius: '10px', boxShadow: '20' }}>
       <CardActionArea>
        
           <CardMedia
             component="img"
-            height="180"
+            height="250"
             image={volunteer.profile || "https://source.unsplash.com/random?person"}
             alt="green iguana"
           />

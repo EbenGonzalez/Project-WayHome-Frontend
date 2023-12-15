@@ -1,12 +1,15 @@
 import './Footer.css'
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import PetsIcon from '@mui/icons-material/Pets';
+import {
+  Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
+  YouTube as YouTubeIcon,
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
+  Pets as PetsIcon
+} from '@mui/icons-material';
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Box, Grid, Container, Typography, Button } from '@mui/material'
 
@@ -14,14 +17,17 @@ function Footer() {
   const elements = [
     {
       header: 'Contacto',
+      path: '/contacto',
       links: [<div><FacebookIcon/><InstagramIcon/><YouTubeIcon/></div>]
     },
     {
       header: 'Login',
+      path: '/login',
       links: ['Registrarse']
     },
     {
       header: 'Quienes somos',
+      path: '/quienesSomos',
       links: [<div><LinkedInIcon/><GitHubIcon/><PetsIcon/></div>]
     }
   ]
