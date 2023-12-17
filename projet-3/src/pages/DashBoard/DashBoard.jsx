@@ -85,7 +85,7 @@ function DashBoard() {
               <Typography
                 variant="h6"
                 gutterBottom>
-                <LocationOnIcon /> <br />
+                <LocationOnIcon color='primary' /> <br />
                 {`${user.address}, ${user.location}`}
               </Typography>
             </Grid>
@@ -97,7 +97,7 @@ function DashBoard() {
               <Typography
                 variant="h6"
                 gutterBottom>
-                <PetsIcon /> <br />
+                <PetsIcon color='primary' /> <br />
                 {user.userRole === 'volunteer' ? (user.gender === 'Mujer' ? 'Voluntaria' : 'Voluntario') : 'Usuario'}
               </Typography>
             </Grid>
@@ -109,7 +109,7 @@ function DashBoard() {
               <Typography
                 variant="body1"
                 gutterBottom>
-                <EmailIcon /> <br />
+                <EmailIcon color='primary' /> <br />
                 {user.email}
               </Typography>
             </Grid>
@@ -121,30 +121,27 @@ function DashBoard() {
               <Typography
                 variant="body1"
                 gutterBottom>
-                <PhoneIcon /> <br />
+                <PhoneIcon color='primary' /> <br />
                 {user.phone}
               </Typography>
             </Grid>
+            <Divider sx={{ width: '400px' }} />
 
-            <Grid item container alignItems="center" spacing={1}>
-              <Grid item
-                sx={{
-                  borderRadius: '10px',
-                  backgroundColor: '#e0e0e0',
-                  boxShadow: '20',
-                  margin: '50px'
-                }}>
-                <Typography
-                  variant="body1"
-                  align='center'
-                  sx={{ margin: '20px' }} >
-                  <VolunteerActivismIcon /> <br />
-                  {/* <Divider /> */}
+            <Grid item xs={12} container justifyContent="center">
+              <Grid item xs={6}
+              sx={{
+                borderRadius: '10px',
+                backgroundColor: '#e0e0e0',
+                boxShadow: '20',
+                margin: '30px',
+                padding: "10px"
+              }}>
+                <Typography variant="body1" align="center">
+                  <VolunteerActivismIcon color='primary' /> <br />
                   {user.info}
                 </Typography>
               </Grid>
             </Grid>
-
           </Grid>
         </CardContent>
         <FormDropdown />
