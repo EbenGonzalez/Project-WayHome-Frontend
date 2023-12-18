@@ -103,7 +103,7 @@ export default function PetShowMyPets({ pet }) {
 
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
-                <Typography paragraph>Method:</Typography>
+                <Typography paragraph><b>{pet.name}</b></Typography>
                 <Typography paragraph>
                   {pet.info}
                 </Typography>
