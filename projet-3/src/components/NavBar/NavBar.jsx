@@ -21,6 +21,7 @@ import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { getInboxComments } from '../../services/comment.services'
+import { height, width } from '@mui/system'
 
 const pages = [
   {
@@ -45,7 +46,7 @@ const settings = [
   {
     name: "Mis mascotas",
     path: "/perfil/misMascotas"
-  },
+  }
 ]
 
 function ResponsiveAppBar() {
@@ -118,7 +119,13 @@ function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              WAY-HOME
+              <img
+               src="../../../public/image/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
+               alt=""
+               style={{
+                width: '200px',
+                height:'80px'
+               }}/>
             </Typography>
           </Link>
 
@@ -177,7 +184,14 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            WAY-HOME
+             <img
+               src="../../../public/image/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
+               alt=""
+               style={{
+                width: '200px',
+                height:'80px'
+               }}/>
+
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -210,8 +224,8 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="" src="https://source.unsplash.com/random?person" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
+                <Avatar alt="" src="https://images-ext-1.discordapp.net/external/KbvSdwJ4bnRJADmD-gMLH2r4ABio6MMajJcD3wgzKUk/%3Falt%3Dmedia%26token%3D37a77465-69e6-4080-9f29-adcc040225e8/https/firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%252Falicia.jpg?format=webp&width=993&height=662" />
               </IconButton>
             </Tooltip>
 

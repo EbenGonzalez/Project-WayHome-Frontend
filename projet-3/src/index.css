@@ -15,11 +15,19 @@ body {
 }
 
 .leaflet-container {
-  width: 450px;
-  height: 350px;
+  width: 1000px;
+  height: 1000px;
   font-size: 15px;
 }
 
 .volunteer-card{
   margin-bottom: 10px;
 }
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  max-width: 1000px;
+  max-height: 1000px;
+}
+
+
+

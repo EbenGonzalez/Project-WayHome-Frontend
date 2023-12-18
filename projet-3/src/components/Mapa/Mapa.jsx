@@ -6,7 +6,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { margin } from '@mui/system'
+
 
 function Mapa({ volunteers }) {
   const [markers, setMarkers] = useState([])
@@ -55,7 +55,7 @@ function Mapa({ volunteers }) {
     }
   }, [volunteers])
 
-  const defaultCenter = [27.97446346788845, -15.568283785891554]
+  const defaultCenter = [28.430907, -15.840954]
 
   if (!volunteers || volunteers.length === 0) {
     return <p>No hay voluntarios disponibles</p>
@@ -69,7 +69,7 @@ function Mapa({ volunteers }) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>MAPA DE VOLUNTARIOS</DialogTitle>
         <DialogContent>
-          <MapContainer center={defaultCenter} zoom={10} style={{ height: '500px', width: '500px' }}>
+          <MapContainer center={defaultCenter} zoom={8} style={{ height: '900px', width: '950px' }}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -1,15 +1,14 @@
 .pet-card {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: center;
   text-align: center;
   margin: 100px;
 
 }
 
 .input {
-  position:fixed;
-  margin-top: 15px;
+  margin-top: 115px;
   background-color: rgb(241, 248, 250);
   width: 100%;
   height: 50px;

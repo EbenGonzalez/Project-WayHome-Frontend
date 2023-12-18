@@ -1,26 +1,9 @@
 .volunteer-card {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: center;
   text-align: center;
   margin: 100px;
 }
 
-.ultimatum {
-  margin-top: 200px;
-}
 
-.input2 {
-  position:fixed;
-  margin-top: -85px;
-  background-color: rgb(241, 248, 250);
-  width: 100%;
-  height: 50px;
-  border: none;
-  outline: none;
-}
-
-.input2:hover {
-  background-color: rgb(222, 231, 234);
-  border: none;
-}
