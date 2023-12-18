@@ -61,7 +61,7 @@ function Mapa({ volunteers }) {
   }
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center',marginBottom:"30px" }}>
       <Button variant="contained" color="primary" onClick={handleOpen} startIcon={<LocationOnIcon />}>
         MOSTRAR MAPA
       </Button>
