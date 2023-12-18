@@ -6,6 +6,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { margin } from '@mui/system'
 
 function Mapa({ volunteers }) {
   const [markers, setMarkers] = useState([])

@@ -1,19 +1,24 @@
 import './App.css'
+import { useState, useMemo  } from 'react'
+
 import { RouterProvider } from 'react-router-dom'
-import { ThemeProvider, createTheme } from "@mui/material/styles"
-import { customTheme } from './themes/custom'
-import { CssBaseline } from "@mui/material"
 import config from './router/router'
+import { customTheme } from './themes/custom'
+
+import { ThemeProvider } from "@mui/material/styles"
+import { CssBaseline } from "@mui/material"
+
 
 function App() {
 
-
   return (
     <>
-      <ThemeProvider theme={customTheme}>
+   
+      <ThemeProvider theme={ customTheme }>
       <CssBaseline />
-        <RouterProvider router={config} />
+        <RouterProvider router={ config } />
       </ThemeProvider>
+      
     </>
 
   )
