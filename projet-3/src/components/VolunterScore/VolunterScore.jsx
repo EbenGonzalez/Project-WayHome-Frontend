@@ -1,22 +1,20 @@
-
 import { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import { Grid } from '@mui/material'
-import { CardActionArea } from '@mui/material'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt'
+import { Grid, IconButton, Collapse, CardActionArea } from '@mui/material'
 import { updateUser } from '../../services/user.services'
-import { Link } from 'react-router-dom'
+import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
 
 export default function RatingCard({ volunteer }) {
-
   const [media, setMedia] = useState(volunteer.media)
   const [background, setBackground] = useState(volunteer.background)
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
+  const [expanded, setExpanded] = useState(false)
 
   const handleUpChange = async () => {
     if (!liked) {
@@ -41,7 +39,7 @@ export default function RatingCard({ volunteer }) {
         setMedia(resta)
         const payload = {
           media: resta
-        }
+        };
         const result = await updateUser(volunteer.id, payload)
         setDisliked(true)
       } catch (error) {
@@ -50,41 +48,52 @@ export default function RatingCard({ volunteer }) {
     }
   }
 
+  const handleExpandClick = () => {
+    setExpanded(!expanded)
+  }
+
   return (
-    <Card sx={{ width: 360, height:450, margin: '20px', borderRadius: '10px', boxShadow: '20' }}>
+    <Card sx={{ width: 360, margin: '20px', borderRadius: '10px', boxShadow: '20' }}>
       <CardActionArea>
-       
-          <CardMedia
-            component="img"
-            height="250"
-            image={volunteer.profile || "https://source.unsplash.com/random?person"}
-            alt="green iguana"
-          />
-       
+        <CardMedia
+          component="img"
+          height="180"
+          image={volunteer.profile || 'https://source.unsplash.com/random?person'}
+          alt="err image"
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {volunteer.firstName}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          <Typography gutterBottom variant="body2" color="text.secondary" style={{ backgroundColor: '#e0e0e0', width: '100%', padding: '8px' }}>
+            {volunteer.location}
           </Typography>
-          <Grid container alignItems="center" justifyContent="baseline">
-            <Grid item>
-              <ThumbUpIcon onClick={handleUpChange} color={liked ? 'primary' : 'action'} />
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item container xs={6} alignItems="center" >
+              <ThumbUpIcon onClick={handleUpChange} color={liked ? 'primary' : 'action'} sx={{ marginLeft: 1 , marginRight: 2 }} />
+              <Typography color={'green'}>{background}</Typography>
+              <ThumbDownAltIcon onClick={handleDownChange} color={disliked ? 'error' : 'action'}sx={{ marginLeft: 2 , marginRight: 2 }} />
+              <Typography color={'red'}>{media}</Typography>
             </Grid>
-            <Grid item sx={{ marginLeft: 1 , marginRight: 1 }}>
-              <Typography color={"green"}>{background}</Typography>
-            </Grid>
-            <Grid item>
-              <ThumbDownAltIcon onClick={handleDownChange} color={disliked ? 'error' : 'action'} />
-            </Grid>
-            <Grid item sx={{ marginLeft: 1 }}>
-              <Typography color={"red"}>{media}</Typography>
+            <Grid item container xs={6} justifyContent="flex-end">
+              <Grid
+                aria-expanded={expanded}
+                aria-label="show more"
+                onClick={handleExpandClick}
+              >
+                <ExpandMoreIcon />
+              </Grid>
             </Grid>
           </Grid>
         </CardContent>
       </CardActionArea>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            {volunteer.info}
+          </Typography>
+        </CardContent>
+      </Collapse>
     </Card>
   )
 }
