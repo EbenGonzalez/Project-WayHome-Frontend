@@ -53,7 +53,7 @@ export default function RatingCard({ volunteer }) {
   }
 
   return (
-    <Card sx={{ width: 345, margin: '20px' }}>
+    <Card sx={{ width: 360, margin: '20px', borderRadius: '10px', boxShadow: '20' }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -76,13 +76,13 @@ export default function RatingCard({ volunteer }) {
               <Typography color={'red'}>{media}</Typography>
             </Grid>
             <Grid item container xs={6} justifyContent="flex-end">
-              <IconButton
+              <Grid
                 aria-expanded={expanded}
                 aria-label="show more"
                 onClick={handleExpandClick}
               >
                 <ExpandMoreIcon />
-              </IconButton>
+              </Grid>
             </Grid>
           </Grid>
         </CardContent>
