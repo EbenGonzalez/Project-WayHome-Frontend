@@ -84,13 +84,13 @@ const Inbox = ({ onClose }) => {
       return (
         <div key={message.id}>
           <div className='inbox'>
-            <div sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
+            <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
               {`Tienes un mensaje de ${message.user.firstName}`}
               <Typography sx={{ fontStyle: 'italic' }}>
                 {message.user.email}
               </Typography>
               <Typography>{message.message}</Typography>
-            </div>
+            </Typography>
             <Stack direction="row" spacing={1}>
               <IconButton onClick={() => handleOpenReplyDialog(message.id)} >
                 <ReplyIcon />

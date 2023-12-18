@@ -1,5 +1,6 @@
 import './NavBar.css'
 import { useEffect, useState } from 'react'
+
 import { Link } from 'react-router-dom'
 import Inbox from '../Inbox/Inbox'
 
@@ -20,11 +21,6 @@ import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { getInboxComments } from '../../services/comment.services'
-
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-
-
 
 const pages = [
   {
@@ -197,8 +193,6 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
           </Box>
-
-          <FormControlLabel control={<Switch defaultChecked />} label="Label" />
 
           <IconButton onClick={handleOpenInbox}>
             <Stack spacing={4} direction="row" sx={{ color: 'action.active' }}>

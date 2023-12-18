@@ -59,7 +59,7 @@ function Footer() {
       <Box  
       textAlign={'center'}
       component="footer"
-      bgcolor="primary.main"
+      bgcolor= "primary.main"
       color="white"
       py={2}
       sx={{
