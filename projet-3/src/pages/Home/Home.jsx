@@ -21,7 +21,7 @@ const Home = () => {
           <Box
             sx={{
               position: 'relative',
-              height: '80vh',
+              height: '87.5vh',
               width: '100%',
               backgroundImage: 'url(https://source.unsplash.com/random?cat)',
               backgroundRepeat: 'no-repeat',
@@ -53,7 +53,7 @@ const Home = () => {
           <Box
             sx={{
               position: 'relative',
-              height: '80vh',
+              height: '87.5vh',
               width: '100%',
               backgroundImage: 'url(https://source.unsplash.com/random?dog)',
               backgroundRepeat: 'no-repeat',

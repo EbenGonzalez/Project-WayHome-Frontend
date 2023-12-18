@@ -41,8 +41,8 @@ function DashBoard() {
 
       <Card sx={{
         margin: 'auto',
-        marginTop: '150px',
-        marginBottom: '100px',
+        marginTop: '205px',
+        marginBottom: '182px',
         width: '800px',
         boxShadow: "20",
         borderRadius: '10px',

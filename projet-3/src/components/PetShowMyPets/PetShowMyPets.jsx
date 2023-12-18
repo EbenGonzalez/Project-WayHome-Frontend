@@ -46,13 +46,18 @@ export default function PetShowMyPets({ pet }) {
     <div>
       {Object.keys(pet).length !== 0 ?
         <>
-          <Card sx={{
-            width: "400px",
-            margin: '15px',
-            marginTop: '150px',
+          <Card 
+          sx={{ 
+            width: "400px", 
+            margin: '15px', 
             borderRadius: '10px',
-            boxShadow: '20'
-          }}>
+            boxShadow: '20',
+            '@media (max-width: 450px)': {
+              width: '350px', 
+              marginTop: '50px',
+              
+            },
+            }}>
 
             <CardHeader
               avatar={

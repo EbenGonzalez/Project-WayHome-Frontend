@@ -2,12 +2,12 @@ import './Contacto.css'
 
 function Contacto() {
   return (
-    <div >
+    <div id='principal'>
         <header className='header'>
             <h2>CONTACTO</h2>
         </header>
-        
         <div className='contacto'>
+        
      
         <main className='left'>
             <h2>
@@ -46,7 +46,7 @@ function Contacto() {
                 <label htmlFor="email"> Email: </label>
                 <input type="email" id="email" name="email" required />
 
-                <label htmlFor="telefono"> telefono: </label>
+                <label htmlFor="telefono"> Telefono: </label>
                 <input type="tel" id="telefono" name="telefono" required />
 
                 <label for="motivo">Motivo del contacto:</label>

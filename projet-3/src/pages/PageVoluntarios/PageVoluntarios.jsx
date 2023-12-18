@@ -45,7 +45,7 @@ function PageVoluntarios() {
   return (
     <>
      <input
-        className='input2'
+        className='input'
         type="text"
         placeholder='    Buscar por palabra clave...'
         value={volunteersFilter}

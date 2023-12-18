@@ -1,5 +1,6 @@
 .quienes-somos-container {
     margin-top: 50px;
+    text-align: center;
 }
 
 .header {
@@ -11,11 +12,18 @@
 
 .sectionQuienesSomos {
     margin-top: 20px;
-    text-align: justify;
+    text-align: center;
 }
 
 .perfil {
     display: inline-block;
     align-items: center;
     margin-inline: 50px;
+}
+#principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
 }
