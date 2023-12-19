@@ -5,13 +5,10 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import { createPet	, getRaces } from '../../services/pet.services'
+import { createPet, getRaces } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
 import AddIcon from '@mui/icons-material/Add'
 import { Typography } from '@mui/material'
-
-
-
 
 const genero = [
   {
@@ -144,7 +141,7 @@ function AdminAddPet() {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <Button variant="contained" color="primary" onClick={handleOpen}>
-        <AddIcon/> <Typography>Añadir Mascota</Typography>
+        <AddIcon /> <Typography>Añadir Mascota</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Nueva Mascota</DialogTitle>
@@ -154,8 +151,8 @@ function AdminAddPet() {
               onChange={(e) => setName(e.target.value)} />
             <TextField label="Edad" fullWidth margin="normal"
               onChange={(e) => setAge(e.target.value)} />
-              <TextField label="Usuario" fullWidth margin="normal"
-              onChange={(e) => setUserId(e.target.value)} helperText="Introduce la ID del dueño"/>
+            <TextField label="Usuario" fullWidth margin="normal"
+              onChange={(e) => setUserId(e.target.value)} helperText="Introduce la ID del dueño" />
             <TextField fullWidth margin="normal"
               id="outlined-select-currency"
               select

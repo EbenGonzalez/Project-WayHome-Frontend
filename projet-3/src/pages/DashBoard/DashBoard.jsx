@@ -150,7 +150,7 @@ function DashBoard() {
 
         <UserDropdown user={user} />
 
-        <AdminPanel/>
+        {user.role === 'admin' && <AdminPanel />}
 
       </Card>
     </div>

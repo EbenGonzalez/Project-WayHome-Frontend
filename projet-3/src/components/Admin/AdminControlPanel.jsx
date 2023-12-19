@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material'
 import AdminAddUser from './AdminAddUser'
 import AdminAddPet from './AdminAddPet'
-import AdminUpdatePet from './AdminUpdatePet'
 import AdminDeletePet from './AdminDeletePet'
 import AdminDeleteUser from './AdminDeleteUser'
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const AdminPanel = () => {
   const [openModal, setOpenModal] = useState(false)
@@ -17,15 +17,12 @@ const AdminPanel = () => {
     setOpenModal(false)
   }
 
-  const handleButtonClick = () => {
-    handleModalClose()
-  }
-
   return (
-    <Container style={{ marginTop: '20px' }} maxWidth="md">
+    <Container style={{ marginTop: '10px',marginBottom:"50px" }} maxWidth="md">
       <Grid container spacing={2} justifyContent="center">
         <Grid item>
           <Button variant="contained" color="primary" onClick={handleModalOpen}>
+            <AdminPanelSettingsIcon/>
             Panel de Control
           </Button>
           <Dialog open={openModal} onClose={handleModalClose} aria-labelledby="dialog-title">
@@ -36,13 +33,13 @@ const AdminPanel = () => {
                   <AdminAddUser />
                 </Grid>
                 <Grid item>
-                  <AdminAddPet/>
+                  <AdminAddPet />
                 </Grid>
                 <Grid item>
-                  <AdminDeletePet/>
+                  <AdminDeletePet />
                 </Grid>
                 <Grid item>
-                  <AdminDeleteUser/>
+                  <AdminDeleteUser />
                 </Grid>
               </Grid>
             </DialogContent>

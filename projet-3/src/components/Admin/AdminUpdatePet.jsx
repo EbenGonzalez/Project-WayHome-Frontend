@@ -9,7 +9,6 @@ import { updatePet, getRaces } from '../../services/pet.services'
 import EditIcon from '@mui/icons-material/Edit'
 import { Typography } from '@mui/material'
 
-
 const genero = [
   {
     value: 'Masculino',
@@ -45,7 +44,7 @@ const especie = [
     value: 2,
     label: 'Gato',
   },
-  
+
 ]
 
 const roles = [
@@ -61,7 +60,7 @@ const roles = [
     value: "Adoption",
     label: "Adopcion",
   },
-  
+
 ]
 
 function AdminUpdatePet() {
@@ -79,7 +78,7 @@ function AdminUpdatePet() {
       }
     }
     fetchSpecies()
-  },[])
+  }, [])
 
   const handleOpen = () => {
     setOpen(true)
@@ -100,16 +99,16 @@ function AdminUpdatePet() {
   const [petId, setPetId] = useState()
 
   useEffect(() => {
-    if (speciesId===1) {
+    if (speciesId === 1) {
       const tipoEspecie = allRacesData.filter((option) => option.speciesId === 1)
       setAllRaces(tipoEspecie)
     }
-    if (speciesId===2) {
+    if (speciesId === 2) {
       const tipoEspecie = allRacesData.filter((option) => option.speciesId === 2)
       setAllRaces(tipoEspecie)
     }
-  }, [speciesId,allRacesData])
-  
+  }, [speciesId, allRacesData])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -123,11 +122,11 @@ function AdminUpdatePet() {
         role,
         speciesId,
         raceId
-      
+
       }
-      const result = await updatePet(petId,payload)
+      const result = await updatePet(petId, payload)
       if (result.state === 200) {
-        
+
       }
     } catch (error) {
       console.log(error)
@@ -145,8 +144,8 @@ function AdminUpdatePet() {
         <DialogTitle>Editar Mascota</DialogTitle>
         <DialogContent>
           <form onSubmit={handleSubmit}>
-          <TextField label="ID" fullWidth margin="normal"
-              onChange={(e) => setPetId(e.target.value)} helperText="ID de la mascota a actualizar"/>
+            <TextField label="ID" fullWidth margin="normal"
+              onChange={(e) => setPetId(e.target.value)} helperText="ID de la mascota a actualizar" />
             <TextField label="Nombre" fullWidth margin="normal"
               onChange={(e) => setName(e.target.value)} />
             <TextField label="Edad" fullWidth margin="normal" type='number'
@@ -199,7 +198,7 @@ function AdminUpdatePet() {
               label="Raza"
               defaultValue=""
               helperText="Elige una raza"
-              onChange={(e) => setRace(e.target.value)} 
+              onChange={(e) => setRace(e.target.value)}
             >
               {allRaces.map((option) => (
                 <MenuItem key={option.id} value={option.id}>
@@ -209,7 +208,7 @@ function AdminUpdatePet() {
             </TextField>
             <TextField label="Informacion" fullWidth margin="normal"
               onChange={(e) => setInfo(e.target.value)} />
-              <TextField fullWidth margin="normal"
+            <TextField fullWidth margin="normal"
               id="outlined-select-currency"
               select
               label="Role"

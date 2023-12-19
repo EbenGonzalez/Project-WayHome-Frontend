@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { createUser, getAllUsers } from '../../services/user.services'
+import { getAllUsers } from '../../services/user.services'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
@@ -69,7 +69,7 @@ function AdminAddUser() {
               onChange={(e) => setLastName(e.target.value)} />
             <TextField label="Email" fullWidth margin="normal"
               onChange={(e) => setEmail(e.target.value)} />
-              <TextField label="Password" fullWidth margin="normal"
+            <TextField label="Password" fullWidth margin="normal"
               onChange={(e) => setPassword(e.target.value)} />
             <Button type="submit" variant="contained" color="primary">
               Crear

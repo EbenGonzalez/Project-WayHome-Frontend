@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import { useState } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
@@ -26,7 +26,7 @@ function AdminDeletePet() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      
+
       const result = await deletePet(petId)
       if (result === 200) {
 
@@ -47,7 +47,7 @@ function AdminDeletePet() {
         <DialogContent>
           <form onSubmit={handleSubmit}>
             <TextField label="Id" fullWidth margin="normal"
-              onChange={(e) => setPetId(e.target.value)} helperText="Introduzca la ID de la mascota a eliminar"/>
+              onChange={(e) => setPetId(e.target.value)} helperText="Introduzca la ID de la mascota a eliminar" />
             <Button type="submit" variant="contained" color="primary">
               Borrar
             </Button>

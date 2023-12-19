@@ -5,7 +5,7 @@
 
 .header {
     text-align: center;
-    background-color: #118da0 ;
+    background-color: #118da0;
     color: #fff;
     padding: 10px;
 }
@@ -20,7 +20,8 @@
     align-items: center;
     margin-inline: 50px;
 }
-#principal{
+
+#principal {
     display: flex;
     flex-direction: column;
     align-items: center;
