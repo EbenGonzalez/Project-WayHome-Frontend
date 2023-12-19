@@ -2,11 +2,11 @@ import './Contacto.css'
 
 function Contacto() {
   return (
-    <div id='principal'>
-        <header className='header'>
-            <h2>CONTACTO</h2>
+    <div id='principal2'>
+        <header className='header' style={{ textAlign: 'center', fontFamily: 'monospace', letterSpacing: "5px" }}>
+            <h1>CONTACTO</h1>
         </header>
-        <div className='contacto'>
+        <div className='contacto' style={{ textAlign: 'center', fontFamily: 'monospace', letterSpacing: "2px" }}>
         
         <main className='left'>
             <h2>

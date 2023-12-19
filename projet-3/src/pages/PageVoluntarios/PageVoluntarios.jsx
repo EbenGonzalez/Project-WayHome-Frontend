@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import RatingCard from '../../components/VolunterScore/VolunterScore'
 import Mapa from '../../components/Mapa/Mapa'
+import SearchIcon from '@mui/icons-material/Search';
 
 function PageVoluntarios() {
 
@@ -45,7 +46,7 @@ function PageVoluntarios() {
      <input
         className='input'
         type="text"
-        placeholder='    Buscar por palabra clave...'
+        placeholder= ' Buscar por palabra clave... '
         value={volunteersFilter}
         onChange={handleVolunteersFilterChange}
       />

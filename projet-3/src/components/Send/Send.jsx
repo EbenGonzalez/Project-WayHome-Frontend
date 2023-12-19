@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack'
 function Send() {
 
   const [commentSend, setCommentSend] = useState([])
+  console.log(commentSend)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +22,7 @@ function Send() {
 
   const handleSubmit = async (event, deleteComment) => {
     event.preventDefault()
-
+    setCommentSend((prevComments) => prevComments.filter(comment => comment.id !== deleteComment))
     try {
 
       const result = await deleteOwnComment(deleteComment)

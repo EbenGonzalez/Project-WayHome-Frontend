@@ -1,33 +1,35 @@
 .contacto {
     display: flex;
-    justify-content: center;
+    flex-direction: row; /* Asegúrate de que el contenido se apile verticalmente */
     align-items: center;
     max-width: 1200px;
-    margin: 20px;
-    margin-top: 10%;
-}
+    margin: 20px auto; /* Centra horizontalmente y ajusta el margen */
+    margin-top: 5%;
+    margin-bottom: 14%;
+  }
 
 .header {
     text-align: center;
-    background-color: #118da0 ;
-    color: #fff;
+    color: #000000;
     padding: 10px;
-    margin-top: 120px;
-    width: 100vw;
+    margin-top: 120px; /* Ajusta el margen superior según tus necesidades */
+    width: 100%;
 }
 
 .main {
-    display:flex;
-    margin-top: 150px;
+    display: flex;
+   
 }
 
 .line {
     border-top: 1px solid #0c0b0b;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
-.left, .right {
-    flex-basis: 48%; 
+.left,
+.right {
+    flex-basis: 48%;
+   
 }
 
 form {
@@ -45,7 +47,9 @@ label {
     font-weight: bold;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 16px;
@@ -55,9 +59,9 @@ input, select, textarea {
 }
 
 select {
-    appearance: none; 
-    padding-right: 30px; 
-    background-image: url('arrow-down.png'); 
+    appearance: none;
+    padding-right: 30px;
+    background-image: url('arrow-down.png');
     background-repeat: no-repeat;
     background-position: right center;
 }
@@ -71,6 +75,7 @@ button {
     cursor: pointer;
 }
 
-#principal {
-    margin-bottom: 10% ;
+#principal2 {
+    margin-bottom: 10%;
+
 }

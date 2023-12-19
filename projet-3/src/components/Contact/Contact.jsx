@@ -51,9 +51,6 @@ export default function FormDialog({ pet }) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Contacta con la persona responsable del animal</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Esta comunidad no se hace responsable de acuerdos entre personas a cambio de intereses económicos. Solo buscamos el bienestar de los animales...
-          </DialogContentText>
           <TextareaAutosize
             aria-label="Escriba su mensaje"
             placeholder="Escriba su mensaje..."

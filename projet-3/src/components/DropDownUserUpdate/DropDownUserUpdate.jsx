@@ -83,7 +83,7 @@ function UserDropdown({user}) {
       }
       const result = await updateOwnUser(payload)
       if (result === 200) {
-    
+        
       }
     } catch (error) {
       console.log(error)

@@ -39,19 +39,16 @@ function PageAdoption() {
 
   return (
     <>
-    <div className='scroll-container'>
-    <input
+      <input
         className='input'
         type="text"
         placeholder='    Buscar por palabra clave...'
         value={racesFilter}
         onChange={handleRacesFilterChange}
       />
-    </div>
       <div className='pet-card'>
         {petsShowFunc()}
       </div>
-    
     </>
   )
 }
