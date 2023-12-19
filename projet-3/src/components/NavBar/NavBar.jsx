@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
               }}
             >
               <img
-               src="../../../public/image/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
+               src="../../assets/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
                alt=""
                style={{
                 width: '200px',
@@ -189,7 +189,7 @@ function ResponsiveAppBar() {
             }}
           >
              <img
-               src="../../../public/image/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
+               src="../../assets/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
                alt=""
                style={{
                 width: '200px',
