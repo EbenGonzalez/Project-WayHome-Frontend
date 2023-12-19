@@ -2,7 +2,11 @@ import api from "./config"
 
 const getAllUsers = async () => {
   try {
-    const { data } = await api.get("/users")
+    const { data } = await api.get("/users", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
@@ -43,7 +47,11 @@ const getOwnUser = async () => {
 
 const createUser = async (body) => {
   try {
-    const { data } = await api.post("/users", body)
+    const { data } = await api.post("/users", body, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
@@ -87,7 +95,11 @@ const deleteOwnUser = async () => {
 
 const deleteUser = async (id) => {
   try {
-    const { data } = await api.delete(`/users/${id}`)
+    const { data } = await api.delete(`/users/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)

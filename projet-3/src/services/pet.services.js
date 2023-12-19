@@ -2,7 +2,11 @@ import api from "./config"
 
 const getAllPets = async () => {
   try {
-    const { data } = await api.get("/pets")
+    const { data } = await api.get("/pets", {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
@@ -66,7 +70,11 @@ const createOwnPet = async (body) => {
 
 const createPet = async (body) => {
   try {
-    const { data } = await api.post("/pets",body)
+    const { data } = await api.post("/pets",body, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)
@@ -114,7 +122,11 @@ const deleteOwnPet = async (id) => {
 
 const deletePet = async (id,body) => {
   try {
-    const { data } = await api.delete(`/pets/${id}`)
+    const { data } = await api.delete(`/pets/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    })
     return data
   } catch (error) {
     console.log(error)

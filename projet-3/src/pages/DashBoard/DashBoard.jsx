@@ -2,6 +2,7 @@ import './DashBoard.css'
 import { getOwnUser } from '../../services/user.services'
 import FormDropdown from '../../components/DropDown/DropDown'
 import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
+import AdminPanel from '../../components/Admin/AdminControlPanel'
 
 import { useEffect, useState } from 'react'
 
@@ -18,6 +19,7 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import PetsIcon from '@mui/icons-material/Pets';
+
 
 function DashBoard() {
 
@@ -147,6 +149,8 @@ function DashBoard() {
         <FormDropdown />
 
         <UserDropdown user={user} />
+
+        <AdminPanel/>
 
       </Card>
     </div>
