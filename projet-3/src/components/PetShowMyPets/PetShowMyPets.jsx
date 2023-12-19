@@ -1,46 +1,42 @@
 import './PetShowMyPets.css'
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import LinearProgress from '@mui/material/LinearProgress';
+import { styled } from '@mui/material/styles'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardMedia from '@mui/material/CardMedia'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Collapse from '@mui/material/Collapse'
+import Avatar from '@mui/material/Avatar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import LinearProgress from '@mui/material/LinearProgress'
 import Box from '@mui/material/Box'
-import PetsIcon from '@mui/icons-material/Pets';
-import GitHubIcon from '@mui/icons-material/GitHub';
-
+import PetsIcon from '@mui/icons-material/Pets'
+import GitHubIcon from '@mui/icons-material/GitHub'
 import DropDownPetUpdate from '../../components/DropDownPetUpdate/DropDownPetUpdate'
-import DeletePet from '../DeletePet/DeletePet';
+import DeletePet from '../DeletePet/DeletePet'
 
 const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
+  const { expand, ...other } = props
+  return <IconButton {...other} />
 })(({ theme, expand }) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
   transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
   }),
-}));
+}))
 
 export default function PetShowMyPets({ pet }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   return (
     <div>
@@ -55,7 +51,6 @@ export default function PetShowMyPets({ pet }) {
             '@media (max-width: 450px)': {
               width: '350px', 
               marginTop: '50px',
-              
             },
             }}>
 
@@ -95,7 +90,6 @@ export default function PetShowMyPets({ pet }) {
               <Box sx={{ width: 36 }} />
               <DropDownPetUpdate pet={pet} />
               
-
               <ExpandMore
                 expand={expanded}
                 onClick={handleExpandClick}
@@ -124,7 +118,7 @@ export default function PetShowMyPets({ pet }) {
 
       }
     </div>
-  );
+  )
 }
 
 PetShowMyPets.propTypes = {

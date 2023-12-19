@@ -9,7 +9,7 @@ import { createOwnPet, getRaces } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
 import { fire } from "../../services/firebase.service"
 import { getStorage, ref, uploadBytes,getDownloadURL } from "firebase/storage"
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from '@mui/icons-material/Add'
 import { Typography } from '@mui/material'
 
 

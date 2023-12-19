@@ -1,15 +1,13 @@
 import './PageAcogida.css'
-
 import { getEmbracePets } from '../../services/pet.services'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PetShow from '../../components/PetShow/PetShow'
 
-
 function PageEmbrace() {
 
   const [petShow, setPetShow] = useState([])
-  const [racesFilter, setRacesFilter] = useState('');
+  const [racesFilter, setRacesFilter] = useState('')
   
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +18,7 @@ function PageEmbrace() {
   }, [])
 
   const handleRacesFilterChange = (e) => {
-    setRacesFilter(e.target.value);
+    setRacesFilter(e.target.value)
   };
   
   const filteredPets = petShow.filter(
@@ -38,7 +36,6 @@ function PageEmbrace() {
       )
     })
   }
-
 
   return (
     <>

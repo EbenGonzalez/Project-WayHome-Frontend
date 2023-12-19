@@ -3,12 +3,9 @@ import { getOwnUser } from '../../services/user.services'
 import FormDropdown from '../../components/DropDown/DropDown'
 import UserDropdown from '../../components/DropDownUserUpdate/DropDownUserUpdate'
 import AdminPanel from '../../components/Admin/AdminControlPanel'
-
 import { useEffect, useState } from 'react'
-
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -17,9 +14,8 @@ import Divider from '@mui/material/Divider'
 import EmailIcon from '@mui/icons-material/Email'
 import PhoneIcon from '@mui/icons-material/Phone'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
-import PetsIcon from '@mui/icons-material/Pets';
-
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism'
+import PetsIcon from '@mui/icons-material/Pets'
 
 function DashBoard() {
 
@@ -51,7 +47,6 @@ function DashBoard() {
 
       }}>
 
-
         <Avatar
           alt={`${user.firstName} ${user.lastName}`}
           src={user.profile}
@@ -81,7 +76,6 @@ function DashBoard() {
 
             <Box sx={{ height: 0 }} />
             <Divider sx={{ width: '400px' }} />
-
 
             <Grid item xs={12}>
               <Typography

@@ -5,13 +5,11 @@ import { Link } from 'react-router-dom'
 import RatingCard from '../../components/VolunterScore/VolunterScore'
 import Mapa from '../../components/Mapa/Mapa'
 
-
-
 function PageVoluntarios() {
 
     const [volunteers, setVolunteers] = useState([])
     console.log(volunteers)
-    const [volunteersFilter, setVolunteersFilter] = useState('');
+    const [volunteersFilter, setVolunteersFilter] = useState('')
 
 
     useEffect(() => {
@@ -24,13 +22,13 @@ function PageVoluntarios() {
 
     const handleVolunteersFilterChange = (e) => {
         setVolunteersFilter(e.target.value);
-      };
+      }
 
       const filteredVolunteer = volunteers.filter(
         (volunteer) =>
           volunteer.info &&
           volunteer.info.toLowerCase().includes(volunteersFilter.toLowerCase())
-      );
+      )
 
     const volunteerShowFunc = () => {
         return filteredVolunteer.map(volunteer => {

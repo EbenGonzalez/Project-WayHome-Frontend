@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt'
-import { Grid, IconButton, Collapse, CardActionArea } from '@mui/material'
+import { Grid, Collapse, CardActionArea } from '@mui/material'
 import { updateUser } from '../../services/user.services'
 import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material'
 
@@ -39,7 +39,7 @@ export default function RatingCard({ volunteer }) {
         setMedia(resta)
         const payload = {
           media: resta
-        };
+        }
         const result = await updateUser(volunteer.id, payload)
         setDisliked(true)
       } catch (error) {

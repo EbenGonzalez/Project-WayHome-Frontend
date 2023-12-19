@@ -1,17 +1,16 @@
 import './MyPets.css'
 import { getOwnPets } from '../../services/pet.services.js'
 import PetShowMyPets from '../../components/PetShowMyPets/PetShowMyPets.jsx'
-
 import { useEffect, useState } from 'react'
 
 function Mypets() {
 
   const [myPet, setMyPet] = useState([])
-  const [racesFilter, setRacesFilter] = useState('');
+  const [racesFilter, setRacesFilter] = useState('')
 
   const handleRacesFilterChange = (e) => {
-    setRacesFilter(e.target.value);
-  };
+    setRacesFilter(e.target.value)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +24,7 @@ function Mypets() {
     (pet) =>
       pet.info &&
       pet.info.toLowerCase().includes(racesFilter.toLowerCase())
-  );
+  )
 
   const myPetsFun = () => {
     return filteredPets.map(pet => {

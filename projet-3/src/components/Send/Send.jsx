@@ -1,13 +1,11 @@
 import './Send.css'
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { deleteOwnComment, getSendComments } from '../../services/comment.services'
-
 import Typography from '@mui/material/Typography'
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Divider} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete'
+import { Divider} from '@mui/material'
 import IconButton from '@mui/material/IconButton'
-import Stack from '@mui/material/Stack';
+import Stack from '@mui/material/Stack'
 
 function Send() {
 
@@ -64,7 +62,6 @@ function Send() {
       )
     })
   }
-
 
   return (
     <>

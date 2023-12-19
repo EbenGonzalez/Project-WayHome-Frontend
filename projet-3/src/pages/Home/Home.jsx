@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Grid, Typography } from '@mui/material'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const handleMouseEnter = (event) => {
@@ -48,7 +48,6 @@ const Home = () => {
           </Box>
          </Grid>
        
-        
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -79,7 +78,6 @@ const Home = () => {
             </Link>
           </Box>
         </Grid>
-       
       </Grid>
     </div>
   )

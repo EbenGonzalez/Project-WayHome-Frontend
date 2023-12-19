@@ -8,7 +8,6 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { Typography } from '@mui/material'
 import { deletePet } from '../../services/pet.services'
 
-
 function AdminDeletePet() {
 
   const [open, setOpen] = useState(false)

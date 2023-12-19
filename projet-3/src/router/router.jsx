@@ -14,7 +14,6 @@ import Mypets from '../pages/MyPets/Mypets'
 import QuienesSomos from '../pages/QuienesSomos/QuienesSomos'
 import Contacto from '../pages/Contacto/Contacto'
 
-
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -92,7 +91,6 @@ const router = createBrowserRouter([
       },
     ]
   }
-
 ])
 
 export default router

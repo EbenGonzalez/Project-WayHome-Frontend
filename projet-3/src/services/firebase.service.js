@@ -12,5 +12,4 @@ const firebaseConfig = {
 
 const fire = initializeApp(firebaseConfig)
 
-
 export {fire}

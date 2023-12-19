@@ -1,8 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-import { Box, Typography } from '@mui/material';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import React from 'react'
+import { Box, Typography } from '@mui/material'
 
 function MyHistory({ history }) {
   return (
@@ -17,12 +14,11 @@ function MyHistory({ history }) {
         justifyContent: 'space-between',
         width: "300px",
         height:"1200px",
-        overflow: 'hidden', // Añadir overflow: hidden
+        overflow: 'hidden', 
       }}
     >
       {Object.keys(history).length !== 0 ?
         <>
-          {/* Box 1 */}
           <Box
             sx={{
               display: 'flex',
@@ -30,7 +26,7 @@ function MyHistory({ history }) {
               alignItems: 'center',
               textAlign: 'center',
               overflow: 'hidden',
-              marginBottom: 2, // Añadir margen inferior
+              marginBottom: 2,
             }}
           >
             <img
@@ -53,9 +49,6 @@ function MyHistory({ history }) {
               {history.pet.info}
             </Typography>
           </Box>
-
-         
-          {/* Box 2 */}
           <Box
             sx={{
               display: 'flex',
@@ -63,7 +56,7 @@ function MyHistory({ history }) {
               alignItems: 'center',
               textAlign: 'center',
               overflow: 'hidden',
-              marginTop: 5, // Añadir margen superior
+              marginTop: 5,
             }}
           >
             <img

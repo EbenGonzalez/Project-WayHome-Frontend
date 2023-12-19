@@ -1,9 +1,7 @@
 import './NavBar.css'
 import { useEffect, useState } from 'react'
-
 import { Link } from 'react-router-dom'
 import Inbox from '../Inbox/Inbox'
-
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -100,13 +98,11 @@ function ResponsiveAppBar() {
 
   const handleOpenInbox = () => {
     setShowInbox(true);
-  };
+  }
 
   const handleCloseInbox = () => {
     setShowInbox(false);
-  };
-
-
+  }
 
   return (
     <AppBar >
@@ -137,7 +133,6 @@ function ResponsiveAppBar() {
                }}/>
             </Typography>
           </Link>
-
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -228,7 +223,6 @@ function ResponsiveAppBar() {
             <Inbox onClose={handleCloseInbox} />
           )}
         
-
            <Box sx={{ width: 26 }} />
 
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>

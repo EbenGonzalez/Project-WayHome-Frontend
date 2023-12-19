@@ -7,9 +7,7 @@ import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { updateOwnPet, getRaces } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
-import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
-
-
+import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined'
 
 const genero = [
   {

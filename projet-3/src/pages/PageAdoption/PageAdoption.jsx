@@ -1,21 +1,21 @@
 import './PageAdoption.css'
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import PetShow from '../../components/PetShow/PetShow';
-import { getAdoptionPets } from '../../services/pet.services';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import PetShow from '../../components/PetShow/PetShow'
+import { getAdoptionPets } from '../../services/pet.services'
 
 
 function PageAdoption() {
-  const [petShow, setPetShow] = useState([]);
-  const [racesFilter, setRacesFilter] = useState('');
+  const [petShow, setPetShow] = useState([])
+  const [racesFilter, setRacesFilter] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getAdoptionPets();
-      setPetShow(result);
+      const result = await getAdoptionPets()
+      setPetShow(result)
     };
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   const petsShowFunc = () => {
     return filteredPets.map(pet => {
@@ -28,14 +28,14 @@ function PageAdoption() {
   }
 
   const handleRacesFilterChange = (e) => {
-    setRacesFilter(e.target.value);
-  };
+    setRacesFilter(e.target.value)
+  }
 
   const filteredPets = petShow.filter(
     (pet) =>
       pet.info &&
       pet.info.toLowerCase().includes(racesFilter.toLowerCase())
-  );
+  )
 
   return (
     <>
@@ -53,7 +53,7 @@ function PageAdoption() {
       </div>
     
     </>
-  );
+  )
 }
 
-export default PageAdoption;
+export default PageAdoption

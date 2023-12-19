@@ -1,10 +1,10 @@
-import { cloneElement } from 'react';
+import { cloneElement } from 'react'
 
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import HomeIcon from '@mui/icons-material/Home';
-import Box from '@mui/material/Box';
+import Breadcrumbs from '@mui/material/Breadcrumbs'
+import HomeIcon from '@mui/icons-material/Home'
+import Box from '@mui/material/Box'
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'
 
 const Breadcrumb = ({ parts }) => {
   return (
@@ -16,32 +16,32 @@ const Breadcrumb = ({ parts }) => {
         </Link>
       ))}
     </Breadcrumbs>
-  );
-};
+  )
+}
 
 const getPathParts = () => {
-  const pathnames = location.pathname.split('/').filter((page) => page !== '');
+  const pathnames = location.pathname.split('/').filter((page) => page !== '')
   const parts = pathnames.map((part, index) => {
-    const isLast = index === pathnames.length - 1;
-    const path = `/${pathnames.slice(0, index + 1).join('/')}`;
+    const isLast = index === pathnames.length - 1
+    const path = `/${pathnames.slice(0, index + 1).join('/')}`
     return {
       label: part,
       path: isLast ? null : path,
-    };
-  });
-  return [{ label: <HomeIcon color='primary' />, path: '/' }, ...parts];
-};
+    }
+  })
+  return [{ label: <HomeIcon color='primary' />, path: '/' }, ...parts]
+}
 
 const BasicBreadcrumbs = () => {
-  const location = useLocation();
+  const location = useLocation()
 
-  const breadcrumbParts = getPathParts();
+  const breadcrumbParts = getPathParts()
 
   return (
     <Box m={2} role="presentation" sx={{ position: 'fixed', top: '64px', left: 0 }}>
       <Breadcrumb parts={breadcrumbParts} />
     </Box>
-  );
-};
+  )
+}
 
-export default BasicBreadcrumbs;
+export default BasicBreadcrumbs

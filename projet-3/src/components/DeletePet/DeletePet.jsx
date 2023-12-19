@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import { deleteOwnPet } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete'
 
 function DeletePet({ pet }) {
  

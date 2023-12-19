@@ -9,9 +9,8 @@ import { useNavigate } from 'react-router-dom'
 import { fire } from "../../services/firebase.service"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { updateOwnUser } from '../../services/user.services'
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from '@mui/icons-material/Edit'
 import { Typography } from '@mui/material'
-
 
 const roles = [
   {

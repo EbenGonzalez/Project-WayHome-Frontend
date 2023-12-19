@@ -8,7 +8,6 @@ function Contacto() {
         </header>
         <div className='contacto'>
         
-     
         <main className='left'>
             <h2>
                 Si necesitas más información rellena el siguiente formulario

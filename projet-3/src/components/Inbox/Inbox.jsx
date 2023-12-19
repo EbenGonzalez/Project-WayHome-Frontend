@@ -1,7 +1,6 @@
 import './Inbox.css'
-import Send from '../Send/Send';
-
-import React, { useState, useEffect } from 'react';
+import Send from '../Send/Send'
+import React, { useState, useEffect } from 'react'
 import { getInboxComments, updateComment } from '../../services/comment.services'
 
 import {
@@ -12,12 +11,12 @@ import {
   Tab,
   Tabs,
   Typography
-} from '@mui/material';
+} from '@mui/material'
 
 import {
   Delete as DeleteIcon,
   Reply as ReplyIcon
-} from '@mui/icons-material';
+} from '@mui/icons-material'
 
 import {
   Dialog,
@@ -25,13 +24,13 @@ import {
   DialogContent,
   DialogTitle,
   TextField
-} from '@mui/material';
+} from '@mui/material'
 
 
 const Inbox = ({ onClose }) => {
 
   const [comment, setComment] = useState([])
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0)
   const [openReplyDialog, setOpenReplyDialog] = useState(false)
   const [answer, setAnswer] = useState(comment.answer)
   const [commentId, setCommentId] = useState('')
@@ -46,17 +45,17 @@ const Inbox = ({ onClose }) => {
 
   const handleOpenReplyDialog = (commentId) => {
     setCommentId(commentId)
-    setOpenReplyDialog(true);
-  };
+    setOpenReplyDialog(true)
+  }
 
   const handleCloseReplyDialog = () => {
-    setOpenReplyDialog(false);
-    setAnswer('');
-  };
+    setOpenReplyDialog(false)
+    setAnswer('')
+  }
 
   const handleChange = (e, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -76,7 +75,7 @@ const Inbox = ({ onClose }) => {
   }
 
   const handleExitMessaging = () => {
-    onClose();
+    onClose()
   }
 
   const showMessages = () => {
@@ -158,7 +157,7 @@ const Inbox = ({ onClose }) => {
         Salir de mensajería
       </Button>
     </Dialog>
-  );
-};
+  )
+}
 
 export default Inbox;

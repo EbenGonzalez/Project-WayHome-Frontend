@@ -1,13 +1,13 @@
-import './Footer.css';
+import './Footer.css'
 import {
   Facebook as FacebookIcon,
   Instagram as InstagramIcon,
   YouTube as YouTubeIcon,
   LinkedIn as LinkedInIcon,
-} from '@mui/icons-material';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Box, Grid, Container, Typography, Button } from '@mui/material';
+} from '@mui/icons-material'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Box, Grid, Container, Typography, Button } from '@mui/material'
 
 function Footer() {
   const elements = [
@@ -47,7 +47,7 @@ function Footer() {
       path: '/quienesSomos',
       links: [<LinkedInIcon />],
     },
-  ];
+  ]
 
   function generateFooterElements() {
     const footerElements = elements.map((column, columnIndex) => {
@@ -63,11 +63,11 @@ function Footer() {
               <Box key={linkIndex}>
                 <Button sx={{ color: 'white' }}>{link}</Button>
               </Box>
-            );
+            )
           })}
         </Grid>
-      );
-    });
+      )
+    })
     return footerElements;
   }
 
@@ -106,7 +106,7 @@ function Footer() {
         <Typography>© Way Home 2023 - Todos los derechos reservados</Typography>
       </Box>
     </footer>
-  );
+  )
 }
 
 export default Footer;

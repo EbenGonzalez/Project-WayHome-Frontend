@@ -1,26 +1,25 @@
-import { useState } from 'react';
-
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-import { sendComment } from '../../services/comment.services';
+import { useState } from 'react'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import TextareaAutosize from '@mui/material/TextareaAutosize'
+import { sendComment } from '../../services/comment.services'
 
 export default function FormDialog({ pet }) {
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [receiver_id, setReceiver_id] = useState(pet.userId)
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpen(true)
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpen(false)
   };
 
   const handleSubmit = async (event) => {
@@ -46,7 +45,6 @@ export default function FormDialog({ pet }) {
       <Button 
       variant="outlined" 
       onClick={handleClickOpen}
-      
       >
         Contactar
       </Button>
@@ -70,5 +68,5 @@ export default function FormDialog({ pet }) {
         </DialogActions>
       </Dialog>
     </>
-  );
+  )
 }

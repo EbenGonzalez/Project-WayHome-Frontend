@@ -1,11 +1,8 @@
 import './Login.css'
-
 import { login } from '../../services/auth'
 import { customTheme } from '../../themes/custom.js'
-
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import {
   Avatar,
   Button,
@@ -18,10 +15,9 @@ import {
   Box,
   Grid,
   Typography
-} from '@mui/material';
-
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { ThemeProvider } from '@mui/material/styles';
+} from '@mui/material'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import { ThemeProvider } from '@mui/material/styles'
 
 function Copyright(props) {
   return (
@@ -38,9 +34,8 @@ function Copyright(props) {
 
 export default function SignInSide() {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
   const handleClick = async () => {
@@ -50,22 +45,22 @@ export default function SignInSide() {
         password,
       }
 
-      const result = await login(payload);
+      const result = await login(payload)
       if (result === 200) {
         navigate('/')
       }
     } catch (error) {
       console.log(error)
     }
-  };
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log({
       email,
       password,
-    });
-  };
+    })
+  }
 
   return (
     <ThemeProvider theme={customTheme}>
@@ -155,5 +150,5 @@ export default function SignInSide() {
         </Grid>
       </Grid>
     </ThemeProvider>
-  );
+  )
 }

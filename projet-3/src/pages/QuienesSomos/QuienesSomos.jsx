@@ -1,13 +1,13 @@
-import { Card, CardContent, CardMedia, Typography, Grid, Box, IconButton } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import './QuienesSomos.css';
+import { Card, CardContent, CardMedia, Typography, Grid, Box, IconButton } from '@mui/material'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import './QuienesSomos.css'
 
 function QuienesSomos() {
   const teamMembers = [
     { name: 'ROBER', image: 'https://firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%2FIMG_1638%20(1).JPG?alt=media&token=dd595106-78cb-428a-9912-127640f0ce5d', github: 'URL_GITHUB_ROBER' },
     { name: 'EBEN', image: 'URL_IMAGEN_EBEN', github: 'URL_GITHUB_EBEN' },
     { name: 'CHRISTIAN', image: 'URL_IMAGEN_CHRISTIAN', github: 'URL_GITHUB_CHRISTIAN' }
-  ];
+  ]
 
   return (
     <>
@@ -65,7 +65,7 @@ function QuienesSomos() {
         </Grid>
       </Box>
     </>
-  );
+  )
 }
 
-export default QuienesSomos;
+export default QuienesSomos

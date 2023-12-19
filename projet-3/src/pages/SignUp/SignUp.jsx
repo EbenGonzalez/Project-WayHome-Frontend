@@ -1,6 +1,5 @@
 import { signup } from '../../services/auth'
 import { customTheme } from '../../themes/custom.js'
-
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -15,10 +14,9 @@ import {
   Box,
   Typography,
   Container,
-} from '@mui/material';
-
+} from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles'
 
 function Copyright(props) {
   return (
