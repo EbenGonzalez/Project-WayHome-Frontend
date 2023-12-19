@@ -6,8 +6,8 @@ import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { updatePet, getRaces } from '../../services/pet.services'
-import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
-
+import EditIcon from '@mui/icons-material/Edit'
+import { Typography } from '@mui/material'
 
 
 const genero = [
@@ -137,10 +137,9 @@ function AdminUpdatePet() {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <Button variant="outlined" color="primary" 
-      onClick={handleOpen}
-      startIcon={<PublishedWithChangesOutlinedIcon />}>
-        Editar Mascota
+      <Button variant="contained" onClick={handleOpen} sx={{ marginBottom: '40px' }} >
+        <EditIcon />
+        <Typography>Editar Mascota</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Editar Mascota</DialogTitle>

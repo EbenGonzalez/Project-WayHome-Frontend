@@ -120,7 +120,7 @@ const deleteOwnPet = async (id) => {
   }
 }
 
-const deletePet = async (id,body) => {
+const deletePet = async (id) => {
   try {
     const { data } = await api.delete(`/pets/${id}`, {
       headers: {

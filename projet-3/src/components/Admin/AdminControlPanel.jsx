@@ -3,6 +3,8 @@ import { Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, G
 import AdminAddUser from './AdminAddUser'
 import AdminAddPet from './AdminAddPet'
 import AdminUpdatePet from './AdminUpdatePet'
+import AdminDeletePet from './AdminDeletePet'
+import AdminDeleteUser from './AdminDeleteUser'
 
 const AdminPanel = () => {
   const [openModal, setOpenModal] = useState(false)
@@ -37,12 +39,10 @@ const AdminPanel = () => {
                   <AdminAddPet/>
                 </Grid>
                 <Grid item>
-                  <AdminUpdatePet/>
+                  <AdminDeletePet/>
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" color="primary" onClick={() => handleButtonClick('Botón 4')}>
-                    Botón 4
-                  </Button>
+                  <AdminDeleteUser/>
                 </Grid>
               </Grid>
             </DialogContent>
