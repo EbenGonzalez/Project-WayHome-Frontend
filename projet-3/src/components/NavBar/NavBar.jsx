@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
               }}
             >
               <img
-               src="../../assets/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
+               src="https://firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%2Fwayhome.png?alt=media&token=dd52c51a-2988-4f00-96f5-00530991f775" 
                alt=""
                style={{
                 width: '200px',
@@ -189,7 +189,7 @@ function ResponsiveAppBar() {
             }}
           >
              <img
-               src="../../assets/Captura_de_pantalla_2023-12-18_191030-removebg-preview.png" 
+               src="https://firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%2Fwayhome.png?alt=media&token=dd52c51a-2988-4f00-96f5-00530991f775" 
                alt=""
                style={{
                 width: '200px',
