@@ -21,7 +21,7 @@ import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
 import { getInboxComments } from '../../services/comment.services'
-import { height, width } from '@mui/system'
+import { getOwnUser } from '../../services/user.services'
 
 const pages = [
   {
@@ -55,6 +55,15 @@ function ResponsiveAppBar() {
   const [comment, setComment] = useState([])
   const [inbox, setInbox] = useState(0)
   const [showInbox, setShowInbox] = useState(false)
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { user } = await getOwnUser()
+      setUser(user)
+    }
+    fetchUser()
+  }, [])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,7 +109,7 @@ function ResponsiveAppBar() {
 
 
   return (
-    <AppBar sx={{/* ajusta la altura según tus necesidades */ }}>
+    <AppBar >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to='/'>
@@ -225,7 +234,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'flex' } }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
-                <Avatar alt="" src="https://images-ext-1.discordapp.net/external/KbvSdwJ4bnRJADmD-gMLH2r4ABio6MMajJcD3wgzKUk/%3Falt%3Dmedia%26token%3D37a77465-69e6-4080-9f29-adcc040225e8/https/firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%252Falicia.jpg?format=webp&width=993&height=662" />
+                <Avatar alt="" src={user.profile}/>
               </IconButton>
             </Tooltip>
 
