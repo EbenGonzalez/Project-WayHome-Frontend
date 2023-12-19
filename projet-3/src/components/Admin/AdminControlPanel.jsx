@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid } from '@mui/material'
 import AdminAddUser from './AdminAddUser'
 import AdminAddPet from './AdminAddPet'
+import AdminUpdatePet from './AdminUpdatePet'
 
 const AdminPanel = () => {
   const [openModal, setOpenModal] = useState(false)
@@ -36,9 +37,7 @@ const AdminPanel = () => {
                   <AdminAddPet/>
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" color="primary" onClick={() => handleButtonClick('Botón 3')}>
-                    Botón 3
-                  </Button>
+                  <AdminUpdatePet/>
                 </Grid>
                 <Grid item>
                   <Button variant="contained" color="primary" onClick={() => handleButtonClick('Botón 4')}>
