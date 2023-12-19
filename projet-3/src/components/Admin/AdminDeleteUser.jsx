@@ -4,9 +4,8 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
-import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 import { Typography } from '@mui/material'
-import { deletePet } from '../../services/pet.services'
 import { deleteUser } from '../../services/user.services'
 
 function AdminDeleteUser() {
@@ -39,7 +38,7 @@ function AdminDeleteUser() {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <Button variant="contained" onClick={handleOpen} sx={{ marginBottom: '40px' }} >
-        <EditIcon />
+        <DeleteIcon />
         <Typography>Borrar Usuario</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>

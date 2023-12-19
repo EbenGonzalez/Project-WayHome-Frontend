@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import { createPet	, getRaces } from '../../services/pet.services'
 import { useNavigate } from 'react-router-dom'
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from '@mui/icons-material/Add'
 import { Typography } from '@mui/material'
 
 

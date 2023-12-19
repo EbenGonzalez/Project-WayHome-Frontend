@@ -5,8 +5,9 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import TextField from '@mui/material/TextField'
-import EditIcon from '@mui/icons-material/Edit'
+import AddIcon from '@mui/icons-material/Add'
 import { Typography } from '@mui/material'
+import { signupNew } from '../../services/auth'
 
 function AdminAddUser() {
 
@@ -43,7 +44,7 @@ function AdminAddUser() {
         email,
         password
       }
-      const result = await createUser(payload)
+      const result = await signupNew(payload)
       if (result === 200) {
 
       }
@@ -55,7 +56,7 @@ function AdminAddUser() {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <Button variant="contained" onClick={handleOpen} sx={{ marginBottom: '40px' }} >
-        <EditIcon />
+        <AddIcon />
         <Typography>Añadir Usuario</Typography>
       </Button>
       <Dialog open={open} onClose={handleClose}>

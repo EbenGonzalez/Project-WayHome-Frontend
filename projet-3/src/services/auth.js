@@ -20,8 +20,17 @@ const signup = async (body) => {
   }
 }
 
+const signupNew = async (body) => {
+  try {
+    const { data } = await api.post('/auth/signup', body)
+    return 200;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 function logout() {
   localStorage.removeItem('token')
 }
 
-export { login, signup, logout }
+export { login, signup, logout, signupNew }
