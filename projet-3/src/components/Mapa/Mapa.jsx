@@ -6,16 +6,19 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
+import L from 'leaflet'
 
-import L from 'leaflet';
+delete L.Icon.Default.prototype._getIconUrl
 
-delete L.Icon.Default.prototype._getIconUrl;
+const DefaultIcon = L.icon({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+})
 
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default,
-  iconUrl: require('leaflet/dist/images/marker-icon.png').default,
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png').default,
-});
+L.Marker.prototype.options.icon = DefaultIcon
+
+
 
 function Mapa({ volunteers }) {
   const [markers, setMarkers] = useState([])
