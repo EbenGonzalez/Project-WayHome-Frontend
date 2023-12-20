@@ -74,7 +74,7 @@ function Mapa({ volunteers }) {
   }
 
   return (
-    <div style={{ textAlign: 'center',marginBottom:"30px" }}>
+    <div style={{ textAlign: 'center', marginBottom: "30px" }}>
       <Button variant="contained" color="primary" onClick={handleOpen} startIcon={<LocationOnIcon />}>
         MOSTRAR MAPA
       </Button>
@@ -89,7 +89,7 @@ function Mapa({ volunteers }) {
             {markers.map((marker, index) => (
               <Marker key={index} position={marker.position}>
                 <Popup>
-                  <b>{marker.volunteerData.firstName}</b><br /> {marker.volunteerData.location} <br />Votos:{marker.volunteerData.background}
+                  <img src={marker.volunteerData.profile} alt="" style={{ width: "100px", height: "75px", borderRadius: "7px" }} /><br /> <b>{marker.volunteerData.firstName}</b><br /> {marker.volunteerData.location} <br />Votos:{marker.volunteerData.background}
                 </Popup>
               </Marker>
             ))}
