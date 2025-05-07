@@ -1,4 +1,3 @@
-
 # 🐶🐱 WayHome
 
 **WayHome** es una aplicación web que tiene como objetivo principal facilitar la interaccion entre usuarios que deseen poner en adopcion o acogida temporal a sus mascotas con voluntarios dispuestos a ello.
@@ -45,9 +44,11 @@
 
 ## 🖼️ Capturas de pantalla
 
-![Categorias](/screenshots/carbulator1.jpg)
-![Favoritos](/screenshots/carbulator2.jpg)
-![Filtrado](/screenshots/carbulator3.jpg)
+![Portada](projet-3/public/screenshots/2.jpg)
+![Mascotas](projet-3/public/screenshots/3.jpg)
+![Voluntarios](projet-3/public/screenshots/4.jpg)
+![Localizacion](projet-3/public/screenshots/5.jpg)
+![Mensajes](projet-3/public/screenshots/7.jpg)
 
 ## 👨‍💻 Autor
 
