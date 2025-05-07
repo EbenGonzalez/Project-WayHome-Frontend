@@ -4,9 +4,9 @@ import './QuienesSomos.css'
 
 function QuienesSomos() {
   const teamMembers = [
-    { name: 'ROBER', image: 'URL_IMAGEN_ROBER', github: 'https://github.com/RobertoNeiraGonzalez/' },
-    { name: 'EBEN', image: 'URL_IMAGEN_EBEN', github: 'URL_GITHUB_EBEN' },
-    { name: 'CHRISTIAN', image: 'URL_IMAGEN_CHRISTIAN', github: 'URL_GITHUB_CHRISTIAN' }
+    { name: 'ROBER', image: 'https://firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%2Froberto.JPG?alt=media&token=28b0d931-9251-4c04-a8e3-cc0fba6035d1', github: 'https://github.com/RobertoNeiraGonzalez/' },
+    { name: 'EBEN', image: 'https://firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%2Feben.jpg?alt=media&token=773ec880-19b4-431a-93e5-f07f72b2359c', github: 'https://github.com/EbenGonzalez' },
+    { name: 'CHRISTIAN', image: 'https://firebasestorage.googleapis.com/v0/b/proyecto3-1af75.appspot.com/o/profile%2Fchristian.JPG?alt=media&token=2a929987-51c9-44fa-9d6b-60afb67035df', github: 'https://github.com/ChristianValverdeMonsalve' }
   ]
 
   return (
