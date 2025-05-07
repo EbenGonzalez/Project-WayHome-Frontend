@@ -68,7 +68,7 @@ function Mapa({ volunteers }) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>MAPA DE VOLUNTARIOS</DialogTitle>
         <DialogContent>
-          <MapContainer center={defaultCenter} zoom={8} style={{ height: '900px', width: '950px' }}>
+          <MapContainer center={defaultCenter} zoom={8} style={{ height: '500px', width: '500px' }}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
